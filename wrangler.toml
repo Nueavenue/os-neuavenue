@@ -8,3 +8,13 @@ workers_dev = true
 directory = "."
 html_handling = "auto-trailing-slash"
 not_found_handling = "404-page"
+
+# Attach hostnames on the Worker. Do not CNAME these to pages.dev yourself
+# while Proxied — that is Cloudflare error 1014.
+[[routes]]
+pattern = "os.neuavenue.com"
+custom_domain = true
+
+[[routes]]
+pattern = "neuos.neuavenue.com"
+custom_domain = true

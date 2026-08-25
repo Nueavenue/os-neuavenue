@@ -29,11 +29,19 @@ Do **not** set a deploy command.
 - Build command: empty
 - Build output directory: `/`
 
-Then use **Custom domains** → `os.neuavenue.com`.
+Then use **Custom domains** → `os.neuavenue.com`. Cloudflare will write the DNS record.
 
-```
-CNAME  os  →  os-neuavenue.pages.dev   (or *.workers.dev after Worker+assets)
-```
+Do **not** hand-create a Proxied CNAME to `os-neuavenue.pages.dev`. That hostname is on Cloudflare’s own zone, so the orange cloud returns **error 1014** (CNAME Cross-User Banned). `os-neuavenue.pages.dev` also does not exist if the project was deployed with `wrangler deploy` (that is a **Worker**, URL `*.workers.dev`).
+
+### Fix error 1014 (current DNS)
+
+1. DNS → Records: delete the manual `os` CNAME to `os-neuavenue.pages.dev` (or leave it; the next step overwrites it).
+2. **Workers & Pages** → open **os-neuavenue** (Worker, not a Pages custom-domain attach).
+3. **Domains & Routes** → **Add** → **Custom domain** → `os.neuavenue.com`.
+4. Add `neuos.neuavenue.com` the same way (do not CNAME `neuos` → `os` while `os` is still 1014).
+5. Wait for SSL. Open https://os.neuavenue.com
+
+`wrangler.toml` already lists both hostnames as `custom_domain` routes. A deploy with zone DNS permission can attach them too.
 
 Secrets for GitHub Action (optional): `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`.
 
