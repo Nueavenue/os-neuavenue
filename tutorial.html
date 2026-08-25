@@ -3,52 +3,76 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>neuOS USB tutorial · NeuAvenue</title>
+    <title>USB tutorial · os.neu · NeuAvenue</title>
     <link rel="icon" type="image/png" href="/brand/neuos-mark.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="./welcome.css" />
   </head>
-  <body class="bg-grid bg-radial">
-    <header class="nav">
-      <div class="wrap nav-inner">
-        <a class="brand" href="/">
-          <img src="/brand/neuos-mark.png" alt="" />
-          NeuAvenue <span>neuOS</span>
-        </a>
-        <nav class="nav-links">
-          <a href="https://neuavenue.com/">Home</a>
-          <a href="/">Download</a>
-          <a href="/tutorial.html">Tutorial</a>
-        </nav>
-        <a class="nav-cta" href="https://neuavenue.com/">Sign in</a>
-      </div>
-    </header>
-
-    <main class="wrap">
-      <section class="hero" style="padding-bottom: 24px">
-        <div>
-          <p class="eyebrow">USB walkthrough</p>
-          <h1>Put neuOS on a stick</h1>
-          <p class="lead">Same steps as the company platform: download, unpack, burn, then boot.</p>
+  <body>
+    <nav class="nav">
+      <div class="wrap">
+        <div class="nav-inner">
+          <a class="brand" href="https://neuavenue.com/">
+            <img src="/brand/neuavenue-logo.png" alt="NeuAvenue" />
+          </a>
+          <div class="nav-links">
+            <a href="https://neuavenue.com/#features">Features</a>
+            <a href="https://neuavenue.com/#how-it-works">How It Works</a>
+            <a href="https://app.neuavenue.com" target="_blank" rel="noopener noreferrer">App</a>
+            <a class="btn btn-waitlist" href="https://neuavenue.com/">Join Waitlist</a>
+          </div>
+          <button
+            class="menu-toggle"
+            type="button"
+            data-menu-toggle
+            aria-label="Toggle menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <svg id="icon-open" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="icon-close" hidden width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
         </div>
-      </section>
+        <div id="mobile-menu" class="mobile-menu">
+          <a href="https://neuavenue.com/#features">Features</a>
+          <a href="https://neuavenue.com/#how-it-works">How It Works</a>
+          <a href="https://app.neuavenue.com" target="_blank" rel="noopener noreferrer">App</a>
+          <a class="mobile-waitlist" href="https://neuavenue.com/">Join Waitlist</a>
+        </div>
+      </div>
+    </nav>
 
-      <section class="block">
-        <article class="glass">
-          <h2>1. Get the kit</h2>
-          <p><a class="btn primary" href="/downloads/neuos-boot-kit.tar.gz">neuos-boot-kit.tar.gz</a></p>
+    <section class="hero page-hero">
+      <div class="orb orb-indigo" aria-hidden="true"></div>
+      <div class="orb orb-emerald" aria-hidden="true"></div>
+      <div class="wrap-6 hero-inner">
+        <div class="badge">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z" />
+          </svg>
+          <span>os.neu · USB walkthrough</span>
+        </div>
+        <h1>Put os.neu on a stick</h1>
+        <p class="lead">Same chrome as NeuAvenue: download, unpack, burn, then boot.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="/downloads/neuos-boot-kit.tar.gz">Download boot kit</a>
+          <a class="btn btn-ghost" href="/">Back to os.neu</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 24px">
+      <div class="wrap-5 stack">
+        <article class="card">
+          <h3>1. Get the kit</h3>
           <p>Save the file in your home folder and unpack it.</p>
           <pre>tar -xzf neuos-boot-kit.tar.gz</pre>
         </article>
-      </section>
-      <section class="block" style="padding-top: 0">
-        <article class="glass">
-          <h2>2. Pick a USB stick (Linux)</h2>
+        <article class="card">
+          <h3>2. Pick a USB stick (Linux)</h3>
           <p>Plug the stick in. <strong>Never choose the disk that holds /.</strong></p>
           <pre>bash scripts/make-usb.sh --list
 bash scripts/make-usb.sh --plan /dev/sdX</pre>
@@ -57,39 +81,59 @@ bash scripts/make-usb.sh --plan /dev/sdX</pre>
           <p>Real burn onto an empty stick:</p>
           <pre>sudo bash scripts/make-usb.sh /dev/sdX --yes</pre>
         </article>
-      </section>
-      <section class="block" style="padding-top: 0">
-        <article class="glass">
-          <h2>3. If you downloaded the kit on Windows</h2>
+        <article class="card">
+          <h3>3. If you downloaded the kit on Windows</h3>
           <ol>
             <li>
               The burn tool is Linux-only for now. When an ISO is published, use Rufus or
               balenaEtcher on the same stick.
             </li>
             <li>
-              Until then, unpack the kit on a Linux PC and do step 2, or plant neuOS on a PC that
+              Until then, unpack the kit on a Linux PC and do step 2, or plant os.neu on a PC that
               already has an OS with <code>install-autostart.sh</code>.
             </li>
           </ol>
         </article>
-      </section>
-      <section class="block" style="padding-top: 0">
-        <article class="glass">
-          <h2>4. Boot another computer from USB</h2>
+        <article class="card">
+          <h3>4. Boot another computer from USB</h3>
           <ol>
             <li>Plug the stick in and power on.</li>
             <li>Immediately press <strong>F12 / F10 / Esc / F2</strong> and choose USB.</li>
-            <li>Neuavenue logo or the neuOS kernel screen means success.</li>
+            <li>NeuAvenue logo or the os.neu kernel screen means success.</li>
           </ol>
         </article>
-      </section>
-    </main>
+      </div>
+    </section>
 
     <footer class="site-footer">
-      <div class="wrap footer-row">
-        <div>NeuAvenue Inc. · neuOS</div>
-        <div><a href="/">os.neuavenue.com</a> · <a href="https://neuavenue.com/">neuavenue.com</a></div>
+      <div class="wrap-6">
+        <div class="footer-logo">
+          <img src="/brand/neuavenue-logo.png" alt="NeuAvenue" />
+          <p>AI-powered life-force intelligence for better decisions.</p>
+        </div>
+        <div class="footer-links">
+          <a href="https://neuavenue.com/#about">About</a>
+          <a href="https://neuavenue.com/#contact">Contact</a>
+          <a href="https://neuavenue.com/#privacy">Privacy</a>
+          <a href="https://neuavenue.com/#terms">Terms</a>
+        </div>
+        <div class="footer-stats">
+          <div>
+            <strong style="color: #34d399">3</strong>
+            <span>Life Dimensions</span>
+          </div>
+          <div>
+            <strong style="color: #818cf8">1</strong>
+            <span>Unified Score</span>
+          </div>
+          <div>
+            <strong style="color: #c084fc">AI</strong>
+            <span>Powered Insights</span>
+          </div>
+        </div>
+        <p class="copy">2026 NeuAvenue Inc. All rights reserved.</p>
       </div>
     </footer>
+    <script src="./site.js"></script>
   </body>
 </html>

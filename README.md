@@ -1,9 +1,10 @@
-# os.neuavenue.com
+# os.neu
 
-Public English landing for Neuavenue **neuOS**: download a USB boot kit and follow the tutorial. The in-app kiosk stays multilingual; this site and GitHub copy are English-first.
+Public English landing for NeuAvenue **os.neu**: download a USB boot kit and follow the tutorial. Chrome matches [neuavenue-landing](https://github.com/Nueavenue/neuavenue-landing) (nav, indigo/emerald body, centered footer) so this subdomain reads as the same company site.
 
-- Site files: `index.html`, `tutorial.html`, `brand/`, `downloads/neuos-boot-kit.tar.gz`
+- Site files: `index.html`, `tutorial.html`, `welcome.css`, `site.js`, `brand/`, `downloads/neuos-boot-kit.tar.gz`
 - Production hostname: **os.neuavenue.com** (keep [neuavenue.com](https://neuavenue.com/) as the company home)
+- Public product name: **os.neu** (not neuOS)
 
 ## Local preview
 
