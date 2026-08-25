@@ -773,6 +773,31 @@ ol {
   padding-left: 1.15rem;
 }
 
+.card table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 8px;
+  font-size: 14px;
+}
+
+.card th,
+.card td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  vertical-align: top;
+}
+
+.card th {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.card td code {
+  white-space: nowrap;
+}
+
 code,
 pre {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;

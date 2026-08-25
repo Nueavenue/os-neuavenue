@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>USB tutorial · os.neu · NeuAvenue</title>
+    <title>USB tutorial · OS.neu v1.0 · NeuAvenue</title>
     <link rel="icon" type="image/png" href="/brand/neuos-mark.png" />
     <link rel="stylesheet" href="/welcome.css" />
   </head>
@@ -53,11 +53,12 @@
       <div class="orb orb-indigo" aria-hidden="true"></div>
       <div class="orb orb-emerald" aria-hidden="true"></div>
       <div class="wrap-6 hero-inner">
-        <div class="badge"><span>os.neu · USB to JeOS</span></div>
+        <div class="badge"><span>OS.neu v1.0 · USB to JeOS</span></div>
         <h1>Boot this PC from the stick</h1>
         <p class="lead">
-          After you burn os.neu onto a USB stick, reboot from USB. That does not erase Ubuntu on
-          the internal disk. This session runs from the stick. Unplug it and Ubuntu comes back.
+          After you burn OS.neu onto a USB stick, reboot from USB. On an ASUS board that is usually
+          one press of F8 — not a permanent change to the disk order. The internal Ubuntu disk is
+          not erased. Unplug the stick and Ubuntu comes back.
         </p>
         <div class="actions">
           <a class="btn btn-primary" href="/downloads/neuos-boot-kit.tar.gz">Download boot kit</a>
@@ -86,31 +87,99 @@ sudo bash scripts/make-usb.sh /dev/sdX --yes</pre>
         </article>
 
         <article class="card">
-          <h3>2. Reboot this Ubuntu PC from USB</h3>
-          <p>Leave the stick plugged in. Save your work. Restart the computer.</p>
-          <ol>
-            <li>When the maker logo appears, press <strong>F12</strong> (or F10 / Esc / Del) several times.</li>
-            <li>Choose <strong>USB</strong> / the stick name. Do not choose the internal SSD that runs Ubuntu.</li>
-            <li>If the Ubuntu desktop opens again, USB was not selected. Restart and pick USB only.</li>
-          </ol>
-        </article>
-
-        <article class="card">
-          <h3>3. What success looks like</h3>
-          <p>There is no folder window and no Firefox. A dark console appears:</p>
-          <pre>neuOS JeOS userspace
-Linux kernel + Node runtime. Not motherboard firmware.
-Type: hardware | network | memory | install firefox | exit
-
-[neuOS] ></pre>
+          <h3>2. ASUS: boot from USB once (recommended)</h3>
           <p>
-            This is the os.neu first console. It is not Windows Explorer and not MS-DOS. The
-            graphical talk screen is a different path (plant os.neu on an existing login).
+            Leave the stick plugged in. Save your work. You do not need to change the permanent
+            boot order. This choice applies to the next start only.
+          </p>
+          <ol>
+            <li>
+              Plug the stick into a <strong>rear USB port on the motherboard</strong>. Front-panel
+              hubs are less reliable.
+            </li>
+            <li>Power on.</li>
+            <li>
+              When the ASUS logo appears, press <strong>F8</strong> several times. If nothing
+              happens, try <strong>Esc</strong>, then <strong>F12</strong>.
+            </li>
+            <li>
+              In the Boot Menu, choose <strong>UEFI: … USB …</strong> (or the stick name). Prefer
+              the line that starts with <code>UEFI:</code>. Do not choose the internal SSD that
+              runs Ubuntu.
+            </li>
+            <li>Press Enter.</li>
+          </ol>
+          <p>
+            Success is a <strong>dark text console</strong>, not the graphical talk screen. The
+            prompt looks like <code>[neuOS] &gt;</code>. That is OS.neu JeOS on USB.
+          </p>
+          <p>
+            If Windows or Ubuntu opens as usual, USB was not selected. Hold the power button to
+            shut down, reseat the stick in a rear port, and repeat from power-on.
           </p>
         </article>
 
         <article class="card">
-          <h3>4. What to type</h3>
+          <h3>3. If the Boot Menu does not open</h3>
+          <ol>
+            <li>
+              At power-on press <strong>Del</strong> (desktop) or <strong>F2</strong> (laptop) to
+              enter BIOS.
+            </li>
+            <li>
+              Use <strong>Boot Menu</strong> / <strong>Boot Override</strong> on the right, pick
+              the USB stick, press Enter. That is still a one-time USB start.
+            </li>
+            <li>
+              If the stick is missing from the list: turn <strong>Fast Boot</strong> off, turn
+              <strong>Secure Boot</strong> off (unsigned GRUB can be blocked), then <strong>F10</strong>
+              → Yes, restart, and press <strong>F8</strong> again.
+            </li>
+          </ol>
+          <p>
+            Do not set Boot Option #1 to USB permanently. Do not open firmware-update or BIOS-flash
+            menus. OS.neu does not live on the motherboard chip.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>4. What success looks like</h3>
+          <p>There is no folder window and no Firefox. A dark console appears:</p>
+          <pre>OS.neu v1.0 JeOS
+Linux stays hidden. This is not motherboard firmware.
+Type: hardware | network | memory | install firefox | exit
+
+[neuOS] ></pre>
+          <table>
+            <thead>
+              <tr>
+                <th>What you see</th>
+                <th>Meaning</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>[neuOS] &gt;</code> text prompt</td>
+                <td>USB JeOS is correct. Type <code>hardware</code> or an English sentence.</td>
+              </tr>
+              <tr>
+                <td>Usual Ubuntu or Windows</td>
+                <td>USB was not selected. Power off and use F8 again.</td>
+              </tr>
+              <tr>
+                <td><code>payload not found</code> or a GRUB error</td>
+                <td>Wrong image or a weak port. Use a rear motherboard USB port.</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            The graphical talk screen (mic and WhatsApp-style chat) is a different path: plant
+            OS.neu on an existing login. The USB first screen is this text console.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>5. What to type</h3>
           <ol>
             <li><code>hardware</code> — this PC’s compute unit</li>
             <li><code>memory</code> — RAM</li>
@@ -127,7 +196,7 @@ Type: hardware | network | memory | install firefox | exit
         </article>
 
         <article class="card">
-          <h3>5. Return to Ubuntu</h3>
+          <h3>6. Return to Ubuntu</h3>
           <ol>
             <li>Power off, or type <code>exit</code> then power off.</li>
             <li>Unplug the USB stick.</li>
@@ -137,14 +206,16 @@ Type: hardware | network | memory | install firefox | exit
         </article>
 
         <article class="card">
-          <h3>6. Next: plant graphical os.neu on this login</h3>
+          <h3>7. Next: plant graphical OS.neu on this login</h3>
           <p>
             After the USB test, boot Ubuntu again (stick unplugged). Then plant the kiosk on this
             graphical login. The disk is not wiped.
           </p>
-          <pre>cd ~/os.neu
+          <pre>cd ~/neuOS
 npm run boot:install</pre>
-          <p>The next graphical login opens os.neu. Choose the talk screen or the <code>C:\NEUOS&gt;</code> console.</p>
+          <p>
+            The next graphical login opens OS.neu v1.0. Choose the talk screen or the text console.
+          </p>
         </article>
       </div>
     </section>
