@@ -1,0 +1,7 @@
+/*
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+
+/downloads/*
+  Cache-Control: public, max-age=3600
+  Content-Disposition: attachment
