@@ -137,6 +137,29 @@ button {
   color: #fff;
 }
 
+.nav-links a.nav-osneu {
+  color: #818cf8;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.nav-links a.nav-osneu:hover {
+  color: #fff;
+}
+
+.btn-login {
+  padding: 8px 16px;
+  border: 1px solid rgba(99, 102, 241, 0.55);
+  background: transparent;
+  color: #e2e8f0;
+  font-size: 14px;
+}
+
+.btn-login:hover {
+  border-color: #818cf8;
+  background: rgba(99, 102, 241, 0.12);
+}
+
 @media (min-width: 768px) {
   .nav-links {
     display: flex;
@@ -889,4 +912,44 @@ pre {
 
 .stack > .card {
   margin-bottom: 24px;
+}
+
+.auth-card {
+  max-width: 28rem;
+  margin: 0 auto;
+}
+
+.auth-card label {
+  display: block;
+  margin: 14px 0 6px;
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.auth-card input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 0.75rem;
+  border: 1px solid #1f2937;
+  background: #030712;
+  color: #fff;
+  font: inherit;
+}
+
+.auth-status {
+  min-height: 1.4em;
+  margin: 12px 0 0;
+  font-size: 14px;
+  color: #34d399;
+}
+
+.auth-status.err {
+  color: #f87171;
+}
+
+.auth-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
 }

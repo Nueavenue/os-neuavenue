@@ -6,3 +6,6 @@
 node_modules
 wrangler.toml
 README.md
+worker.js
+.env
+.env.*

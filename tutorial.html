@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>USB tutorial · os.neu · NeuAvenue</title>
     <link rel="icon" type="image/png" href="/brand/neuos-mark.png" />
-    <link rel="stylesheet" href="./welcome.css" />
+    <link rel="stylesheet" href="/welcome.css" />
   </head>
   <body>
     <nav class="nav">
@@ -17,7 +17,9 @@
           <div class="nav-links">
             <a href="https://neuavenue.com/#features">Features</a>
             <a href="https://neuavenue.com/#how-it-works">How It Works</a>
+            <a class="nav-osneu" href="https://os.neuavenue.com/">OS.NEU</a>
             <a href="https://app.neuavenue.com" target="_blank" rel="noopener noreferrer">App</a>
+            <a class="btn btn-login" href="/login">Log in</a>
             <a class="btn btn-waitlist" href="https://neuavenue.com/">Join Waitlist</a>
           </div>
           <button
@@ -39,7 +41,9 @@
         <div id="mobile-menu" class="mobile-menu">
           <a href="https://neuavenue.com/#features">Features</a>
           <a href="https://neuavenue.com/#how-it-works">How It Works</a>
+          <a href="https://os.neuavenue.com/">OS.NEU</a>
           <a href="https://app.neuavenue.com" target="_blank" rel="noopener noreferrer">App</a>
+          <a href="/login">Log in</a>
           <a class="mobile-waitlist" href="https://neuavenue.com/">Join Waitlist</a>
         </div>
       </div>
@@ -49,58 +53,98 @@
       <div class="orb orb-indigo" aria-hidden="true"></div>
       <div class="orb orb-emerald" aria-hidden="true"></div>
       <div class="wrap-6 hero-inner">
-        <div class="badge">
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z" />
-          </svg>
-          <span>os.neu · USB walkthrough</span>
-        </div>
-        <h1>Put os.neu on a stick</h1>
-        <p class="lead">Same chrome as NeuAvenue: download, unpack, burn, then boot.</p>
+        <div class="badge"><span>os.neu · USB to JeOS</span></div>
+        <h1>Boot this PC from the stick</h1>
+        <p class="lead">
+          After you burn os.neu onto a USB stick, reboot from USB. That does not erase Ubuntu on
+          the internal disk. This session runs from the stick. Unplug it and Ubuntu comes back.
+        </p>
         <div class="actions">
           <a class="btn btn-primary" href="/downloads/neuos-boot-kit.tar.gz">Download boot kit</a>
-          <a class="btn btn-ghost" href="/">Back to os.neu</a>
+          <a class="btn btn-ghost" href="https://os.neuavenue.com/">OS.NEU home</a>
         </div>
       </div>
     </section>
 
-    <section class="section" style="padding-top: 24px">
+    <section class="section" style="padding-top: 8px">
       <div class="wrap-5 stack">
         <article class="card">
-          <h3>1. Get the kit</h3>
-          <p>Save the file in your home folder and unpack it.</p>
-          <pre>tar -xzf neuos-boot-kit.tar.gz</pre>
-        </article>
-        <article class="card">
-          <h3>2. Pick a USB stick (Linux)</h3>
-          <p>Plug the stick in. <strong>Never choose the disk that holds /.</strong></p>
+          <h3>1. Confirm the target stick</h3>
+          <p>
+            On Linux, list disks. Never choose the disk that holds <code>/</code>. Never choose a
+            data HDD.
+          </p>
           <pre>bash scripts/make-usb.sh --list
 bash scripts/make-usb.sh --plan /dev/sdX</pre>
-          <p>Test only (does not wipe the disk):</p>
-          <pre>bash scripts/make-usb.sh --test</pre>
-          <p>Real burn onto an empty stick:</p>
-          <pre>sudo bash scripts/make-usb.sh /dev/sdX --yes</pre>
+          <p>
+            If the plan says <code>wipe /dev/sdb</code> and that stick is only an old Ubuntu live
+            image you no longer need, it is the right target. The burn replaces the whole stick.
+            Do not delete files in the file manager first.
+          </p>
+          <pre>sudo umount /dev/sdX1
+sudo bash scripts/make-usb.sh /dev/sdX --yes</pre>
         </article>
+
         <article class="card">
-          <h3>3. If you downloaded the kit on Windows</h3>
+          <h3>2. Reboot this Ubuntu PC from USB</h3>
+          <p>Leave the stick plugged in. Save your work. Restart the computer.</p>
           <ol>
-            <li>
-              The burn tool is Linux-only for now. When an ISO is published, use Rufus or
-              balenaEtcher on the same stick.
-            </li>
-            <li>
-              Until then, unpack the kit on a Linux PC and do step 2, or plant os.neu on a PC that
-              already has an OS with <code>install-autostart.sh</code>.
-            </li>
+            <li>When the maker logo appears, press <strong>F12</strong> (or F10 / Esc / Del) several times.</li>
+            <li>Choose <strong>USB</strong> / the stick name. Do not choose the internal SSD that runs Ubuntu.</li>
+            <li>If the Ubuntu desktop opens again, USB was not selected. Restart and pick USB only.</li>
           </ol>
         </article>
+
         <article class="card">
-          <h3>4. Boot another computer from USB</h3>
+          <h3>3. What success looks like</h3>
+          <p>There is no folder window and no Firefox. A dark console appears:</p>
+          <pre>neuOS JeOS userspace
+Linux kernel + Node runtime. Not motherboard firmware.
+Type: hardware | network | memory | install firefox | exit
+
+[neuOS] ></pre>
+          <p>
+            This is the os.neu first console. It is not Windows Explorer and not MS-DOS. The
+            graphical talk screen is a different path (plant os.neu on an existing login).
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>4. What to type</h3>
           <ol>
-            <li>Plug the stick in and power on.</li>
-            <li>Immediately press <strong>F12 / F10 / Esc / F2</strong> and choose USB.</li>
-            <li>NeuAvenue logo or the os.neu kernel screen means success.</li>
+            <li><code>hardware</code> — this PC’s compute unit</li>
+            <li><code>memory</code> — RAM</li>
+            <li><code>network</code> — network path</li>
+            <li><code>install firefox</code> — shows the matching install command; it does not install in secret</li>
+            <li><code>exit</code> — leave the loop</li>
           </ol>
+          <p>
+            When this PC is online, you can also speak English with the coach (same idea as
+            NeuSpeak). On the graphical console the speaker button next to the prompt plays the
+            reply. On this USB text console, type a sentence in English and the coach answers in
+            text.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>5. Return to Ubuntu</h3>
+          <ol>
+            <li>Power off, or type <code>exit</code> then power off.</li>
+            <li>Unplug the USB stick.</li>
+            <li>Power on. Ubuntu 26.04 on the internal disk should greet you as before.</li>
+          </ol>
+          <p>USB boot does not format the Ubuntu system disk.</p>
+        </article>
+
+        <article class="card">
+          <h3>6. Next: plant graphical os.neu on this login</h3>
+          <p>
+            After the USB test, boot Ubuntu again (stick unplugged). Then plant the kiosk on this
+            graphical login. The disk is not wiped.
+          </p>
+          <pre>cd ~/os.neu
+npm run boot:install</pre>
+          <p>The next graphical login opens os.neu. Choose the talk screen or the <code>C:\NEUOS&gt;</code> console.</p>
         </article>
       </div>
     </section>
@@ -134,6 +178,6 @@ bash scripts/make-usb.sh --plan /dev/sdX</pre>
         <p class="copy">2026 NeuAvenue Inc. All rights reserved.</p>
       </div>
     </footer>
-    <script src="./site.js"></script>
+    <script src="/site.js"></script>
   </body>
 </html>

@@ -5,6 +5,8 @@ Public English landing for NeuAvenue **os.neu**: download a USB boot kit and fol
 - Site files: `index.html`, `tutorial.html`, `welcome.css`, `site.js`, `brand/`, `downloads/neuos-boot-kit.tar.gz`
 - Production hostname: **os.neuavenue.com** (keep [neuavenue.com](https://neuavenue.com/) as the company home)
 - Public product name: **os.neu** (not neuOS)
+- Tutorial: https://os.neuavenue.com/tutorial
+- Login uses Supabase via Cloudflare Worker secrets (not committed)
 
 ## Local preview
 

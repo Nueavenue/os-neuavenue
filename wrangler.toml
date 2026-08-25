@@ -1,11 +1,13 @@
 name = "os-neuavenue"
+main = "worker.js"
 compatibility_date = "2026-08-25"
 workers_dev = true
 
-# Static site. Cloudflare Git was running `npx wrangler deploy` (Workers),
-# not `wrangler pages deploy`. [assets] makes that command succeed.
+# Static site plus a tiny Worker for /api/config (Supabase public keys
+# come from Cloudflare secrets — not from this repo).
 [assets]
 directory = "."
+binding = "ASSETS"
 html_handling = "auto-trailing-slash"
 not_found_handling = "404-page"
 
