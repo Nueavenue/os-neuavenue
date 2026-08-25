@@ -58,8 +58,8 @@
         <p class="lead">
           After you burn OS.neu onto a USB stick, reboot from USB. On an ASUS board that is usually
           one press of F8 — not a permanent change to the disk order. If you land on
-          <code>grub&gt;</code>, that is the bootloader, not OS.neu yet — follow step 4. The internal
-          Ubuntu disk is not erased. Unplug the stick and Ubuntu comes back.
+          <code>grub&gt;</code> or BusyBox <code>#</code>, that is not OS.neu yet — follow steps 4
+          and 5. The internal Ubuntu disk is not erased. Unplug the stick and Ubuntu comes back.
         </p>
         <div class="actions">
           <a class="btn btn-primary" href="/downloads/neuos-boot-kit.tar.gz">Download boot kit</a>
@@ -163,7 +163,8 @@ boot</pre>
 ls (hd0,gpt2)/boot/</pre>
           <p>
             Use the folder that actually contains <code>vmlinuz</code> and <code>initrd.img</code>.
-            When Linux starts, the OS.neu prompt is <code>[neuOS] &gt;</code>.
+            Linux may then print <code>payload not found</code> and a <code>#</code> prompt — that
+            is step 5, not OS.neu yet.
           </p>
           <p>
             To give up and return to Ubuntu: hold the power button, unplug the USB stick, power on.
@@ -172,7 +173,41 @@ ls (hd0,gpt2)/boot/</pre>
         </article>
 
         <article class="card">
-          <h3>5. What success looks like</h3>
+          <h3>5. If you see <code>payload not found</code> and a <code>#</code> prompt</h3>
+          <p>
+            GRUB worked. Linux started. The ramdisk did not mount partition 2, where OS.neu lives.
+            BusyBox <code>#</code> is an emergency shell, not the OS.neu console.
+          </p>
+          <p>Type one line at a time. First list USB disks:</p>
+          <pre>ls /dev/sd*</pre>
+          <p>
+            The OS.neu payload is usually partition <strong>2</strong> (<code>sda2</code>,
+            <code>sdb2</code>, or <code>sdc2</code>). Try the name that exists. Example for
+            <code>sdb2</code>:
+          </p>
+          <pre>mkdir -p /newroot
+mount -t ext4 /dev/sdb2 /newroot
+ls /newroot/sbin/neuos-init</pre>
+          <p>
+            If <code>mount</code> fails, try <code>sda2</code> then <code>sdc2</code>. When
+            <code>neuos-init</code> is listed:
+          </p>
+          <pre>mount -t proc proc /newroot/proc
+mount -t sysfs sysfs /newroot/sys
+mount -t devtmpfs devtmpfs /newroot/dev
+exec switch_root /newroot /sbin/neuos-init</pre>
+          <p>
+            If the last line says <code>not found</code>, use this instead:
+          </p>
+          <pre>exec chroot /newroot /sbin/neuos-init</pre>
+          <p>
+            Success is <code>[neuOS] &gt;</code>. To stop: hold power, unplug USB, power on. The
+            internal disk is not wiped.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>6. What success looks like</h3>
           <p>There is no folder window and no Firefox. A dark console appears:</p>
           <pre>OS.neu v1.0 JeOS
 Linux stays hidden. This is not motherboard firmware.
@@ -196,11 +231,15 @@ Type: hardware | network | memory | install firefox | exit
                 <td>Bootloader only. USB worked; OS.neu has not started. Use step 4.</td>
               </tr>
               <tr>
+                <td><code>payload not found</code> / BusyBox <code>#</code></td>
+                <td>Linux started; partition 2 not mounted. Use step 5.</td>
+              </tr>
+              <tr>
                 <td>Usual Ubuntu or Windows</td>
                 <td>USB was not selected. Power off and use F8 again.</td>
               </tr>
               <tr>
-                <td><code>payload not found</code> or a GRUB error</td>
+                <td>GRUB error only, no Linux log</td>
                 <td>Wrong image or a weak port. Use a rear motherboard USB port.</td>
               </tr>
             </tbody>
@@ -212,7 +251,7 @@ Type: hardware | network | memory | install firefox | exit
         </article>
 
         <article class="card">
-          <h3>6. What to type</h3>
+          <h3>7. What to type</h3>
           <ol>
             <li><code>hardware</code> — this PC’s compute unit</li>
             <li><code>memory</code> — RAM</li>
@@ -229,7 +268,7 @@ Type: hardware | network | memory | install firefox | exit
         </article>
 
         <article class="card">
-          <h3>7. Return to Ubuntu</h3>
+          <h3>8. Return to Ubuntu</h3>
           <ol>
             <li>Power off, or type <code>exit</code> then power off.</li>
             <li>Unplug the USB stick.</li>
@@ -239,7 +278,7 @@ Type: hardware | network | memory | install firefox | exit
         </article>
 
         <article class="card">
-          <h3>8. Next: plant graphical OS.neu on this login</h3>
+          <h3>9. Next: plant graphical OS.neu on this login</h3>
           <p>
             After the USB test, boot Ubuntu again (stick unplugged). Then plant the kiosk on this
             graphical login. The disk is not wiped.
