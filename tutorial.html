@@ -3,54 +3,93 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>neuOS USB tutorial</title>
+    <title>neuOS USB tutorial · NeuAvenue</title>
     <link rel="icon" type="image/png" href="/brand/neuos-mark.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./welcome.css" />
   </head>
-  <body>
-    <header>
-      <p><a href="/">← os.neuavenue.com</a></p>
-      <h1>Put neuOS boot files on a USB stick</h1>
+  <body class="bg-grid bg-radial">
+    <header class="nav">
+      <div class="wrap nav-inner">
+        <a class="brand" href="/">
+          <img src="/brand/neuos-mark.png" alt="" />
+          NeuAvenue <span>neuOS</span>
+        </a>
+        <nav class="nav-links">
+          <a href="https://neuavenue.com/">Home</a>
+          <a href="/">Download</a>
+          <a href="/tutorial.html">Tutorial</a>
+        </nav>
+        <a class="nav-cta" href="https://neuavenue.com/">Sign in</a>
+      </div>
     </header>
-    <main>
-      <section class="cta">
-        <h2>1. Get the kit</h2>
-        <p><a class="btn" href="/downloads/neuos-boot-kit.tar.gz">neuos-boot-kit.tar.gz</a></p>
-        <p>Save the file in your home folder and unpack it.</p>
-        <pre>tar -xzf neuos-boot-kit.tar.gz</pre>
+
+    <main class="wrap">
+      <section class="hero" style="padding-bottom: 24px">
+        <div>
+          <p class="eyebrow">USB walkthrough</p>
+          <h1>Put neuOS on a stick</h1>
+          <p class="lead">Same steps as the company platform: download, unpack, burn, then boot.</p>
+        </div>
       </section>
-      <section class="cta">
-        <h2>2. Pick a USB stick (Linux)</h2>
-        <p>Plug the stick in. <strong>Never choose the disk that holds /.</strong></p>
-        <pre>bash scripts/make-usb.sh --list
+
+      <section class="block">
+        <article class="glass">
+          <h2>1. Get the kit</h2>
+          <p><a class="btn primary" href="/downloads/neuos-boot-kit.tar.gz">neuos-boot-kit.tar.gz</a></p>
+          <p>Save the file in your home folder and unpack it.</p>
+          <pre>tar -xzf neuos-boot-kit.tar.gz</pre>
+        </article>
+      </section>
+      <section class="block" style="padding-top: 0">
+        <article class="glass">
+          <h2>2. Pick a USB stick (Linux)</h2>
+          <p>Plug the stick in. <strong>Never choose the disk that holds /.</strong></p>
+          <pre>bash scripts/make-usb.sh --list
 bash scripts/make-usb.sh --plan /dev/sdX</pre>
-        <p>Test only (does not wipe the disk):</p>
-        <pre>bash scripts/make-usb.sh --test</pre>
-        <p>Real burn onto an empty stick:</p>
-        <pre>sudo bash scripts/make-usb.sh /dev/sdX --yes</pre>
+          <p>Test only (does not wipe the disk):</p>
+          <pre>bash scripts/make-usb.sh --test</pre>
+          <p>Real burn onto an empty stick:</p>
+          <pre>sudo bash scripts/make-usb.sh /dev/sdX --yes</pre>
+        </article>
       </section>
-      <section class="cta">
-        <h2>3. If you downloaded the kit on Windows</h2>
-        <ol>
-          <li>
-            The burn tool is Linux-only for now. When an ISO is published, use Rufus or balenaEtcher
-            on the same stick.
-          </li>
-          <li>
-            Until then, unpack the kit on a Linux PC and do step 2, or plant neuOS on a PC that
-            already has an OS with <code>install-autostart.sh</code>.
-          </li>
-        </ol>
+      <section class="block" style="padding-top: 0">
+        <article class="glass">
+          <h2>3. If you downloaded the kit on Windows</h2>
+          <ol>
+            <li>
+              The burn tool is Linux-only for now. When an ISO is published, use Rufus or
+              balenaEtcher on the same stick.
+            </li>
+            <li>
+              Until then, unpack the kit on a Linux PC and do step 2, or plant neuOS on a PC that
+              already has an OS with <code>install-autostart.sh</code>.
+            </li>
+          </ol>
+        </article>
       </section>
-      <section class="cta">
-        <h2>4. Boot another computer from USB</h2>
-        <ol>
-          <li>Plug the stick in and power on.</li>
-          <li>Immediately press <strong>F12 / F10 / Esc / F2</strong> and choose USB.</li>
-          <li>Neuavenue logo or the neuOS kernel screen means success.</li>
-        </ol>
+      <section class="block" style="padding-top: 0">
+        <article class="glass">
+          <h2>4. Boot another computer from USB</h2>
+          <ol>
+            <li>Plug the stick in and power on.</li>
+            <li>Immediately press <strong>F12 / F10 / Esc / F2</strong> and choose USB.</li>
+            <li>Neuavenue logo or the neuOS kernel screen means success.</li>
+          </ol>
+        </article>
       </section>
     </main>
-    <footer><a href="/">os.neuavenue.com</a></footer>
+
+    <footer class="site-footer">
+      <div class="wrap footer-row">
+        <div>NeuAvenue Inc. · neuOS</div>
+        <div><a href="/">os.neuavenue.com</a> · <a href="https://neuavenue.com/">neuavenue.com</a></div>
+      </div>
+    </footer>
   </body>
 </html>

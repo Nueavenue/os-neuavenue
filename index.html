@@ -3,63 +3,89 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>neuOS — AI first screen · os.neuavenue.com</title>
+    <title>neuOS — The Life-Force OS · os.neuavenue.com</title>
+    <meta
+      name="description"
+      content="neuOS is NeuAvenue’s AI first screen. Download the boot kit, put it on USB, and power on without learning Windows or Linux."
+    />
     <link rel="icon" type="image/png" href="/brand/neuos-mark.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./welcome.css" />
   </head>
-  <body>
-    <header>
-      <img class="lockup" src="/brand/neuos-logo-transparent.png" alt="Neuavenue neuOS" />
-      <p>
-        You do not need Windows or Linux literacy. Put neuOS on a USB stick, power on, and land on
-        an AI first screen.
-      </p>
+  <body class="bg-grid bg-radial">
+    <header class="nav">
+      <div class="wrap nav-inner">
+        <a class="brand" href="/">
+          <img src="/brand/neuos-mark.png" alt="" />
+          NeuAvenue <span>neuOS</span>
+        </a>
+        <nav class="nav-links">
+          <a href="https://neuavenue.com/">Home</a>
+          <a href="https://neuavenue.com/">Platform</a>
+          <a href="#download">Download</a>
+          <a href="/tutorial.html">Tutorial</a>
+        </nav>
+        <a class="nav-cta" href="https://neuavenue.com/">Sign in</a>
+      </div>
     </header>
-    <main>
-      <section>
-        <h1>Download and boot from USB</h1>
-        <p>
-          A browser never silently erases a USB drive. <strong>Download the boot kit</strong>, plug
-          in a stick, and follow the burn steps. Do not use a stick that holds homework or photos.
+
+    <main class="wrap">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">The Life-Force Platform · neuOS</p>
+          <h1>Power on.<br />Then speak.</h1>
+          <p class="lead">
+            You do not need Windows or Linux literacy. Put neuOS on a USB stick, power on, and land
+            on an AI first screen — the same cosmic layout as NeuAvenue.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="/downloads/neuos-boot-kit.tar.gz">Download boot kit</a>
+            <a class="btn ghost" href="/tutorial.html">USB tutorial</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="glow" aria-hidden="true"></div>
+          <img src="/brand/neuos-logo-transparent.png" alt="NeuAvenue" />
+        </div>
+      </section>
+
+      <section class="block" id="download">
+        <h2 class="section-title">Download and boot from USB</h2>
+        <p class="section-kicker">
+          A browser never silently erases a drive. Download the kit, plug in a stick, and follow the
+          burn steps. Do not use a stick that holds homework or photos.
         </p>
         <div class="grid">
-          <article>
+          <article class="glass">
             <h2>PC that already has Windows or Linux</h2>
-            <p>
-              The disk is not wiped. Unpack the kit so the next login opens the neuOS graphical
-              screen.
-            </p>
+            <p>The disk is not wiped. Unpack the kit so the next login opens the neuOS screen.</p>
             <ol>
-              <li>Click <strong>Download boot kit</strong> below.</li>
+              <li>Click <strong>Download boot kit</strong>.</li>
               <li>Unpack and run <code>scripts/install-autostart.sh</code>.</li>
               <li>Sign in again — neuOS opens.</li>
             </ol>
           </article>
-          <article>
+          <article class="glass">
             <h2>USB only, no OS</h2>
-            <p>Burn boot files onto an empty stick, then choose USB in the other PC’s firmware.</p>
+            <p>Burn boot files onto an empty stick, then choose USB in firmware.</p>
             <ol>
               <li>Download the boot kit.</li>
-              <li>On Linux, list sticks with <code>bash scripts/make-usb.sh --list</code>.</li>
+              <li>On Linux: <code>bash scripts/make-usb.sh --list</code></li>
               <li>Empty stick only: <code>sudo bash scripts/make-usb.sh /dev/sdX --yes</code></li>
               <li>On the target PC press F12 / Esc and choose USB.</li>
             </ol>
           </article>
         </div>
       </section>
-      <section class="cta">
-        <h2>Download</h2>
-        <p class="row">
-          <a class="btn" href="/downloads/neuos-boot-kit.tar.gz">Download boot kit (.tar.gz)</a>
-          <a class="btn ghost" href="/tutorial.html">USB tutorial</a>
-        </p>
-        <p class="note">
-          This site is <strong>os.neuavenue.com</strong>. Company home neuavenue.com stays as it
-          is. When an ISO is published, a USB image button will appear here.
-        </p>
-      </section>
-      <section>
-        <h2>What you see after power-on</h2>
+
+      <section class="block">
+        <h2 class="section-title">What you see after power-on</h2>
+        <p class="section-kicker">One score of steps. No desktop folders.</p>
         <ol class="flow">
           <li>Neuavenue logo</li>
           <li>Has OS / no OS</li>
@@ -70,9 +96,20 @@
         </ol>
       </section>
     </main>
-    <footer>
-      Neuavenue · neuOS ·
-      <a href="https://github.com/Nueavenue/os-neuavenue">GitHub</a>
+
+    <footer class="site-footer">
+      <div class="wrap footer-row">
+        <div>
+          NeuAvenue Inc. · neuOS · Health · Brain · Finance
+          <br />
+          Canonical host <strong>os.neuavenue.com</strong>
+        </div>
+        <div>
+          <a href="https://neuavenue.com/">neuavenue.com</a>
+          ·
+          <a href="https://github.com/Nueavenue/os-neuavenue">GitHub</a>
+        </div>
+      </div>
     </footer>
   </body>
 </html>
