@@ -12,32 +12,31 @@ python3 -m http.server 8080
 # http://127.0.0.1:8080
 ```
 
-## GitHub → Cloudflare Pages
+## Cloudflare (fix for `wrangler deploy` error)
 
-1. This repo is `Nueavenue/os-neuavenue`.
-2. [Cloudflare Dashboard](https://dash.cloudflare.com/) → **Workers & Pages** → **Create** → **Pages** → **Connect to Git** → this repository.
-3. Build: no build command. Output directory: `/` (root).
-4. After the `*.pages.dev` URL works, **Custom domains** → `os.neuavenue.com`.
-5. If `neuavenue.com` is already on Cloudflare, the CNAME is created for you. If the domain lives at another registrar, add:
+The dashboard was running **`npx wrangler deploy`**. That is a **Workers** command. This repo is a static site, so `wrangler.toml` now has `[assets]` so that command works.
+
+### If Git is already connected (your current setup)
+
+Keep **Deploy command:** `npx wrangler deploy`  
+Push to `main`. It should no longer ask for `src/index.ts`.
+
+### If you start a new Pages project instead
+
+Do **not** set a deploy command.
+
+- Framework preset: **None**
+- Build command: empty
+- Build output directory: `/`
+
+Then use **Custom domains** → `os.neuavenue.com`.
 
 ```
-Type   Name  Target                              Proxy
-CNAME  os    os-neuavenue.pages.dev              Proxied (orange cloud)
+CNAME  os  →  os-neuavenue.pages.dev   (or *.workers.dev after Worker+assets)
 ```
 
-Optional alias:
-
-```
-CNAME  neuos  os.neuavenue.com
-```
-
-GitHub Action `.github/workflows/deploy.yml` deploys on push when you add secrets:
-
-- `CLOUDFLARE_API_TOKEN` (Pages edit)
-- `CLOUDFLARE_ACCOUNT_ID`
-
-Then: `wrangler pages project create os-neuavenue` once, or let the dashboard create the project.
+Secrets for GitHub Action (optional): `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`.
 
 ## USB kit
 
-`downloads/neuos-boot-kit.tar.gz` contains `scripts/make-usb.sh` and `boot/` templates. It does **not** auto-format a stick from the browser. See `/tutorial.html`.
+`downloads/neuos-boot-kit.tar.gz` — see `/tutorial.html`.
