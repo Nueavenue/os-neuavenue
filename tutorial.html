@@ -57,8 +57,9 @@
         <h1>Boot this PC from the stick</h1>
         <p class="lead">
           After you burn OS.neu onto a USB stick, reboot from USB. On an ASUS board that is usually
-          one press of F8 — not a permanent change to the disk order. The internal Ubuntu disk is
-          not erased. Unplug the stick and Ubuntu comes back.
+          one press of F8 — not a permanent change to the disk order. If you land on
+          <code>grub&gt;</code>, that is the bootloader, not OS.neu yet — follow step 4. The internal
+          Ubuntu disk is not erased. Unplug the stick and Ubuntu comes back.
         </p>
         <div class="actions">
           <a class="btn btn-primary" href="/downloads/neuos-boot-kit.tar.gz">Download boot kit</a>
@@ -143,7 +144,35 @@ sudo bash scripts/make-usb.sh /dev/sdX --yes</pre>
         </article>
 
         <article class="card">
-          <h3>4. What success looks like</h3>
+          <h3>4. If you see <code>grub&gt;</code> (not OS.neu yet)</h3>
+          <p>
+            <code>GNU GRUB version 2.14</code> and a <code>grub&gt;</code> prompt mean the USB
+            started, but the bootloader did not find its menu. This is <strong>not</strong> the
+            OS.neu console. OS.neu looks like <code>[neuOS] &gt;</code>.
+          </p>
+          <p>Type these lines, then Enter after each. TAB can complete names.</p>
+          <pre>search --label NEUOS-ROOT --set=root
+configfile /boot/grub/grub.cfg</pre>
+          <p>If a menu appears, choose <strong>neuOS</strong>. If it does not:</p>
+          <pre>search --label NEUOS-ROOT --set=root
+linux /boot/vmlinuz root=LABEL=NEUOS-ROOT rw
+initrd /boot/initrd.img
+boot</pre>
+          <p>If you see <code>file not found</code>, list the stick and match the names:</p>
+          <pre>ls
+ls (hd0,gpt2)/boot/</pre>
+          <p>
+            Use the folder that actually contains <code>vmlinuz</code> and <code>initrd.img</code>.
+            When Linux starts, the OS.neu prompt is <code>[neuOS] &gt;</code>.
+          </p>
+          <p>
+            To give up and return to Ubuntu: hold the power button, unplug the USB stick, power on.
+            This screen does not wipe the internal disk.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>5. What success looks like</h3>
           <p>There is no folder window and no Firefox. A dark console appears:</p>
           <pre>OS.neu v1.0 JeOS
 Linux stays hidden. This is not motherboard firmware.
@@ -163,6 +192,10 @@ Type: hardware | network | memory | install firefox | exit
                 <td>USB JeOS is correct. Type <code>hardware</code> or an English sentence.</td>
               </tr>
               <tr>
+                <td><code>grub&gt;</code> / GNU GRUB 2.14</td>
+                <td>Bootloader only. USB worked; OS.neu has not started. Use step 4.</td>
+              </tr>
+              <tr>
                 <td>Usual Ubuntu or Windows</td>
                 <td>USB was not selected. Power off and use F8 again.</td>
               </tr>
@@ -179,7 +212,7 @@ Type: hardware | network | memory | install firefox | exit
         </article>
 
         <article class="card">
-          <h3>5. What to type</h3>
+          <h3>6. What to type</h3>
           <ol>
             <li><code>hardware</code> — this PC’s compute unit</li>
             <li><code>memory</code> — RAM</li>
@@ -196,7 +229,7 @@ Type: hardware | network | memory | install firefox | exit
         </article>
 
         <article class="card">
-          <h3>6. Return to Ubuntu</h3>
+          <h3>7. Return to Ubuntu</h3>
           <ol>
             <li>Power off, or type <code>exit</code> then power off.</li>
             <li>Unplug the USB stick.</li>
@@ -206,7 +239,7 @@ Type: hardware | network | memory | install firefox | exit
         </article>
 
         <article class="card">
-          <h3>7. Next: plant graphical OS.neu on this login</h3>
+          <h3>8. Next: plant graphical OS.neu on this login</h3>
           <p>
             After the USB test, boot Ubuntu again (stick unplugged). Then plant the kiosk on this
             graphical login. The disk is not wiped.
