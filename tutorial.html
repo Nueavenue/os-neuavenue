@@ -175,10 +175,24 @@ ls (hd0,gpt2)/boot/</pre>
         <article class="card">
           <h3>5. If you see <code>payload not found</code> and a <code>#</code> prompt</h3>
           <p>
-            GRUB worked. Linux started. The ramdisk did not mount partition 2, where OS.neu lives.
-            BusyBox <code>#</code> is an emergency shell, not the OS.neu console.
+            GRUB worked. Linux started. The ramdisk did not mount partition 2. BusyBox
+            <code>#</code> is an emergency shell, not OS.neu.
           </p>
-          <p>Type one line at a time. First list USB disks:</p>
+          <p>
+            <strong>If the keyboard does not type at <code>#</code>:</strong> that session cannot
+            be recovered from the keyboard. The shell was not attached to the console. Hold the
+            power button, unplug is optional, boot Ubuntu from the internal disk (do not pick USB).
+            Then refresh the stick <em>without wiping it</em>:
+          </p>
+          <pre>cd ~/neuOS
+sudo bash scripts/make-usb.sh /dev/sdX --update</pre>
+          <p>
+            Replace <code>/dev/sdX</code> with the USB disk from <code>bash scripts/make-usb.sh --list</code>.
+            Never use the disk that holds <code>/</code>. Then F8-boot USB again.
+          </p>
+          <p>
+            If the keyboard <em>does</em> type, list disks and mount partition 2:
+          </p>
           <pre>ls /dev/sd*</pre>
           <p>
             The OS.neu payload is usually partition <strong>2</strong> (<code>sda2</code>,
@@ -232,7 +246,11 @@ Type: hardware | network | memory | install firefox | exit
               </tr>
               <tr>
                 <td><code>payload not found</code> / BusyBox <code>#</code></td>
-                <td>Linux started; partition 2 not mounted. Use step 5.</td>
+                <td>Linux started; partition 2 not mounted. If keys work, step 5. If not, power off and <code>--update</code>.</td>
+              </tr>
+              <tr>
+                <td>BusyBox <code>#</code> but keys do nothing</td>
+                <td>No console TTY. Power off, boot Ubuntu, <code>--update</code> the stick.</td>
               </tr>
               <tr>
                 <td>Usual Ubuntu or Windows</td>
