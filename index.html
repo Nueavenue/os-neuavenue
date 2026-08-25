@@ -1,66 +1,72 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>neuOS — 독립 운영체제 · os.neuavenue.com</title>
+    <title>neuOS — AI first screen · os.neuavenue.com</title>
     <link rel="icon" type="image/png" href="/brand/neuos-mark.png" />
     <link rel="stylesheet" href="./welcome.css" />
   </head>
   <body>
     <header>
       <img class="lockup" src="/brand/neuos-logo-transparent.png" alt="Neuavenue neuOS" />
-      <p>윈도우·리눅스를 몰라도 됩니다. USB에 담아 전원을 켜면 AI 첫 화면입니다.</p>
+      <p>
+        You do not need Windows or Linux literacy. Put neuOS on a USB stick, power on, and land on
+        an AI first screen.
+      </p>
     </header>
     <main>
       <section>
-        <h1>다운받아 USB로 부팅하기</h1>
+        <h1>Download and boot from USB</h1>
         <p>
-          브라우저는 USB를 몰래 지우지 않습니다. <strong>부트 키트를 받고</strong>, 막대를 꽂은 뒤
-          안내대로 구우면 됩니다. 숙제·사진이 든 막대는 쓰지 마세요.
+          A browser never silently erases a USB drive. <strong>Download the boot kit</strong>, plug
+          in a stick, and follow the burn steps. Do not use a stick that holds homework or photos.
         </p>
         <div class="grid">
           <article>
-            <h2>이미 윈도우·리눅스가 있는 PC</h2>
-            <p>디스크를 안 지웁니다. 키트를 풀어 다음 로그인부터 neuOS 그림 화면을 엽니다.</p>
+            <h2>PC that already has Windows or Linux</h2>
+            <p>
+              The disk is not wiped. Unpack the kit so the next login opens the neuOS graphical
+              screen.
+            </p>
             <ol>
-              <li>아래 <strong>부트 키트 받기</strong>를 누릅니다.</li>
-              <li>압축을 풀고 <code>scripts/install-autostart.sh</code> 를 실행합니다.</li>
-              <li>다시 로그인하면 neuOS가 열립니다.</li>
+              <li>Click <strong>Download boot kit</strong> below.</li>
+              <li>Unpack and run <code>scripts/install-autostart.sh</code>.</li>
+              <li>Sign in again — neuOS opens.</li>
             </ol>
           </article>
           <article>
-            <h2>운영체제 없이 USB만으로</h2>
-            <p>빈 막대에 부트 파일을 구워, 다른 컴퓨터 펌웨어에서 USB를 고릅니다.</p>
+            <h2>USB only, no OS</h2>
+            <p>Burn boot files onto an empty stick, then choose USB in the other PC’s firmware.</p>
             <ol>
-              <li>부트 키트를 받습니다.</li>
-              <li>리눅스에서 <code>bash scripts/make-usb.sh --list</code> 로 막대를 확인합니다.</li>
-              <li>빈 막대만 <code>sudo bash scripts/make-usb.sh /dev/sdX --yes</code></li>
-              <li>쓸 PC에서 F12·Esc 등으로 USB 시작을 고릅니다.</li>
+              <li>Download the boot kit.</li>
+              <li>On Linux, list sticks with <code>bash scripts/make-usb.sh --list</code>.</li>
+              <li>Empty stick only: <code>sudo bash scripts/make-usb.sh /dev/sdX --yes</code></li>
+              <li>On the target PC press F12 / Esc and choose USB.</li>
             </ol>
           </article>
         </div>
       </section>
       <section class="cta">
-        <h2>다운로드</h2>
+        <h2>Download</h2>
         <p class="row">
-          <a class="btn" href="/downloads/neuos-boot-kit.tar.gz">부트 키트 받기 (.tar.gz)</a>
-          <a class="btn ghost" href="/tutorial.html">USB 튜토리얼</a>
+          <a class="btn" href="/downloads/neuos-boot-kit.tar.gz">Download boot kit (.tar.gz)</a>
+          <a class="btn ghost" href="/tutorial.html">USB tutorial</a>
         </p>
         <p class="note">
-          이 사이트 주소는 <strong>os.neuavenue.com</strong> 입니다. 회사 홈 neuavenue.com 은 그대로입니다.
-          ISO 이미지가 생기면 이 페이지에 USB 이미지 버튼이 추가됩니다.
+          This site is <strong>os.neuavenue.com</strong>. Company home neuavenue.com stays as it
+          is. When an ISO is published, a USB image button will appear here.
         </p>
       </section>
       <section>
-        <h2>켠 뒤 순서</h2>
+        <h2>What you see after power-on</h2>
         <ol class="flow">
-          <li>Neuavenue 로고</li>
-          <li>있는 PC / 없는 PC</li>
-          <li>USB가 여러 개면 하나 선택</li>
-          <li>진행률 %</li>
-          <li>하드웨어 확인</li>
-          <li>JeOS 도스 또는 말하기 AI</li>
+          <li>Neuavenue logo</li>
+          <li>Has OS / no OS</li>
+          <li>Pick one USB if several are plugged in</li>
+          <li>Progress %</li>
+          <li>Hardware check</li>
+          <li>JeOS DOS or talk AI</li>
         </ol>
       </section>
     </main>

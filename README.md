@@ -1,6 +1,6 @@
 # os.neuavenue.com
 
-Neuavenue **neuOS** public landing: download a USB boot kit and follow the tutorial.
+Public English landing for Neuavenue **neuOS**: download a USB boot kit and follow the tutorial. The in-app kiosk stays multilingual; this site and GitHub copy are English-first.
 
 - Site files: `index.html`, `tutorial.html`, `brand/`, `downloads/neuos-boot-kit.tar.gz`
 - Production hostname: **os.neuavenue.com** (keep [neuavenue.com](https://neuavenue.com/) as the company home)

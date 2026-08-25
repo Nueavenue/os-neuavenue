@@ -1,47 +1,53 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>neuOS USB 튜토리얼</title>
+    <title>neuOS USB tutorial</title>
     <link rel="icon" type="image/png" href="/brand/neuos-mark.png" />
     <link rel="stylesheet" href="./welcome.css" />
   </head>
   <body>
     <header>
       <p><a href="/">← os.neuavenue.com</a></p>
-      <h1>USB에 neuOS 부트 파일 만들기</h1>
+      <h1>Put neuOS boot files on a USB stick</h1>
     </header>
     <main>
       <section class="cta">
-        <h2>1. 키트 받기</h2>
+        <h2>1. Get the kit</h2>
         <p><a class="btn" href="/downloads/neuos-boot-kit.tar.gz">neuos-boot-kit.tar.gz</a></p>
-        <p>받은 파일을 홈 폴더에 두고 압축을 풉니다.</p>
+        <p>Save the file in your home folder and unpack it.</p>
         <pre>tar -xzf neuos-boot-kit.tar.gz</pre>
       </section>
       <section class="cta">
-        <h2>2. USB 고르기 (리눅스)</h2>
-        <p>막대를 꽂은 뒤, <strong>/ 가 들어 있는 디스크는 절대 고르지 마세요.</strong></p>
+        <h2>2. Pick a USB stick (Linux)</h2>
+        <p>Plug the stick in. <strong>Never choose the disk that holds /.</strong></p>
         <pre>bash scripts/make-usb.sh --list
 bash scripts/make-usb.sh --plan /dev/sdX</pre>
-        <p>테스트만 (디스크 안 지움):</p>
+        <p>Test only (does not wipe the disk):</p>
         <pre>bash scripts/make-usb.sh --test</pre>
-        <p>빈 막대에 진짜로 굽기:</p>
+        <p>Real burn onto an empty stick:</p>
         <pre>sudo bash scripts/make-usb.sh /dev/sdX --yes</pre>
       </section>
       <section class="cta">
-        <h2>3. 윈도우 PC에서 키트를 받은 경우</h2>
+        <h2>3. If you downloaded the kit on Windows</h2>
         <ol>
-          <li>지금은 굽기 도구가 리눅스용입니다. ISO가 공개되면 Rufus 또는 balenaEtcher로 같은 막대에 구으면 됩니다.</li>
-          <li>그동안은 리눅스가 있는 PC에서 키트를 풀어 2번을 하거나, 이미 OS가 있는 PC는 <code>install-autostart.sh</code> 로 로그인 화면에 neuOS를 심습니다.</li>
+          <li>
+            The burn tool is Linux-only for now. When an ISO is published, use Rufus or balenaEtcher
+            on the same stick.
+          </li>
+          <li>
+            Until then, unpack the kit on a Linux PC and do step 2, or plant neuOS on a PC that
+            already has an OS with <code>install-autostart.sh</code>.
+          </li>
         </ol>
       </section>
       <section class="cta">
-        <h2>4. 다른 컴퓨터에서 USB로 켜기</h2>
+        <h2>4. Boot another computer from USB</h2>
         <ol>
-          <li>막대를 꽂고 전원을 켭니다.</li>
-          <li>바로 <strong>F12 / F10 / Esc / F2</strong> 를 눌러 부트 메뉴에서 USB를 고릅니다.</li>
-          <li>Neuavenue 로고 또는 neuOS 커널 화면이 나오면 성공입니다.</li>
+          <li>Plug the stick in and power on.</li>
+          <li>Immediately press <strong>F12 / F10 / Esc / F2</strong> and choose USB.</li>
+          <li>Neuavenue logo or the neuOS kernel screen means success.</li>
         </ol>
       </section>
     </main>
