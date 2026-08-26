@@ -18,3 +18,7 @@ not_found_handling = "404-page"
 [[routes]]
 pattern = "os.neuavenue.com"
 custom_domain = true
+
+[[routes]]
+pattern = "docs.neuavenue.com"
+custom_domain = true

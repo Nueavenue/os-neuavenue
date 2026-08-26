@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OS.neu v1.0 · NeuAvenue</title>
+    <link rel="icon" type="image/png" href="/brand/neuos-mark.png" />
+    <link rel="stylesheet" href="./welcome.css" />
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="wrap">
+        <div class="nav-inner">
+          <a class="brand" href="https://neuavenue.com/">
+            <img src="/brand/neuavenue-logo.png" alt="NeuAvenue" />
+          </a>
+          <div class="nav-links">
+            <a href="https://neuavenue.com/#features">Features</a>
+            <a href="https://neuavenue.com/#how-it-works">How It Works</a>
+            <a href="https://app.neuavenue.com" target="_blank" rel="noopener noreferrer">App</a>
+            <a class="btn btn-waitlist" href="https://neuavenue.com/">Join Waitlist</a>
+          </div>
+          <button
+            class="menu-toggle"
+            type="button"
+            data-menu-toggle
+            aria-label="Toggle menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <svg id="icon-open" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="icon-close" hidden width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
+        </div>
+        <div id="mobile-menu" class="mobile-menu">
+          <a href="https://neuavenue.com/#features">Features</a>
+          <a href="https://neuavenue.com/#how-it-works">How It Works</a>
+          <a href="https://app.neuavenue.com" target="_blank" rel="noopener noreferrer">App</a>
+          <a class="mobile-waitlist" href="https://neuavenue.com/">Join Waitlist</a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="orb orb-indigo" aria-hidden="true"></div>
+      <div class="orb orb-emerald" aria-hidden="true"></div>
+      <div class="wrap-6 hero-inner">
+        <div class="badge"><span>OS.neu v1.0 · local preview</span></div>
+        <h1>Power on.<br />Then speak.</h1>
+        <p class="lead">
+          This laptop preview uses the same NeuAvenue chrome as os.neuavenue.com. Practice install
+          never wipes a disk.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="/api/download/pack">Download boot kit</a>
+          <a class="btn btn-ghost" href="/?test=1">Practice install</a>
+        </div>
+        <div class="hero-panel">
+          <div class="hero-panel-glow" aria-hidden="true"></div>
+          <div class="glass">
+            <div class="score-bars">
+              <div class="metric">
+                <div class="metric-head">
+                  <div class="icon-box emerald"></div>
+                  <div class="metric-label">
+                    <span>Host PC already has an OS</span>
+                    <strong style="color: #34d399">Plant</strong>
+                  </div>
+                </div>
+                <div class="bar emerald"><span style="width: 88%"></span></div>
+              </div>
+              <div class="metric">
+                <div class="metric-head">
+                  <div class="icon-box indigo"></div>
+                  <div class="metric-label">
+                    <span>Empty disk or USB-only</span>
+                    <strong style="color: #818cf8">Burn</strong>
+                  </div>
+                </div>
+                <div class="bar indigo"><span style="width: 85%"></span></div>
+              </div>
+              <div class="metric">
+                <div class="metric-head">
+                  <div class="icon-box amber"></div>
+                  <div class="metric-label">
+                    <span>Try without installing</span>
+                    <strong style="color: #fbbf24">Guest</strong>
+                  </div>
+                </div>
+                <div class="bar amber"><span style="width: 67%"></span></div>
+              </div>
+            </div>
+            <div class="hint-row">
+              <div class="hint">
+                <div>
+                  <p class="kicker">Next Best Action</p>
+                  <p>Use Practice install on this laptop. Public files live at os.neuavenue.com/downloads/.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section works" id="download">
+      <div class="wrap-6">
+        <div class="center">
+          <h2 class="section-title">The three paths of OS.neu</h2>
+          <p class="sub">These links work while the os.neu screen is running on this laptop</p>
+        </div>
+        <div class="grid-2" style="margin-top: 48px">
+          <article class="card">
+            <h3>PC that already has Windows</h3>
+            <p>The disk is not wiped. The next login opens the OS.neu graphical screen.</p>
+            <ol>
+              <li>Download the boot kit.</li>
+              <li>Choose <strong>PC that already has an OS</strong>.</li>
+              <li>When the bar hits 100%, hardware check → talk screen or DOS console.</li>
+            </ol>
+          </article>
+          <article class="card">
+            <h3>No OS, or USB-only</h3>
+            <p>Put OS.neu on a stick, then boot another laptop from USB.</p>
+            <ol>
+              <li>Download the kit or ISO.</li>
+              <li>Choose <strong>USB without an OS</strong>.</li>
+              <li>On the target PC press <strong>F8</strong> (ASUS) and choose UEFI USB. If you see <code>grub&gt;</code>, that is not OS.neu yet — follow the <a href="https://os.neuavenue.com/tutorial">USB tutorial</a>.</li>
+            </ol>
+          </article>
+        </div>
+        <p class="actions" style="margin-top: 28px">
+          <a class="btn btn-ghost" href="/api/download/iso">USB image ISO</a>
+        </p>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="wrap-6">
+        <div class="footer-logo">
+          <img src="/brand/neuavenue-logo.png" alt="NeuAvenue" />
+          <p>AI-powered life-force intelligence for better decisions.</p>
+        </div>
+        <div class="footer-links">
+          <a href="https://neuavenue.com/#about">About</a>
+          <a href="https://neuavenue.com/#contact">Contact</a>
+          <a href="https://neuavenue.com/#privacy">Privacy</a>
+          <a href="https://neuavenue.com/#terms">Terms</a>
+        </div>
+        <div class="footer-stats">
+          <div>
+            <strong style="color: #34d399">3</strong>
+            <span>Life Dimensions</span>
+          </div>
+          <div>
+            <strong style="color: #818cf8">1</strong>
+            <span>Unified Score</span>
+          </div>
+          <div>
+            <strong style="color: #c084fc">AI</strong>
+            <span>Powered Insights</span>
+          </div>
+        </div>
+        <p class="copy">2026 NeuAvenue Inc. All rights reserved.</p>
+      </div>
+    </footer>
+    <script src="./site.js"></script>
+  </body>
+</html>

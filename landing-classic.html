@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>os.neu · NeuAvenue</title>
+    <meta
+      name="description"
+      content="os.neu is NeuAvenue’s AI first screen. Download the boot kit, put it on USB, and power on without learning Windows or Linux."
+    />
+    <link rel="icon" type="image/png" href="/brand/neuos-mark.png" />
+    <link rel="stylesheet" href="./welcome.css" />
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="wrap">
+        <div class="nav-inner">
+          <a class="brand" href="https://neuavenue.com/">
+            <img src="/brand/neuavenue-logo.png" alt="NeuAvenue" />
+          </a>
+          <div class="nav-links">
+            <a href="https://neuavenue.com/#features">Features</a>
+            <a href="https://neuavenue.com/#how-it-works">How It Works</a>
+            <a class="nav-osneu" href="https://os.neuavenue.com/">OS.NEU</a>
+            <a href="https://app.neuavenue.com" target="_blank" rel="noopener noreferrer">App</a>
+            <a class="btn btn-login" href="/login">Log in</a>
+            <a class="btn btn-waitlist" href="https://neuavenue.com/">Join Waitlist</a>
+          </div>
+          <button
+            class="menu-toggle"
+            type="button"
+            data-menu-toggle
+            aria-label="Toggle menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <svg id="icon-open" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="icon-close" hidden width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
+        </div>
+        <div id="mobile-menu" class="mobile-menu">
+          <a href="https://neuavenue.com/#features">Features</a>
+          <a href="https://neuavenue.com/#how-it-works">How It Works</a>
+          <a href="https://os.neuavenue.com/">OS.NEU</a>
+          <a href="https://app.neuavenue.com" target="_blank" rel="noopener noreferrer">App</a>
+          <a href="/login">Log in</a>
+          <a class="mobile-waitlist" href="https://neuavenue.com/">Join Waitlist</a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="orb orb-indigo" aria-hidden="true"></div>
+      <div class="orb orb-emerald" aria-hidden="true"></div>
+      <div class="wrap-6 hero-inner">
+        <div class="badge">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z" />
+          </svg>
+          <span>os.neu · The Life-Force first screen</span>
+        </div>
+        <h1>Power on.<br />Then speak.</h1>
+        <p class="lead">
+          os.neu is NeuAvenue’s AI shell on existing hardware. You do not need Windows or Linux
+          literacy. Put os.neu on a USB stick, power on, and land on one prompt — the same site
+          chrome as NeuAvenue.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="/downloads/neuos-boot-kit.tar.gz">Download boot kit</a>
+          <a class="btn btn-ghost" href="/tutorial">USB tutorial</a>
+        </div>
+
+        <div class="hero-panel">
+          <div class="hero-panel-glow" aria-hidden="true"></div>
+          <div class="glass">
+            <div class="score-row">
+              <div class="score-bars">
+                <div class="metric">
+                  <div class="metric-head">
+                    <div class="icon-box emerald">
+                      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                      </svg>
+                    </div>
+                    <div class="metric-label">
+                      <span>Host PC already has an OS</span>
+                      <strong class="text-emerald">Plant</strong>
+                    </div>
+                  </div>
+                  <div class="bar emerald"><span style="width: 88%"></span></div>
+                </div>
+                <div class="metric">
+                  <div class="metric-head">
+                    <div class="icon-box indigo">
+                      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="4" y="4" width="16" height="16" rx="2" />
+                        <path d="M9 9h6M9 13h6M9 17h3" />
+                      </svg>
+                    </div>
+                    <div class="metric-label">
+                      <span>Empty disk or USB-only</span>
+                      <strong style="color: #818cf8">Burn</strong>
+                    </div>
+                  </div>
+                  <div class="bar indigo"><span style="width: 85%"></span></div>
+                </div>
+                <div class="metric">
+                  <div class="metric-head">
+                    <div class="icon-box amber">
+                      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M12 3v18M8 7h8M8 17h8" />
+                      </svg>
+                    </div>
+                    <div class="metric-label">
+                      <span>Try without installing</span>
+                      <strong style="color: #fbbf24">Guest</strong>
+                    </div>
+                  </div>
+                  <div class="bar amber"><span style="width: 67%"></span></div>
+                </div>
+              </div>
+            </div>
+            <div class="hint-row">
+              <div class="hint">
+                <svg width="20" height="20" fill="none" stroke="#818cf8" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                </svg>
+                <div>
+                  <p class="kicker">Next Best Action</p>
+                  <p>Download the kit, then follow the USB tutorial. A browser never silently erases a drive.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="download">
+      <div class="wrap-5 center">
+        <div class="badge purple">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M3 17l6-6 4 4 8-8" />
+          </svg>
+          <span>os.neu</span>
+        </div>
+        <h2 class="section-title">One first screen.<br />Three ways in.</h2>
+        <p class="section-kicker">
+          Whether the PC already has Windows, the disk is empty, or you only want to try, os.neu
+          occupies the monitor so a beginner never has to see a desktop.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="wrap-6">
+        <div class="center">
+          <h2 class="section-title">The three paths of os.neu</h2>
+          <p class="sub">Each path lands on the same AI prompt after power-on</p>
+        </div>
+        <div class="grid-3">
+          <article class="pillar emerald">
+            <div class="icon-lg" style="background: rgba(16, 185, 129, 0.2); color: #10b981">
+              <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+              </svg>
+            </div>
+            <h3>Host PC</h3>
+            <p>The disk is not wiped. Unpack the kit so the next login opens the os.neu screen.</p>
+            <div class="pillar-foot" style="color: #10b981">
+              <span class="dot" style="background: #10b981"></span>
+              <span>Existing Windows or Linux</span>
+            </div>
+          </article>
+          <article class="pillar indigo">
+            <div class="icon-lg" style="background: rgba(99, 102, 241, 0.2); color: #6366f1">
+              <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <rect x="4" y="4" width="16" height="16" rx="2" />
+              </svg>
+            </div>
+            <h3>USB stick</h3>
+            <p>Burn boot files onto an empty stick, then choose USB in firmware.</p>
+            <div class="pillar-foot" style="color: #6366f1">
+              <span class="dot" style="background: #6366f1"></span>
+              <span>No OS, or USB-only</span>
+            </div>
+          </article>
+          <article class="pillar amber">
+            <div class="icon-lg" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b">
+              <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M12 3v18M8 7h8M8 17h8" />
+              </svg>
+            </div>
+            <h3>Guest</h3>
+            <p>Open the kiosk without planting. Exit still offers the kernel console or the talk loop.</p>
+            <div class="pillar-foot" style="color: #f59e0b">
+              <span class="dot" style="background: #f59e0b"></span>
+              <span>Try now</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section works" id="how-it-works">
+      <div class="wrap-6">
+        <div class="center">
+          <div class="badge purple">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 7v5l3 3" />
+            </svg>
+            <span>Simple Process</span>
+          </div>
+          <h2 class="section-title">How os.neu works</h2>
+          <p class="sub">Three simple steps from this page to a first screen</p>
+        </div>
+        <div class="grid-3">
+          <article class="step">
+            <div class="step-num" style="background: linear-gradient(to bottom right, #4f46e5, #6366f1); box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.25)">
+              1
+            </div>
+            <h3>Download the kit</h3>
+            <p>Save neuos-boot-kit.tar.gz. A browser cannot format a stick by itself.</p>
+          </article>
+          <article class="step">
+            <div class="step-num" style="background: linear-gradient(to bottom right, #9333ea, #a855f7); box-shadow: 0 10px 15px -3px rgba(168, 85, 247, 0.25)">
+              2
+            </div>
+            <h3>Unpack and burn</h3>
+            <p>On Linux list disks, then burn only an empty stick. Never choose the disk that holds /.</p>
+          </article>
+          <article class="step">
+            <div class="step-num" style="background: linear-gradient(to bottom right, #059669, #10b981); box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.25)">
+              3
+            </div>
+            <h3>Power on and speak</h3>
+            <p>Press F12, choose USB, and land on the NeuAvenue logo then the AI prompt.</p>
+          </article>
+        </div>
+        <div class="grid-2" style="margin-top: 48px">
+          <article class="card">
+            <h3>PC that already has Windows or Linux</h3>
+            <p>The disk is not wiped. Unpack the kit so the next login opens os.neu.</p>
+            <ol>
+              <li>Click <strong>Download boot kit</strong>.</li>
+              <li>Unpack and run <code>scripts/install-autostart.sh</code>.</li>
+              <li>Sign in again — os.neu opens.</li>
+            </ol>
+          </article>
+          <article class="card">
+            <h3>USB only, no OS</h3>
+            <p>Burn boot files onto an empty stick, then choose USB in firmware.</p>
+            <ol>
+              <li>Download the boot kit.</li>
+              <li>On Linux: <code>bash scripts/make-usb.sh --list</code></li>
+              <li>Empty stick only: <code>sudo bash scripts/make-usb.sh /dev/sdX --yes</code></li>
+              <li>On the target PC press F12 / Esc and choose USB.</li>
+            </ol>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="cta-orb" aria-hidden="true"></div>
+      <div class="wrap-4 cta-inner">
+        <div class="spark">
+          <svg width="24" height="24" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z" />
+          </svg>
+        </div>
+        <h2 class="section-title">See the first screen<br />differently</h2>
+        <p class="lead">Start with os.neu on a stick — then let NeuAvenue guide health, brain, and finance.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="/downloads/neuos-boot-kit.tar.gz">Get the boot kit</a>
+          <a class="btn btn-ghost" href="https://neuavenue.com/">Join the Waitlist</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="wrap-6">
+        <div class="footer-logo">
+          <img src="/brand/neuavenue-logo.png" alt="NeuAvenue" />
+          <p>AI-powered life-force intelligence for better decisions.</p>
+        </div>
+        <div class="footer-links">
+          <a href="https://neuavenue.com/#about">About</a>
+          <a href="https://neuavenue.com/#contact">Contact</a>
+          <a href="https://neuavenue.com/#privacy">Privacy</a>
+          <a href="https://neuavenue.com/#terms">Terms</a>
+        </div>
+        <div class="footer-stats">
+          <div>
+            <strong style="color: #34d399">3</strong>
+            <span>Life Dimensions</span>
+          </div>
+          <div>
+            <strong style="color: #818cf8">1</strong>
+            <span>Unified Score</span>
+          </div>
+          <div>
+            <strong style="color: #c084fc">AI</strong>
+            <span>Powered Insights</span>
+          </div>
+        </div>
+        <p class="copy">2026 NeuAvenue Inc. All rights reserved.</p>
+      </div>
+    </footer>
+    <script src="./site.js"></script>
+  </body>
+</html>
