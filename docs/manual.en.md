@@ -17,7 +17,9 @@ Docs home: [https://docs.neuavenue.com](https://docs.neuavenue.com)
 The three paths meet on the same screen. Use the top icons to switch at any time.
 
 - **PC that already has an OS** — next login shows OS.neu. No format. Wait until progress is 100%.
-- **USB without an OS** — download the kit, burn only after you confirm the command. Reboot, firmware boot menu (ASUS: **F8**), UEFI USB. Success is `[os.neu] >`. If you see `grub>`, follow the USB tutorial.
+- **USB without an OS** — download the kit, burn only after you confirm the command. Reboot, firmware boot menu (ASUS: **F8**), UEFI USB. Success is `[os.neu] >`. If you see `grub>`, follow [the USB tutorial](https://os.neuavenue.com/tutorial).
+
+The USB first screen is not folders and not the `:5173` graphic. Type `hardware` or `install os.neu`. If the stick already has `NEUOS-ESP`, do not `--yes` wipe it — use `--update`.
 - **Try without installing** — guest. Talk and web for this session only.
 
 ## 3. After power-on

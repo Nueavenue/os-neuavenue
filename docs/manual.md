@@ -17,7 +17,9 @@
 세 길은 같은 화면으로 모입니다. 위쪽 아이콘으로 언제든 다시 고를 수 있습니다.
 
 - **이미 OS가 있는 PC** — 다음 로그인에 OS.neu 화면. 하드디스크를 포맷하지 않습니다. 진행이 100%가 될 때까지 기다립니다.
-- **운영체제가 없는 USB** — 키트를 받고, 확인한 명령으로만 굽습니다. 재시작 후 펌웨어 부팅 메뉴(ASUS는 **F8**)에서 UEFI USB를 고릅니다. 성공 화면은 `[os.neu] >` 입니다. `grub>` 가 보이면 USB 튜토리얼을 따릅니다.
+- **운영체제가 없는 USB** — 키트를 받고, 확인한 명령으로만 굽습니다. 재시작 후 펌웨어 부팅 메뉴(ASUS는 **F8**)에서 UEFI USB를 고릅니다. 성공 화면은 `[os.neu] >` 입니다. `grub>` 가 보이면 [USB 튜토리얼](https://os.neuavenue.com/tutorial)을 따릅니다.
+
+USB 첫 화면은 폴더도, `5173` 그래픽도 아닙니다. 콘솔에서 `hardware` 또는 `install os.neu` 를 칩니다. 이미 `NEUOS-ESP` 가 있는 스틱은 `--yes` 로 지우지 말고 `--update` 만 합니다. 단계: [usb-console-guide.md](https://docs.neuavenue.com) 와 [os.neuavenue.com/tutorial](https://os.neuavenue.com/tutorial).
 - **설치 없이 체험** — 게스트. 이 세션만 말하고 웹을 엽니다. 다음 로그인에 자동으로 남기지 않습니다.
 
 ## 3. 켜 둔 뒤

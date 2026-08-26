@@ -112,7 +112,7 @@ sudo bash scripts/make-usb.sh /dev/sdX --yes</pre>
           </ol>
           <p>
             Success is a <strong>dark text console</strong>, not the graphical talk screen. The
-            prompt looks like <code>[neuOS] &gt;</code>. That is OS.neu JeOS on USB.
+            prompt looks like <code>[os.neu] &gt;</code>. That is OS.neu JeOS on USB.
           </p>
           <p>
             If Windows or Ubuntu opens as usual, USB was not selected. Hold the power button to
@@ -148,7 +148,7 @@ sudo bash scripts/make-usb.sh /dev/sdX --yes</pre>
           <p>
             <code>GNU GRUB version 2.14</code> and a <code>grub&gt;</code> prompt mean the USB
             started, but the bootloader did not find its menu. This is <strong>not</strong> the
-            OS.neu console. OS.neu looks like <code>[neuOS] &gt;</code>.
+            OS.neu console. OS.neu looks like <code>[os.neu] &gt;</code>.
           </p>
           <p>Type these lines, then Enter after each. TAB can complete names.</p>
           <pre>search --label NEUOS-ROOT --set=root
@@ -215,7 +215,7 @@ exec switch_root /newroot /sbin/neuos-init</pre>
           </p>
           <pre>exec chroot /newroot /sbin/neuos-init</pre>
           <p>
-            Success is <code>[neuOS] &gt;</code>. To stop: hold power, unplug USB, power on. The
+            Success is <code>[os.neu] &gt;</code>. To stop: hold power, unplug USB, power on. The
             internal disk is not wiped.
           </p>
         </article>
@@ -225,9 +225,9 @@ exec switch_root /newroot /sbin/neuos-init</pre>
           <p>There is no folder window and no Firefox. A dark console appears:</p>
           <pre>OS.neu v1.0 JeOS
 Linux stays hidden. This is not motherboard firmware.
-Type: hardware | network | memory | install firefox | exit
+Type: hardware | network | memory | install os.neu | install firefox | exit
 
-[neuOS] ></pre>
+[os.neu] ></pre>
           <table>
             <thead>
               <tr>
@@ -237,7 +237,7 @@ Type: hardware | network | memory | install firefox | exit
             </thead>
             <tbody>
               <tr>
-                <td><code>[neuOS] &gt;</code> text prompt</td>
+                <td><code>[os.neu] &gt;</code> text prompt</td>
                 <td>USB JeOS is correct. Type <code>hardware</code> or an English sentence.</td>
               </tr>
               <tr>
@@ -274,6 +274,7 @@ Type: hardware | network | memory | install firefox | exit
             <li><code>hardware</code> — this PC’s compute unit</li>
             <li><code>memory</code> — RAM</li>
             <li><code>network</code> — network path</li>
+            <li><code>install os.neu</code> — copy into <code>~/os.neu</code> (no disk format)</li>
             <li><code>install firefox</code> — shows the matching install command; it does not install in secret</li>
             <li><code>exit</code> — leave the loop</li>
           </ol>
