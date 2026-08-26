@@ -100,13 +100,13 @@ If Ubuntu opens as usual, USB was not selected. Hold power, reseat the rear port
 - `memory` — RAM
 - `network` — network
 - `install firefox` — shows the command only. Does not install in secret
-- `install os.neu` — install panel or text wizard. No disk format
+- `install os.neu` — installs onto this PC’s `~/os.neu`, not the USB (`/os.neu`). Then opens the os.neu screen (in-app browser) in **the same USB session**. It does not ask `folder >`. If no window appears, files are still on the PC; unplug USB and the next Ubuntu login opens the screen.
 - An English line — coach reply when a key exists
 - `exit` — leave the loop
 
 To return to Ubuntu: power off, **unplug USB**, power on. `--update` does not wipe the internal disk.
 
-For the graphical talk screen: unplug USB, boot Ubuntu, `npm run boot:install`, next graphical login.
+The graphical talk screen opens from USB after `install os.neu` in that same session. If no window appears, unplug USB; the next Ubuntu login still opens the screen.
 
 ## 7. If you see something else
 
@@ -133,13 +133,14 @@ Give up: hold power, unplug USB, power on. The internal disk is not wiped.
 3. Tap the mic, speak, tap again — or type one line and send with the speaker.
 4. Example: `Find a renewable-energy report, summarize it, put it on slides`
 5. The address bar opens real sites. Doc / Sheet / Slides stay inside the screen.
+6. After `install os.neu` or the top **Download**, Linux gets an **os.neu** icon in Applications and on the Desktop. You do not `cd` into a folder. Drag the window edges, or use the window-size icon.
 
 ## 9. Open this manual again
 
-Top **Manual** icon → **os.neu manual**. Bottom **docs.neuavenue.com** opens this card. × on the card goes back; × on the manual closes.
+Top **Manual** icon → **os.neu manual**. Bottom **docs.neuavenue.com** opens this card. × on the card goes back; × on the manual closes. The **Download** icon is the Linux screen pack (`neuos-linux.tar.gz`).
 
 Company keys are not baked into the image. You can take a public AI on this PC. Nothing is deleted or installed without confirm.
 
 ## 10. Leave
 
-Top-right × shrinks fullscreen or goes back. Exit runs a health check, then JeOS or talk. Not seeing a Windows desktop is expected.
+On the landing, install cards, and talk home, top-right **× quits** to the Ubuntu desktop. On inner screens, × goes back.
