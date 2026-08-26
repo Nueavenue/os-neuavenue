@@ -6,7 +6,23 @@ USB로 켜면 **그래픽 랜딩(`5173`)이 아닙니다.** 어두운 글자 콘
 부팅 복구 HTML: [https://os.neuavenue.com/tutorial](https://os.neuavenue.com/tutorial)  
 화면 안 매뉴얼: 상단 **Manual** → `docs.neuavenue.com`
 
-이 기계의 스틱은 지금 **`/dev/sdd`** (라벨 `NEUOS-ESP` + `NEUOS-ROOT`). 디스크 `/` 는 `/dev/sdb` 입니다. 절대 `--yes` 를 `/` 디스크에 쓰지 않습니다.
+목록은 이렇게 읽습니다. 글자(`sda` / `sdb` / `sdd`)는 PC마다 다릅니다. **`/` 가 붙은 디스크는 절대 굽지 않습니다.**
+
+```
+sda    /dev/sda    931.5G WDC WD10EZEX     데이터 HDD. 후보 아님
+sdb    /dev/sdb    238.5G TS256GSSD230S    sdb2 가 /  → 이 Ubuntu. 후보 아님
+sdc    /dev/sdc      7.3T ST8000DM004      데이터. 후보 아님
+sdd    /dev/sdd    117.2G ProductCode RM=1 USB 후보
+├─sdd1     511M NEUOS-ESP
+└─sdd2    15.5G NEUOS-ROOT
+```
+
+`NEUOS-ESP` / `NEUOS-ROOT` 가 보이면 **이미 구운 스틱**입니다. `--yes` 로 지우지 않습니다. 성공 예:
+
+```
+plan: update initrd on /dev/sdd (no wipe)
+updated initrd and payload on /dev/sdd (no partition wipe).
+```
 
 ## 0. 무엇이 나오나
 
