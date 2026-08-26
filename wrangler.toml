@@ -10,6 +10,9 @@ directory = "."
 binding = "ASSETS"
 html_handling = "auto-trailing-slash"
 not_found_handling = "404-page"
+# Worker remaps docs.neuavenue.com / → /docs/index.html. Without this,
+# the SPA index.html wins on the docs host.
+run_worker_first = true
 
 # Attach only the canonical hostname. Alias neuos.neuavenue.com in DNS
 # as CNAME → os.neuavenue.com after this custom domain exists.
