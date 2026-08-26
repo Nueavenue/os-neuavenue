@@ -2,6 +2,8 @@
 
 Power-on is not folders or a Start menu. It is a talk face on the PC you already have. The disk is not wiped.
 
+**With the files we ship now, planting and USB burn work on Linux only.** There is no Windows or macOS installer yet. This page and the landing still open in any browser. To keep os.neu on this PC you need Linux.
+
 Public home: [https://os.neuavenue.com](https://os.neuavenue.com)  
 Docs home: [https://docs.neuavenue.com](https://docs.neuavenue.com)  
 USB recovery: [https://os.neuavenue.com/tutorial](https://os.neuavenue.com/tutorial)  
@@ -11,20 +13,20 @@ Kit: [https://os.neuavenue.com/downloads/neuos-boot-kit.tar.gz](https://os.neuav
 
 1. Open **os.neuavenue.com** in a browser.
 2. This screen (logo → install) is the landing. Local practice is the same app at `http://127.0.0.1:5173/`.
-3. For USB, pick **USB without an OS** or **Download boot kit** for `neuos-boot-kit.tar.gz`.
+3. For USB, on a **Linux PC** pick **USB without an OS** or **Download boot kit** for `neuos-boot-kit.tar.gz`. The burn command (`make-usb.sh`) is Linux.
 4. Do not use a stick that holds homework or photos.
 
 ## 2. Install — three paths
 
 The three paths meet on the same screen. Use the top icons to switch at any time.
 
-- **PC that already has an OS** — next login shows OS.neu. No format. Wait until progress is 100%.
-- **USB without an OS** — see **USB console** below. Success is `[os.neu] >`.
-- **Try without installing** — guest. Talk and web for this session only.
+- **PC that already has an OS** — on **Linux**, next login shows OS.neu. No format. Wait until progress is 100%.
+- **USB without an OS** — on **Linux**, see **USB console** below. Success is `[os.neu] >`.
+- **Try without installing** — guest. Any browser can open this session. To keep it after login you need Linux.
 
 ## 3. USB console — pick the disk
 
-The USB first screen is not folders and not the `:5173` graphic. It is a dark text console.
+The USB first screen is not folders and not the `:5173` graphic. It is a dark text console. **Burning the stick is Linux only.**
 
 Plug the stick into a **rear motherboard USB** port, then list disks.
 

@@ -2,6 +2,8 @@
 
 USB로 켜면 **그래픽 랜딩(`5173`)이 아닙니다.** 어두운 글자 콘솔입니다. 성공 프롬프트는 `[os.neu] >`.
 
+**지금 받은 파일로 스틱을 굽는 일은 Linux에서만 됩니다.** Windows·macOS에서는 `make-usb.sh` 를 실행하지 않습니다. 설치 파일도 아직 없습니다.
+
 공개 키트: [https://os.neuavenue.com/downloads/neuos-boot-kit.tar.gz](https://os.neuavenue.com/downloads/neuos-boot-kit.tar.gz)  
 부팅 복구 HTML: [https://os.neuavenue.com/tutorial](https://os.neuavenue.com/tutorial)  
 화면 안 매뉴얼: 상단 **Manual** → `docs.neuavenue.com`

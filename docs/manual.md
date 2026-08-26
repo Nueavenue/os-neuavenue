@@ -2,6 +2,8 @@
 
 켜면 폴더와 시작 메뉴가 없습니다. 이미 있는 PC 위에서 말로 쓰는 얼굴입니다. 디스크를 지우지 않습니다.
 
+**지금 받은 파일로 심기·USB 굽기는 Linux에서만 됩니다.** Windows·macOS 설치 파일은 아직 없습니다. 이 페이지와 랜딩은 어떤 브라우저에서도 열 수 있습니다. 이 PC에 남기려면 Linux가 필요합니다.
+
 공개 홈: [https://os.neuavenue.com](https://os.neuavenue.com)  
 문서 홈: [https://docs.neuavenue.com](https://docs.neuavenue.com)  
 USB 복구 HTML: [https://os.neuavenue.com/tutorial](https://os.neuavenue.com/tutorial)  
@@ -11,20 +13,20 @@ USB 복구 HTML: [https://os.neuavenue.com/tutorial](https://os.neuavenue.com/tu
 
 1. 브라우저에서 **os.neuavenue.com** 을 엽니다.
 2. 이 화면(전원 → 로고 → 설치)이 랜딩입니다. 로컬 연습은 `http://127.0.0.1:5173/` 과 같습니다.
-3. USB가 필요하면 설치 화면에서 **운영체제가 없는 USB** 를 고르거나, **Download boot kit** 으로 `neuos-boot-kit.tar.gz` 를 받습니다.
+3. USB가 필요하면 **Linux PC**에서 설치 화면의 **운영체제가 없는 USB** 를 고르거나, **Download boot kit** 으로 `neuos-boot-kit.tar.gz` 를 받습니다. 굽는 명령(`make-usb.sh`)은 Linux입니다.
 4. 숙제·사진이 있는 메모리는 쓰지 않습니다.
 
 ## 2. 설치 — 세 길
 
 세 길은 같은 화면으로 모입니다. 위쪽 아이콘으로 언제든 다시 고를 수 있습니다.
 
-- **이미 OS가 있는 PC** — 다음 로그인에 OS.neu 화면. 하드디스크를 포맷하지 않습니다. 진행이 100%가 될 때까지 기다립니다.
-- **운영체제가 없는 USB** — 아래 **USB 콘솔** 절. 성공 화면은 `[os.neu] >` 입니다.
-- **설치 없이 체험** — 게스트. 이 세션만 말하고 웹을 엽니다. 다음 로그인에 자동으로 남기지 않습니다.
+- **이미 OS가 있는 PC** — **Linux**에서 다음 로그인에 OS.neu 화면. 하드디스크를 포맷하지 않습니다. 진행이 100%가 될 때까지 기다립니다.
+- **운영체제가 없는 USB** — **Linux**에서 아래 **USB 콘솔** 절. 성공 화면은 `[os.neu] >` 입니다.
+- **설치 없이 체험** — 게스트. 브라우저는 어디서나 이 세션만 봅니다. 다음 로그인에 자동으로 남기려면 Linux가 필요합니다.
 
 ## 3. USB 콘솔 — 디스크 고르기
 
-USB 첫 화면은 폴더도, `5173` 그래픽도 아닙니다. 어두운 글자 콘솔입니다.
+USB 첫 화면은 폴더도, `5173` 그래픽도 아닙니다. 어두운 글자 콘솔입니다. **스틱을 굽는 작업은 Linux에서만** 합니다.
 
 스틱을 **메인보드 뒤 USB**에 꽂은 뒤 목록을 봅니다.
 
