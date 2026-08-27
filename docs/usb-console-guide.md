@@ -35,7 +35,7 @@ updated initrd and payload on /dev/sdd (no partition wipe).
 | BusyBox `#` / `payload not found` | 리눅스는 떴고 페이로드가 없음. `--update` |
 | Ubuntu / Windows 그대로 | F8에서 USB를 고르지 않음 |
 
-그래픽 말하기 화면은 USB 첫 화면이 아닙니다. 콘솔에서 `install os.neu` 를 치거나, Ubuntu로 돌아와 `npm run boot:install` 한 다음 로그인입니다.
+그래픽 말하기 화면은 USB에서 `install os.neu` 를 치면 이 PC의 `~/os.neu` 에 심은 뒤, **같은 USB 세션**에서 os.neu 스크린(안쪽 브라우저)을 엽니다.
 
 ## 1. 키트 다시 만들기 (이 저장소)
 
@@ -139,7 +139,9 @@ sudo bash scripts/make-usb.sh /dev/sdd --update
 | `memory` | RAM |
 | `network` | 네트워크 |
 | `install firefox` | 설치 **명령만** 보여 줌. 몰래 설치하지 않음 |
-| `install os.neu` | 설치 패널(있으면) 또는 글자 마법사. 하드 포맷 없음 |
+| `install os.neu` | 이 PC의 `~/os.neu` 에 복사(USB 폴더 아님). 같은 세션에서 os.neu 스크린 |
+| `open os.neu` | 이미 심은 스크린을 다시 연다. 복사는 다시 하지 않음 |
+| `help` | 창이 안 열렸을 때 실행할 한 줄을 보여 줌 |
 | 영어 한 줄 | 코치 답 (열쇠가 있을 때) |
 | `exit` | 루프 종료 |
 
@@ -147,10 +149,40 @@ sudo bash scripts/make-usb.sh /dev/sdd --update
 
 ## 7. 그래픽 화면이 필요할 때
 
-USB 콘솔은 첫 페이로드입니다. Electron 말하기 화면은:
+콘솔에서 `install os.neu` 를 입력하고 Enter. 폴더를 묻지 않습니다.
 
-1. USB를 뽑고 Ubuntu로 켠다
-2. `cd ~/neuOS && npm run boot:install`
-3. 다음 그래픽 로그인
+스틱이 이 수정본이면 아래가 나와야 합니다.
 
-또는 콘솔에서 `install os.neu` 가 데스크탑 세션을 열 수 있으면 그때 화면이 뜹니다. 없으면 “needs a desktop session” 이 정상입니다.
+```
+host probe v3
+block sda,sdb,...
+try /dev/sdb2 ext4
+```
+
+한 줄짜리 `No Linux home. root=/dev/sda2 disks=sda,sdb skip=sda=current-root parts=... tried=` 만 보이면 **예전 스틱**입니다. Ubuntu로 돌아와 `sudo bash scripts/make-usb.sh /dev/sdd --update` 한 뒤 USB로 다시 켭니다. `tried=` 가 비어 있으면 Ubuntu 파티션을 마운트도 안 한 상태입니다.
+
+1. 내부 디스크의 Linux `/home` 을 찾습니다. USB(`NEUOS-ROOT`, `/os.neu`)는 대상이 아닙니다.
+2. `~/os.neu` 에 복사하고, 그 사용자 autostart 를 씁니다.
+3. 같은 USB 세션에서 os.neu 스크린(문서·시트·슬라이드·안쪽 브라우저)을 엽니다.
+
+창이 안 뜨면 콘솔이 아래 가이드를 그대로 찍습니다. **폴더로 들어가서 찾을 필요 없습니다.**
+
+실패 라벨: 심기(호스트 찾기)는 **OS-NEU-IC-000** 부터. 지금 이 PC에서 스크린을 여는 서비스는 **OS-NEU-SX-000** 부터 (`docs/fail-codes.md`). cage/weston `stream fd` 는 SX-000 이지, 복사 실패가 아닙니다.
+
+전원 켜고 Ubuntu 로그인 없이 os.neu 세션만 쓰려면 Ubuntu에서 [osneu-session.md](./osneu-session.md). USB 콘솔은 그 좌석을 아직 못 잡습니다.
+
+심기가 끝나면 콘솔에 **os.neu interfaces** 상자가 뜹니다. 앱 아이콘·바탕화면 아이콘·USB kiosk 복사 여부. Ubuntu 로그인 후 Show Apps / Desktop 의 **os.neu** 를 누릅니다. `bash` 는 필요 없습니다.
+
+이 USB 콘솔(`[os.neu] >`)에서:
+
+```
+open os.neu
+```
+
+Ubuntu로 켠 뒤 터미널을 열고:
+
+```bash
+bash ~/os.neu/scripts/open-neuos.sh
+```
+
+같은 화면을 여는 스크립트입니다. `cd ~/os.neu` 는 필요 없습니다. 아이콘 **os.neu** 를 눌러도 됩니다. 오른쪽 위 × 는 종료입니다.

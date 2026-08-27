@@ -100,13 +100,15 @@ If Ubuntu opens as usual, USB was not selected. Hold power, reseat the rear port
 - `memory` — RAM
 - `network` — network
 - `install firefox` — shows the command only. Does not install in secret
-- `install os.neu` — installs onto this PC’s `~/os.neu`, not the USB (`/os.neu`). Then opens the os.neu screen (in-app browser) in **the same USB session**. It does not ask `folder >`. If no window appears, files are still on the PC; unplug USB and the next Ubuntu login opens the screen.
+- `install os.neu` — installs onto this PC’s `~/os.neu`, not the USB (`/os.neu`). Then opens the os.neu screen (in-app browser) in **the same USB session**. It does not ask `folder >`. If no window appears, the console prints `open os.neu` and `bash ~/os.neu/scripts/open-neuos.sh`. Type `help` to see that guide again.
+- `open os.neu` — opens the planted screen again. Does not copy files.
+- `help` — prints the one-line launch command
 - An English line — coach reply when a key exists
 - `exit` — leave the loop
 
 To return to Ubuntu: power off, **unplug USB**, power on. `--update` does not wipe the internal disk.
 
-The graphical talk screen opens from USB after `install os.neu` in that same session. If no window appears, unplug USB; the next Ubuntu login still opens the screen.
+The graphical talk screen opens from USB after `install os.neu` in that same session. If no window appears, type `open os.neu` on this console, or after Ubuntu login run `bash ~/os.neu/scripts/open-neuos.sh`. You do not `cd` into a folder.
 
 ## 7. If you see something else
 

@@ -100,13 +100,15 @@ Ubuntu가 그대로 켜지면 USB를 고르지 않은 것입니다. 전원 길�
 - `memory` — RAM
 - `network` — 네트워크
 - `install firefox` — 설치 **명령만** 보여 줌. 몰래 설치하지 않음
-- `install os.neu` — 이 PC의 `~/os.neu` 에 설치합니다. USB 디스크(`/os.neu`)가 아닙니다. 복사 후 **같은 USB 세션**에서 os.neu 스크린(안쪽 브라우저)을 엽니다. `folder >` 는 묻지 않습니다. 창이 안 뜨면 compositor/GPU seat 문제이고, 파일은 이미 이 PC에 있습니다. USB를 뽑고 Ubuntu로 켜면 다음 로그인이 스크린을 엽니다.
+- `install os.neu` — 이 PC의 `~/os.neu` 에 설치합니다. USB 디스크(`/os.neu`)가 아닙니다. 복사 후 **같은 USB 세션**에서 os.neu 스크린(안쪽 브라우저)을 엽니다. `folder >` 는 묻지 않습니다. 창이 안 뜨면 콘솔이 `open os.neu` 와 `bash ~/os.neu/scripts/open-neuos.sh` 를 보여 줍니다. `help` 로 같은 안내를 다시 볼 수 있습니다.
+- `open os.neu` — 이미 심은 스크린을 다시 엽니다. 복사는 하지 않습니다.
+- `help` — 창이 안 열렸을 때 실행할 한 줄
 - 영어 한 줄 — 코치 답 (열쇠가 있을 때)
 - `exit` — 루프 종료
 
 안의 Ubuntu로 돌아가려면 전원 끄고 **USB를 뽑은 뒤** 켭니다. `--update` 는 하드를 지우지 않습니다.
 
-그래픽 스크린은 USB 콘솔에서 `install os.neu` 로 같은 세션에 열립니다. 창이 없으면 USB를 뽑고 Ubuntu 로그인이 이어서 엽니다.
+그래픽 스크린은 USB 콘솔에서 `install os.neu` 로 같은 세션에 열립니다. 창이 없으면 이 콘솔에서 `open os.neu` 를 치거나, Ubuntu 터미널에서 `bash ~/os.neu/scripts/open-neuos.sh` 를 실행합니다. 폴더로 이동할 필요 없습니다.
 
 ## 7. 다른 화면이 나오면
 
