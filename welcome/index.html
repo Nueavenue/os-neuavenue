@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>OS.neu v1.0 · NeuAvenue</title>
+    <meta
+      name="description"
+      content="os.neu is NeuAvenue’s AI first screen. Download the boot kit, put it on USB, and power on without learning Windows or Linux."
+    />
     <link rel="icon" type="image/png" href="/brand/neuos-mark.png" />
     <link rel="stylesheet" href="./welcome.css" />
   </head>
@@ -16,8 +20,10 @@
           </a>
           <div class="nav-links">
             <a href="https://neuavenue.com/#features">Features</a>
-            <a href="https://neuavenue.com/#how-it-works">How It Works</a>
+            <a href="#how-it-works">How It Works</a>
+            <a class="nav-osneu" href="/">OS.NEU</a>
             <a href="https://app.neuavenue.com" target="_blank" rel="noopener noreferrer">App</a>
+            <a class="btn btn-login" href="https://app.neuavenue.com" target="_blank" rel="noopener noreferrer">Log in</a>
             <a class="btn btn-waitlist" href="https://neuavenue.com/">Join Waitlist</a>
           </div>
           <button
@@ -38,8 +44,10 @@
         </div>
         <div id="mobile-menu" class="mobile-menu">
           <a href="https://neuavenue.com/#features">Features</a>
-          <a href="https://neuavenue.com/#how-it-works">How It Works</a>
+          <a href="#how-it-works">How It Works</a>
+          <a class="nav-osneu" href="/">OS.NEU</a>
           <a href="https://app.neuavenue.com" target="_blank" rel="noopener noreferrer">App</a>
+          <a href="https://app.neuavenue.com" target="_blank" rel="noopener noreferrer">Log in</a>
           <a class="mobile-waitlist" href="https://neuavenue.com/">Join Waitlist</a>
         </div>
       </div>
@@ -49,12 +57,16 @@
       <div class="orb orb-indigo" aria-hidden="true"></div>
       <div class="orb orb-emerald" aria-hidden="true"></div>
       <div class="wrap-6 hero-inner">
-        <div class="badge"><span>OS.neu v1.0 · local preview</span></div>
+        <div class="badge">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z" />
+          </svg>
+          <span>os.neu v1.0 · local preview</span>
+        </div>
         <h1>Power on.<br />Then speak.</h1>
         <p class="lead">
-          This laptop preview uses the same NeuAvenue chrome as os.neuavenue.com. Practice install
-          never wipes a disk. <strong>Planting and USB burn with the current files are Linux only.</strong>
-          There is no Windows or macOS installer yet.
+          os.neu is NeuAvenue’s AI shell on existing hardware. Practice install on this laptop never
+          wipes a disk. <strong>Planting and USB burn with the current files are Linux only.</strong>
         </p>
         <div class="actions">
           <a class="btn btn-primary" href="/api/download/pack">Download boot kit</a>
@@ -69,7 +81,7 @@
                   <div class="icon-box emerald"></div>
                   <div class="metric-label">
                     <span>Host PC already has an OS</span>
-                    <strong style="color: #34d399">Plant</strong>
+                    <strong class="text-emerald">Plant</strong>
                   </div>
                 </div>
                 <div class="bar emerald"><span style="width: 88%"></span></div>
@@ -108,11 +120,86 @@
       </div>
     </section>
 
-    <section class="section works" id="download">
+    <section class="section alt" id="download">
+      <div class="wrap-5 center">
+        <div class="badge purple">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 17l6-6 4 4 8-8" />
+          </svg>
+          <span>os.neu</span>
+        </div>
+        <h2 class="section-title">One first screen.<br />Three ways in.</h2>
+        <p class="section-kicker">
+          Whether the PC already has Windows, the disk is empty, or you only want to try, os.neu
+          occupies the monitor so a beginner never has to see a desktop.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="features">
       <div class="wrap-6">
         <div class="center">
-          <h2 class="section-title">The three paths of OS.neu</h2>
-          <p class="sub">These links work while the os.neu screen is running on this laptop</p>
+          <h2 class="section-title">The three paths of os.neu</h2>
+          <p class="sub">Each path lands on the same AI prompt after power-on</p>
+        </div>
+        <div class="grid-3">
+          <article class="pillar emerald">
+            <h3>Host PC</h3>
+            <p>The disk is not wiped. Unpack the kit so the next login opens the os.neu screen.</p>
+            <div class="pillar-foot" style="color: #10b981">
+              <span class="dot" style="background: #10b981"></span>
+              <span>Existing Windows or Linux</span>
+            </div>
+          </article>
+          <article class="pillar indigo">
+            <h3>USB stick</h3>
+            <p>Burn boot files onto an empty stick, then choose USB in firmware.</p>
+            <div class="pillar-foot" style="color: #6366f1">
+              <span class="dot" style="background: #6366f1"></span>
+              <span>No OS, or USB-only</span>
+            </div>
+          </article>
+          <article class="pillar amber">
+            <h3>Guest</h3>
+            <p>Open the kiosk without planting. Exit still offers the kernel console or the talk loop.</p>
+            <div class="pillar-foot" style="color: #f59e0b">
+              <span class="dot" style="background: #f59e0b"></span>
+              <span>Try now</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section works" id="how-it-works">
+      <div class="wrap-6">
+        <div class="center">
+          <div class="badge purple">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 7v5l3 3" />
+            </svg>
+            <span>Simple Process</span>
+          </div>
+          <h2 class="section-title">How os.neu works</h2>
+          <p class="sub">Three simple steps from this page to a first screen</p>
+        </div>
+        <div class="grid-3">
+          <article class="step">
+            <div class="step-num" style="background: linear-gradient(to bottom right, #4f46e5, #6366f1)">1</div>
+            <h3>Download the kit</h3>
+            <p>Save the boot kit while the bridge is running on this laptop.</p>
+          </article>
+          <article class="step">
+            <div class="step-num" style="background: linear-gradient(to bottom right, #9333ea, #a855f7)">2</div>
+            <h3>Unpack and burn</h3>
+            <p>On Linux list disks, then burn only an empty stick. Never choose the disk that holds /.</p>
+          </article>
+          <article class="step">
+            <div class="step-num" style="background: linear-gradient(to bottom right, #059669, #10b981)">3</div>
+            <h3>Power on and speak</h3>
+            <p>Choose USB in firmware and land on the NeuAvenue logo, then the AI prompt.</p>
+          </article>
         </div>
         <div class="grid-2" style="margin-top: 48px">
           <article class="card">
@@ -130,13 +217,30 @@
             <ol>
               <li>Download the kit or ISO.</li>
               <li>Choose <strong>USB without an OS</strong>.</li>
-              <li>On the target PC press <strong>F8</strong> (ASUS) and choose UEFI USB. If you see <code>grub&gt;</code>, that is not OS.neu yet — follow the <a href="https://os.neuavenue.com/tutorial">USB tutorial</a>.</li>
+              <li>On the target PC press <strong>F8</strong> (ASUS) and choose UEFI USB. If you see <code>grub&gt;</code>, follow the <a href="https://os.neuavenue.com/tutorial">USB tutorial</a>.</li>
             </ol>
           </article>
         </div>
         <p class="actions" style="margin-top: 28px">
           <a class="btn btn-ghost" href="/api/download/iso">USB image ISO</a>
         </p>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="cta-orb" aria-hidden="true"></div>
+      <div class="wrap-4 cta-inner">
+        <div class="spark">
+          <svg width="24" height="24" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z" />
+          </svg>
+        </div>
+        <h2 class="section-title">See the first screen<br />differently</h2>
+        <p class="lead">Start with os.neu on a stick — then let NeuAvenue guide health, brain, and finance.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="/api/download/pack">Get the boot kit</a>
+          <a class="btn btn-ghost" href="https://neuavenue.com/">Join the Waitlist</a>
+        </div>
       </div>
     </section>
 

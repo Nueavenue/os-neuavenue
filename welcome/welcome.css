@@ -137,14 +137,52 @@ button {
   color: #fff;
 }
 
+.nav-links a.nav-osneu {
+  color: var(--indigo-soft);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.nav-links a.nav-osneu:hover {
+  color: #fff;
+}
+
+.btn-login {
+  padding: 8px 16px;
+  border: 1px solid rgba(99, 102, 241, 0.55);
+  background: transparent;
+  color: #e2e8f0;
+  font-size: 14px;
+}
+
+.btn-login:hover {
+  border-color: var(--indigo-soft);
+  background: rgba(99, 102, 241, 0.12);
+}
+
+.text-emerald {
+  color: var(--emerald-bright);
+}
+
 @media (min-width: 768px) {
   .nav-links {
     display: flex;
+    gap: 20px;
   }
 
   .nav-links a,
   .nav-links button {
     font-size: 16px;
+  }
+
+  .btn-login {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .nav-links {
+    gap: 28px;
   }
 }
 
