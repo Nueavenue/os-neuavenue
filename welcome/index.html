@@ -9,22 +9,34 @@
       content="os.neu is NeuAvenue’s AI first screen. Download the boot kit, put it on USB, and power on without learning Windows or Linux."
     />
     <link rel="icon" type="image/png" href="/brand/neuos-mark.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./welcome.css" />
   </head>
   <body>
     <nav class="nav">
       <div class="wrap">
         <div class="nav-inner">
-          <a class="brand" href="https://neuavenue.com/">
-            <img src="/brand/neuavenue-logo.png" alt="NeuAvenue" />
+          <a class="brand brand-lf" href="https://neuavenue.com/">
+            <span class="brand-mark" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+              </svg>
+            </span>
+            <span class="brand-text">
+              Neu<span class="brand-accent">Avenue</span>
+              <span class="brand-tag">The Life-Force Platform</span>
+            </span>
           </a>
           <div class="nav-links">
-            <a href="https://neuavenue.com/">Company home</a>
-            <a href="https://neuavenue.com/#features">Features</a>
             <a href="#how-it-works">How It Works</a>
             <a href="#os-paths">OS paths</a>
-            <a class="nav-osneu" href="/">OS.NEU</a>
-            <a href="https://app.neuavenue.com" target="_blank" rel="noopener noreferrer">Launch App</a>
+            <a class="nav-osneu" href="/">Neu OS</a>
+            <a href="https://app.neuavenue.com" target="_blank" rel="noopener noreferrer">Neu-Vitality</a>
             <a class="btn btn-login" href="https://app.neuavenue.com" target="_blank" rel="noopener noreferrer">Log in</a>
           </div>
           <button
@@ -44,12 +56,10 @@
           </button>
         </div>
         <div id="mobile-menu" class="mobile-menu">
-          <a href="https://neuavenue.com/">Company home</a>
-          <a href="https://neuavenue.com/#features">Features</a>
           <a href="#how-it-works">How It Works</a>
           <a href="#os-paths">OS paths</a>
-          <a class="nav-osneu" href="/">OS.NEU</a>
-          <a href="https://app.neuavenue.com" target="_blank" rel="noopener noreferrer">Launch App</a>
+          <a class="nav-osneu" href="/">Neu OS</a>
+          <a href="https://app.neuavenue.com" target="_blank" rel="noopener noreferrer">Neu-Vitality</a>
           <a href="https://app.neuavenue.com" target="_blank" rel="noopener noreferrer">Log in</a>
         </div>
       </div>
@@ -79,7 +89,7 @@
           wipes a disk. <strong>Planting and USB burn with the current files are Linux only.</strong>
         </p>
         <div class="actions">
-          <a class="btn btn-primary" href="/api/download/pack">Download boot kit</a>
+          <a class="btn btn-primary" href="/downloads/neuos-boot-kit.tar.gz" download>Download boot kit</a>
           <a class="btn btn-ghost" href="/?test=1">Practice install</a>
         </div>
         <div class="hero-panel">
@@ -232,7 +242,7 @@
           </article>
         </div>
         <p class="actions" style="margin-top: 28px">
-          <a class="btn btn-ghost" href="/api/download/iso">USB image ISO</a>
+          <a class="btn btn-ghost" href="/downloads/neuos-linux.tar.gz" download>Linux screen pack</a>
         </p>
       </div>
     </section>
@@ -248,7 +258,7 @@
         <h2 class="section-title">See the first screen<br />differently</h2>
         <p class="lead">Start with os.neu on a stick — then let NeuAvenue guide health, brain, and finance.</p>
         <div class="actions">
-          <a class="btn btn-primary" href="/api/download/pack">Get the boot kit</a>
+          <a class="btn btn-primary" href="/downloads/neuos-boot-kit.tar.gz" download>Get the boot kit</a>
           <a class="btn btn-ghost" href="https://neuavenue.com/">Company home</a>
         </div>
       </div>
@@ -257,7 +267,16 @@
     <footer class="site-footer">
       <div class="wrap-6">
         <div class="footer-logo">
-          <img src="/brand/neuavenue-logo.png" alt="NeuAvenue" />
+          <a class="brand brand-lf brand-footer" href="https://neuavenue.com/">
+            <span class="brand-mark" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+              </svg>
+            </span>
+            <span class="brand-text">
+              Neu<span class="brand-accent">Avenue</span>
+            </span>
+          </a>
           <p>AI-powered life-force intelligence for better decisions.</p>
           <p class="footer-door-note">Door B install sheet · company www → <a href="https://neuavenue.com/">neuavenue.com</a></p>
         </div>

@@ -17,7 +17,8 @@
   --amber-bright: #fbbf24;
   --purple: #a855f7;
   --purple-soft: #c084fc;
-  --font: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', ui-sans-serif, system-ui, sans-serif;
 }
 
 * {
@@ -98,25 +99,72 @@ button {
   display: flex;
   align-items: center;
   flex-shrink: 0;
+  gap: 10px;
 }
 
-.brand img {
-  height: 72px;
-  width: auto;
-  max-width: 240px;
-  object-fit: contain;
+.brand-lf .brand-mark {
+  display: flex;
+  height: 36px;
+  width: 36px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: linear-gradient(to bottom right, var(--indigo-bright), var(--indigo));
+  box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.brand-lf:hover .brand-mark {
+  transform: scale(1.06);
 }
 
 @media (min-width: 640px) {
-  .brand img {
-    height: 104px;
+  .brand-lf .brand-mark {
+    height: 40px;
+    width: 40px;
   }
 }
 
-@media (min-width: 768px) {
-  .brand img {
-    height: 116px;
+.brand-lf .brand-text {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.brand-lf .brand-accent {
+  color: var(--indigo-soft);
+}
+
+.brand-lf .brand-tag {
+  display: none;
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--faint);
+}
+
+@media (min-width: 640px) {
+  .brand-lf .brand-tag {
+    display: block;
   }
+}
+
+.brand-footer.brand-lf {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-footer .brand-text {
+  font-size: 1.25rem;
 }
 
 .nav-links {
@@ -375,8 +423,10 @@ button {
 .hero h1,
 .section-title {
   margin: 0 0 8px;
+  font-family: var(--font-display);
   font-size: clamp(2rem, 5vw, 2.5rem);
   font-weight: 700;
+  letter-spacing: -0.01em;
   line-height: 1.2;
   background: linear-gradient(to right, #fff, #d1d5db);
   -webkit-background-clip: text;
@@ -665,6 +715,7 @@ button {
 
 .pillar h3 {
   margin: 0 0 12px;
+  font-family: var(--font-display);
   font-size: 1.5rem;
 }
 
@@ -735,6 +786,7 @@ ol {
 
 .step h3 {
   margin: 0 0 12px;
+  font-family: var(--font-display);
   font-size: 1.25rem;
 }
 
@@ -755,6 +807,7 @@ ol {
 
 .card h3 {
   margin: 0 0 8px;
+  font-family: var(--font-display);
   font-size: 1.25rem;
 }
 
@@ -815,18 +868,6 @@ ol {
 .footer-logo {
   text-align: center;
   margin-bottom: 48px;
-}
-
-.footer-logo img {
-  height: 64px;
-  width: auto;
-  object-fit: contain;
-}
-
-@media (min-width: 768px) {
-  .footer-logo img {
-    height: 76px;
-  }
 }
 
 .footer-logo p {
