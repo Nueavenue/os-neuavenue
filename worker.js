@@ -54,6 +54,16 @@ export default {
       return env.ASSETS.fetch(assetRequest(request, '/tutorial.html'))
     }
 
+    // neuos-live.iso (~360MB) exceeds the 25MB Workers static-asset file
+    // limit, so it is hosted as a GitHub Release asset and redirected from
+    // here (WO-UI-NEU-DOWNLOAD-1). Update the release tag below if rebuilt.
+    if (url.pathname === '/downloads/neuos-live.iso') {
+      return Response.redirect(
+        'https://github.com/Nueavenue/os-neuavenue/releases/download/neuos-live-iso-2026-08-31/neuos-live.iso',
+        302,
+      )
+    }
+
     return env.ASSETS.fetch(request)
   },
 }
