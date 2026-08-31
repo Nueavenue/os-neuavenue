@@ -64,6 +64,19 @@ export default {
       )
     }
 
+    // Legacy bridge-only paths (dev localhost used these against the Node
+    // bridge). Redirect to the static prod equivalents so old bookmarks/
+    // embeds keep working (WO-UI-NEU-DOWNLOAD-1).
+    const legacyDownloads = {
+      '/api/download/pack': '/downloads/neuos-boot-kit.tar.gz',
+      '/api/download/iso': '/downloads/neuos-live.iso',
+      '/api/download/linux': '/downloads/neuos-linux.tar.gz',
+    }
+    if (url.pathname in legacyDownloads) {
+      url.pathname = legacyDownloads[url.pathname]
+      return Response.redirect(url.toString(), 302)
+    }
+
     return env.ASSETS.fetch(request)
   },
 }
