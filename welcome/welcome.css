@@ -137,6 +137,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%);
   box-shadow: 0 8px 24px -8px rgba(124, 108, 255, 0.55);
 }
+.brand-lf .brand-mark img {
+  width: 18px;
+  height: 18px;
+  display: block;
+  object-fit: contain;
+}
 
 .pulse-mark { position: relative; }
 .pulse-mark::after {
