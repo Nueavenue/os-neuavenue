@@ -1,10 +1,11 @@
+# Static site plus a tiny Worker for /api/config (Supabase public keys
+# come from Cloudflare secrets — not from this repo) and /api/browse
+# (CDN in-window browser proxy — Leader option 1).
 name = "os-neuavenue"
 main = "worker.js"
 compatibility_date = "2026-08-25"
 workers_dev = true
 
-# Static site plus a tiny Worker for /api/config (Supabase public keys
-# come from Cloudflare secrets — not from this repo).
 [assets]
 directory = "."
 binding = "ASSETS"
