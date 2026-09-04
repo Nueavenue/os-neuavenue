@@ -181,9 +181,72 @@ export default {
       )
     }
 
+    if (url.pathname === '/api/health' && request.method === 'GET') {
+      return Response.json(
+        {
+          ok: true,
+          driver: 'dry-run',
+          vlm: 'graph',
+          browse: 'proxy',
+          detail: 'os.neuavenue.com web preview — device bridge is not on this host',
+        },
+        { headers: { 'cache-control': 'no-store' } },
+      )
+    }
+
+    if (url.pathname === '/api/jeos/ask' && request.method === 'POST') {
+      const lang = (request.headers.get('accept-language') || '').toLowerCase()
+      const ko = lang.startsWith('ko')
+      return Response.json(
+        {
+          ok: true,
+          act: 'preview',
+          reply: ko
+            ? 'os.neuavenue.com 웹 미리보기입니다. os.neu는 여기 있습니다. 기기 콘솔 답은 설치형 os.neu 또는 로컬 실행에서만 연결됩니다.'
+            : 'This is the os.neuavenue.com web preview — os.neu is here. The device console answers only in installed os.neu or local try-now.',
+          health: { ok: true, t: Date.now(), stage: 'web-preview', jeos: false },
+        },
+        { headers: { 'cache-control': 'no-store' } },
+      )
+    }
+
     // In-window browser for the hosted SPA (iframe → same-origin proxy).
     if (url.pathname === '/api/browse' && request.method === 'GET') {
       const target = url.searchParams.get('url') || ''
+      if (url.searchParams.get('probe') === '1') {
+        const parsed = parseBrowseUrl(target)
+        if (!parsed) {
+          return Response.json({ ok: false, status: 400, finalUrl: target }, { headers: { 'cache-control': 'no-store' } })
+        }
+        try {
+          const res = await fetch(parsed.toString(), {
+            redirect: 'follow',
+            signal: AbortSignal.timeout(BROWSE_TIMEOUT_MS),
+            headers: {
+              'user-agent':
+                'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 neuOS/0.1',
+              accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+            },
+          })
+          let finalUrl = res.url || parsed.toString()
+          try {
+            if (isBlockedBrowseHost(new URL(finalUrl).hostname)) {
+              return Response.json(
+                { ok: false, status: 400, finalUrl },
+                { headers: { 'cache-control': 'no-store' } },
+              )
+            }
+          } catch {
+            /* keep */
+          }
+          return Response.json(
+            { ok: res.ok, status: res.status, finalUrl },
+            { headers: { 'cache-control': 'no-store' } },
+          )
+        } catch {
+          return Response.json({ ok: false, status: 502, finalUrl: target }, { headers: { 'cache-control': 'no-store' } })
+        }
+      }
       const page = await fetchBrowsePage(target)
       return browseResponse(page)
     }
