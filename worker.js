@@ -1,6 +1,7 @@
 /**
  * Optional Worker in front of static assets.
- * Secrets stay in Cloudflare (PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY).
+ * Secrets stay in Cloudflare (PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY,
+ * OPENAI_API_KEY; optional COACH_VOICE/MODEL_NAME/JUDGE_MODEL overrides).
  * Never commit those values to git.
  *
  * / is the Vite os.neu screen (same as local 127.0.0.1:5173).
@@ -166,6 +167,89 @@ function browseResponse(page) {
   })
 }
 
+// WO-UI-NEU-WEB-NARRATOR-VOICE-121: hosted mirror of the desktop bridge's
+// /api/speak/chat (server/speak.ts coachChat) so os.neuavenue.com's one-box
+// speaker uses the same OpenAI COACH_VOICE clip as the desktop app, instead
+// of falling back to Chrome's speechSynthesis. Key stays a Cloudflare
+// secret (env.OPENAI_API_KEY) — never in this file, never in git, never
+// sent to the browser. If the secret is unset this returns 503
+// openai-unconfigured and the existing frontend try/catch in
+// src/state/store.tsx's pushCoach() already falls back to speakBrowser —
+// same behavior as today, just without needing 4178.
+const COACH_SYSTEM_PROMPT = `You are OS.neu Speak v1.0, a warm English speaking coach for the OS.neu first screen (NeuSpeak method).
+The learner may speak Korean or another language. Understand what they said, then reply in natural conversational English, like a friendly native-speaking tutor.
+Keep replies short (1-3 sentences). If the learner made a grammar or word-choice mistake, gently model the correct phrasing inside your reply.
+When they ask you to do something on this computer (check internet, open a browser, install software), first restate what you heard and ask them to look at the screen and confirm. After they confirm, use any facts in their message (online/offline, which page opened, install command) and ask them to say whether they see it.
+Filter rambling or off-topic audio into one clear English idea. Do not dump a boring status line. Offer a choice or a next tiny step.
+Always end with a short follow-up question to keep them talking.`
+
+async function openaiChatCompletion(key, messages, opts) {
+  const body = { model: opts.model, messages }
+  if (opts.audio) {
+    body.modalities = ['text', 'audio']
+    body.audio = { voice: opts.voice, format: 'wav' }
+  }
+  const res = await fetch('https://api.openai.com/v1/chat/completions', {
+    method: 'POST',
+    headers: { authorization: `Bearer ${key}`, 'content-type': 'application/json' },
+    body: JSON.stringify(body),
+  })
+  if (!res.ok) throw new Error(`openai-${res.status}`)
+  const data = await res.json()
+  const messageOut = data.choices && data.choices[0] && data.choices[0].message
+  const reply = ((messageOut && messageOut.audio && messageOut.audio.transcript) ?? (messageOut && messageOut.content) ?? '').trim()
+  if (!reply) throw new Error('empty-reply')
+  const audioData = messageOut && messageOut.audio && messageOut.audio.data
+  return audioData ? { reply, audio: { data: audioData, format: 'wav' } } : { reply }
+}
+
+function coachChatText(key, messages, env) {
+  return openaiChatCompletion(key, messages, { audio: false, model: env.JUDGE_MODEL || 'gpt-4o-mini' })
+}
+
+async function coachChatAudio(key, messages, env) {
+  try {
+    // Same voice as desktop's COACH_VOICE (default 'alloy' — server/speak.ts).
+    return await openaiChatCompletion(key, messages, {
+      audio: true,
+      voice: env.COACH_VOICE || 'alloy',
+      model: env.MODEL_NAME || 'gpt-audio-1.5',
+    })
+  } catch {
+    // Mirrors desktop coachChat()'s own fallback: if the audio-modality
+    // call fails, still return a text reply rather than erroring out.
+    return await coachChatText(key, messages, env)
+  }
+}
+
+async function handleSpeakChat(request, env) {
+  const key = (env.OPENAI_API_KEY || '').trim()
+  if (!key) return Response.json({ ok: false, reason: 'openai-unconfigured' }, { status: 503 })
+  let payload
+  try {
+    payload = await request.json()
+  } catch {
+    payload = {}
+  }
+  const message = String((payload && payload.message) || '').trim()
+  if (!message) return Response.json({ ok: false, reason: 'empty' }, { status: 400 })
+  const rawHistory = Array.isArray(payload && payload.history) ? payload.history : []
+  const history = rawHistory
+    .filter((turn) => turn && (turn.role === 'user' || turn.role === 'assistant') && String(turn.content || '').trim())
+    .slice(-8)
+    .map((turn) => ({ role: turn.role, content: String(turn.content) }))
+  const messages = [{ role: 'system', content: COACH_SYSTEM_PROMPT }, ...history, { role: 'user', content: message }]
+  try {
+    const result =
+      payload && payload.audio === true
+        ? await coachChatAudio(key, messages, env)
+        : await coachChatText(key, messages, env)
+    return Response.json({ ok: true, ...result })
+  } catch {
+    return Response.json({ ok: false, reason: 'coach-unavailable' }, { status: 502 })
+  }
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url)
@@ -179,6 +263,10 @@ export default {
         },
         { headers: { 'cache-control': 'no-store' } },
       )
+    }
+
+    if (url.pathname === '/api/speak/chat' && request.method === 'POST') {
+      return handleSpeakChat(request, env)
     }
 
     if (url.pathname === '/api/health' && request.method === 'GET') {
