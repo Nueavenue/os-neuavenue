@@ -250,6 +250,149 @@ async function handleSpeakChat(request, env) {
   }
 }
 
+// WO-UI-NEU-HOSTED-ASK-AI-121 — office Ask AI on the CDN. No Ollama here.
+const OFFICE_MODELS = ['os.neu-local', 'gpt-4o-mini', 'gpt-4o', 'gpt-4.1-mini', 'gpt-4.1']
+const officeHits = new Map()
+
+function pickHostedOpenAiKey(request, env) {
+  const user = (request.headers.get('x-neuos-openai-key') || '').trim()
+  if (user.startsWith('sk-') && user.length >= 20 && user.length < 500) return user
+  return (env.OPENAI_API_KEY || '').trim()
+}
+
+function mapHostedOfficeModel(raw) {
+  const model = OFFICE_MODELS.includes(raw) ? raw : 'gpt-4o-mini'
+  if (model === 'os.neu-local') return { model: 'gpt-4o-mini', mappedFrom: 'os.neu-local' }
+  return { model, mappedFrom: null }
+}
+
+function officeSystemFor(app) {
+  if (app === 'sheet') {
+    return 'You write spreadsheet content. Reply as TSV (tab-separated) with a header row, then up to 8 data rows. No markdown.'
+  }
+  if (app === 'slides') {
+    return (
+      'You write a slide deck as JSON only — no markdown, no code fences, no commentary. ' +
+      'Schema: {"version":1,"title":"optional deck title","slides":[...]} max 8 slides. ' +
+      'Each slide is one of: ' +
+      '{"layout":"title","title":"string","body":"optional subtitle"}; ' +
+      '{"layout":"bullets","title":"string","bullets":["max 6 short lines"]}; ' +
+      '{"layout":"table","title":"string","table":{"headers":["max 5"],"rows":[["max 5 cols"], "max 8 rows"]}}. ' +
+      'Only use numbers the user gave you in the instruction or current content — never invent NeuAvenue revenue, ARR, or KPI figures; ' +
+      'if you must illustrate with made-up numbers, label the slide title or a cell "EXAMPLE". Reply with the JSON object only.'
+    )
+  }
+  return 'You write a document. Reply with a title on the first line, then the body. Keep it useful and concise.'
+}
+
+function officeRateLimited(request) {
+  const ip = request.headers.get('cf-connecting-ip') || 'anon'
+  const now = Date.now()
+  const row = officeHits.get(ip) || { n: 0, t: now }
+  if (now - row.t > 10 * 60 * 1000) {
+    row.n = 0
+    row.t = now
+  }
+  row.n += 1
+  officeHits.set(ip, row)
+  return row.n > 30
+}
+
+async function officeChatText(key, model, messages) {
+  const res = await fetch('https://api.openai.com/v1/chat/completions', {
+    method: 'POST',
+    headers: { authorization: `Bearer ${key}`, 'content-type': 'application/json' },
+    body: JSON.stringify({ model, messages, max_tokens: 1500, temperature: 0.3 }),
+  })
+  if (!res.ok) throw new Error(`openai-${res.status}`)
+  const data = await res.json()
+  const text = String((data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) || '').trim()
+  if (!text) throw new Error('empty-reply')
+  return text
+}
+
+function handleLlmSettings(request, env) {
+  const siteKey = Boolean((env.OPENAI_API_KEY || '').trim())
+  if (request.method === 'GET') {
+    return Response.json({
+      ok: true,
+      hosted: true,
+      provider: 'openai',
+      localModel: '',
+      hasKey: siteKey,
+      keyHint: siteKey ? 'site' : '',
+      ready: siteKey ? { ok: true, via: 'openai' } : { ok: false, reason: 'hosted-no-local' },
+      reason: 'hosted-no-ollama',
+    })
+  }
+  return Response.json({
+    ok: true,
+    hosted: true,
+    hasKey: siteKey,
+    provider: 'openai',
+    reason: 'hosted-session-key',
+  })
+}
+
+async function handleLlmPing(request, env) {
+  const key = pickHostedOpenAiKey(request, env)
+  if (!key) return Response.json({ ok: false, reason: 'no-llm' }, { status: 503 })
+  const payload = await request.json().catch(() => ({}))
+  const mapped = mapHostedOfficeModel(String(payload.model || ''))
+  const t0 = Date.now()
+  try {
+    await officeChatText(key, mapped.model, [
+      { role: 'system', content: 'Reply with the single word pong.' },
+      { role: 'user', content: 'ping' },
+    ])
+    return Response.json({
+      ok: true,
+      provider: 'openai',
+      model: mapped.model,
+      mappedFrom: mapped.mappedFrom,
+      ms: Date.now() - t0,
+    })
+  } catch (err) {
+    return Response.json({ ok: false, reason: err instanceof Error ? err.message : 'ping-error' }, { status: 502 })
+  }
+}
+
+async function handleOfficeAssist(request, env, asStream) {
+  if (officeRateLimited(request)) {
+    return Response.json({ ok: false, reason: 'rate-limit' }, { status: 429 })
+  }
+  const key = pickHostedOpenAiKey(request, env)
+  if (!key) return Response.json({ ok: false, reason: 'no-llm' }, { status: 503 })
+  const payload = await request.json().catch(() => ({}))
+  const app = payload.app === 'doc' || payload.app === 'slides' ? payload.app : 'sheet'
+  const instruction = String(payload.instruction || '').trim().slice(0, 2000)
+  if (!instruction) return Response.json({ ok: false, reason: 'empty' }, { status: 400 })
+  const mapped = mapHostedOfficeModel(String(payload.model || ''))
+  const content = String(payload.content || '').slice(0, 6000)
+  const history = (Array.isArray(payload.history) ? payload.history : [])
+    .filter((turn) => turn && (turn.role === 'user' || turn.role === 'assistant'))
+    .slice(-6)
+    .map((turn) => ({ role: turn.role, content: String(turn.content || '').slice(0, 1500) }))
+  const messages = [
+    { role: 'system', content: officeSystemFor(app) },
+    ...history,
+    { role: 'user', content: `Instruction: ${instruction}\nCurrent content:\n${content}` },
+  ]
+  try {
+    const text = await officeChatText(key, mapped.model, messages)
+    const result = { ok: true, text, model: mapped.model, provider: 'openai', mappedFrom: mapped.mappedFrom }
+    if (!asStream) return Response.json(result)
+    const lines = [
+      JSON.stringify({ ok: true, piece: text, full: text, done: true, model: result.model, provider: 'openai' }),
+    ]
+    return new Response(lines.join('\n') + '\n', {
+      headers: { 'content-type': 'application/x-ndjson; charset=utf-8', 'cache-control': 'no-cache' },
+    })
+  } catch (err) {
+    return Response.json({ ok: false, reason: err instanceof Error ? err.message : 'assist-error' }, { status: 502 })
+  }
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url)
@@ -267,6 +410,19 @@ export default {
 
     if (url.pathname === '/api/speak/chat' && request.method === 'POST') {
       return handleSpeakChat(request, env)
+    }
+
+    if (url.pathname === '/api/llm/settings' && (request.method === 'GET' || request.method === 'POST')) {
+      return handleLlmSettings(request, env)
+    }
+    if (url.pathname === '/api/llm/ping' && request.method === 'POST') {
+      return handleLlmPing(request, env)
+    }
+    if (url.pathname === '/api/office/assist' && request.method === 'POST') {
+      return handleOfficeAssist(request, env, false)
+    }
+    if (url.pathname === '/api/office/assist/stream' && request.method === 'POST') {
+      return handleOfficeAssist(request, env, true)
     }
 
     if (url.pathname === '/api/health' && request.method === 'GET') {
