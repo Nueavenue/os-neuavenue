@@ -529,6 +529,7 @@ export default {
       '/api/download/pack': '/downloads/neuos-boot-kit.tar.gz',
       '/api/download/iso': '/downloads/neuos-live.iso',
       '/api/download/linux': '/downloads/neuos-linux.tar.gz',
+      '/api/download/windows': '/downloads/neuos-windows.zip',
     }
     if (url.pathname in legacyDownloads) {
       url.pathname = legacyDownloads[url.pathname]

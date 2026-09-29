@@ -94,10 +94,11 @@
           </div>
           <div class="hero-downloads" aria-label="Install files">
             <a class="dl-chip" href="/downloads/neuos-boot-kit.tar.gz" download>Boot kit</a>
-            <a class="dl-chip" href="/downloads/neuos-live.iso" download title="302 redirect to GitHub Release (360 MB)">USB image ISO</a>
+            <a class="dl-chip" href="/downloads/neuos-live.iso" download title="Linux JeOS ISO · 302 redirect to GitHub Release (360 MB)">USB image ISO (Linux JeOS)</a>
             <a class="dl-chip" href="/downloads/neuos-linux.tar.gz" download>Linux screen pack</a>
+            <a class="dl-chip" href="/downloads/neuos-windows.zip" download>Download os.neu on Windows</a>
           </div>
-          <p class="hero-iso-note">USB image ISO is served via same-origin redirect to GitHub Release (DOWNLOAD-1 · ~360 MB).</p>
+          <p class="hero-iso-note">USB image ISO is Linux JeOS (burn with Rufus on Windows if you want a stick). It does not plant Start Menu. Served via same-origin redirect to GitHub Release (DOWNLOAD-1 · ~360 MB).</p>
           <div class="waveform" aria-hidden="true">
             <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
             <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
@@ -197,11 +198,11 @@
           <div class="grid-2 detail-cards">
             <article class="card card-surface">
               <h3>PC that already has Windows</h3>
-              <p>The disk is not wiped. The next login opens the OS.neu graphical screen.</p>
+              <p>The disk is not wiped. Download os.neu on Windows, then run install-windows.ps1. That plants %USERPROFILE%\os.neu plus Desktop and Start Menu. Logon is off unless you pass -EnableLogon. USB ISO is Linux JeOS — it does not plant Start Menu.</p>
               <ol>
-                <li>Download the boot kit.</li>
-                <li>Choose <strong>PC that already has an OS</strong>.</li>
-                <li>When the bar hits 100%, hardware check → talk screen or DOS console.</li>
+                <li>Download <strong>os.neu on Windows</strong> (neuos-windows.zip).</li>
+                <li>Run <code>install-windows.ps1</code> in PowerShell.</li>
+                <li>Click os.neu on the Desktop or Start Menu. Not WSL2.</li>
               </ol>
             </article>
             <article class="card card-surface">
@@ -215,8 +216,9 @@
             </article>
           </div>
           <p class="actions section-actions">
-            <a class="btn btn-ghost" href="/downloads/neuos-live.iso" download>USB image ISO</a>
+            <a class="btn btn-ghost" href="/downloads/neuos-live.iso" download>USB image ISO (Linux JeOS)</a>
             <a class="btn btn-ghost" href="/downloads/neuos-linux.tar.gz" download>Linux screen pack</a>
+            <a class="btn btn-ghost" href="/downloads/neuos-windows.zip" download>Download os.neu on Windows</a>
           </p>
         </div>
       </section>
@@ -289,11 +291,11 @@
                 <div class="pillar-icon indigo">
                   <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22V8M5 12H2a10 10 0 0020 0h-3"/></svg>
                 </div>
-                <span class="dl-size">tar.gz</span>
+                <span class="dl-size">zip</span>
               </div>
-              <h3>Windows</h3>
-              <p class="dl-arch">WSL2 / screen pack for Linux-side install</p>
-              <a class="btn btn-primary btn-block" href="/downloads/neuos-linux.tar.gz" download>Linux screen pack</a>
+              <h3>Download os.neu on Windows</h3>
+              <p class="dl-arch">%USERPROFILE%\os.neu · Desktop + Start Menu. Not WSL2. Not the Linux tar.</p>
+              <a class="btn btn-primary btn-block" href="/downloads/neuos-windows.zip" download>Download os.neu on Windows</a>
             </article>
           </div>
           <div class="grid-2 iso-row">
@@ -305,7 +307,7 @@
                 <span class="dl-size">~360 MB</span>
               </div>
               <h3>USB image ISO</h3>
-              <p class="dl-arch"><code>/downloads/neuos-live.iso</code> · 302 → GitHub Release</p>
+              <p class="dl-arch">Linux JeOS · not a Windows Start Menu plant · <code>/downloads/neuos-live.iso</code> · 302 → GitHub Release</p>
               <a class="btn btn-ghost btn-block" href="/downloads/neuos-live.iso" download>USB image ISO</a>
             </article>
             <article class="dl-card card-surface">
@@ -320,7 +322,7 @@
               <a class="btn btn-ghost btn-block" href="/downloads/neuos-linux.tar.gz" download>Linux screen pack</a>
             </article>
           </div>
-          <p class="terminal-note center">Requires microphone and free disk space. USB ISO served via same-origin redirect (DOWNLOAD-1).</p>
+          <p class="terminal-note center">Requires microphone and free disk space. USB ISO is Linux JeOS (not a Windows Start Menu plant), served via same-origin redirect (DOWNLOAD-1).</p>
         </div>
       </section>
 
