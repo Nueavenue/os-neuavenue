@@ -522,6 +522,15 @@ export default {
       )
     }
 
+    // os.neu-win-0.1.0-x64.zip (~106MB) exceeds Workers 25MB static.
+    // Same-origin URL 302 → GitHub Release (WIN11 refresh 2026-10-02).
+    if (url.pathname === '/downloads/os.neu-win-0.1.0-x64.zip') {
+      return Response.redirect(
+        'https://github.com/Nueavenue/os-neuavenue/releases/download/os-neu-win-0.1.0-x64/os.neu-win-0.1.0-x64.zip',
+        302,
+      )
+    }
+
     // Legacy bridge-only paths (dev localhost used these against the Node
     // bridge). Redirect to the static prod equivalents so old bookmarks/
     // embeds keep working (WO-UI-NEU-DOWNLOAD-1).
@@ -529,7 +538,7 @@ export default {
       '/api/download/pack': '/downloads/neuos-boot-kit.tar.gz',
       '/api/download/iso': '/downloads/neuos-live.iso',
       '/api/download/linux': '/downloads/neuos-linux.tar.gz',
-      '/api/download/windows': '/downloads/neuos-windows.zip',
+      '/api/download/windows': '/downloads/os.neu-win-0.1.0-x64.zip',
     }
     if (url.pathname in legacyDownloads) {
       url.pathname = legacyDownloads[url.pathname]

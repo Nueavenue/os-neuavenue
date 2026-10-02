@@ -4,3 +4,5 @@ node_modules
 *.log
 .env
 .env.*
+# Workers 25MB + git 100MB: host via GitHub Release 302 (same as neuos-live.iso)
+downloads/os.neu-win-0.1.0-x64.zip
