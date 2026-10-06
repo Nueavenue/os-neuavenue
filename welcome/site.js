@@ -28,6 +28,43 @@
     window.addEventListener('scroll', onScroll, { passive: true })
   }
 
+  // Same rules as src/engine/detectOs.ts detectGuestOs + heroPrimaryForGuestOs.
+  function detectGuestOs(ua, platformHint) {
+    const p = String(platformHint || '').toLowerCase()
+    const u = String(ua || '').toLowerCase()
+    if (p.includes('cros') || u.includes('cros')) return 'chromeos'
+    if (p === 'macos' || p.includes('mac') || u.includes('mac os') || u.includes('macintosh')) return 'macos'
+    if (p === 'windows' || p === 'win32' || u.includes('windows')) return 'windows'
+    if (p === 'linux' || u.includes('linux')) return 'linux'
+    return 'unknown'
+  }
+
+  function heroPrimaryForGuestOs(os) {
+    if (os === 'windows') {
+      return {
+        href: '/downloads/os.neu-win-0.1.0-x64.zip',
+        label: 'Download os.neu on Windows',
+        file: 'os.neu-win-0.1.0-x64.zip',
+      }
+    }
+    return {
+      href: '/downloads/neuos-boot-kit.tar.gz',
+      label: 'Download boot kit',
+      file: 'neuos-boot-kit.tar.gz',
+    }
+  }
+
+  const heroPrimary = document.querySelector('.hero .actions .btn-primary')
+  if (heroPrimary) {
+    const nav = navigator
+    const hint = (nav.userAgentData && nav.userAgentData.platform) || nav.platform || ''
+    const pack = heroPrimaryForGuestOs(detectGuestOs(nav.userAgent, hint))
+    heroPrimary.setAttribute('href', pack.href)
+    heroPrimary.setAttribute('download', pack.file)
+    const label = heroPrimary.querySelector('[data-hero-label]')
+    if (label) label.textContent = pack.label
+  }
+
   document.querySelectorAll('[data-copy]').forEach((btn) => {
     btn.addEventListener('click', async () => {
       const text = btn.getAttribute('data-copy')
