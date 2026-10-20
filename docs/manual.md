@@ -2,7 +2,7 @@
 
 켜면 폴더와 시작 메뉴가 없습니다. 이미 있는 PC 위에서 말로 쓰는 얼굴입니다. 디스크를 지우지 않습니다.
 
-**지금 받은 파일로 심기·USB 굽기는 Linux에서만 됩니다.** Windows·macOS 설치 파일은 아직 없습니다. 이 페이지와 랜딩은 어떤 브라우저에서도 열 수 있습니다. 이 PC에 남기려면 Linux가 필요합니다.
+**USB 굽기는 Linux에서만 됩니다.** Windows에 Linux와 같은 화면을 심으려면 [Windows 설치 안내](windows-install-guide.md) 와 소스 팩 `neuos-windows.zip` 을 씁니다. macOS 설치 파일은 아직 없습니다.
 
 공개 홈: [https://os.neuavenue.com](https://os.neuavenue.com)  
 문서 홈: [https://docs.neuavenue.com](https://docs.neuavenue.com)  
