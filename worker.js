@@ -23,10 +23,23 @@ function assetRequest(request, path) {
 }
 
 async function serveAsset(env, request, path) {
+  if (path.endsWith('.md')) {
+    const reqUrl = new URL(request.url)
+    if (reqUrl.searchParams.get('raw') !== '1') {
+      const doc = path.split('/').pop() || 'manual.en.md'
+      const view = new URL(request.url)
+      view.pathname = '/docs/view.html'
+      view.search = ''
+      view.searchParams.set('doc', doc)
+      view.searchParams.set('lang', reqUrl.searchParams.get('lang') || 'en')
+      return Response.redirect(view.toString(), 302)
+    }
+  }
   const res = await env.ASSETS.fetch(assetRequest(request, path))
   if (!path.endsWith('.md')) return res
   const headers = new Headers(res.headers)
   headers.set('access-control-allow-origin', '*')
+  headers.set('content-type', 'text/markdown; charset=utf-8')
   return new Response(res.body, { status: res.status, headers })
 }
 
@@ -543,6 +556,10 @@ export default {
     if (url.pathname in legacyDownloads) {
       url.pathname = legacyDownloads[url.pathname]
       return Response.redirect(url.toString(), 302)
+    }
+
+    if (url.pathname.endsWith('.md')) {
+      return serveAsset(env, request, url.pathname)
     }
 
     return env.ASSETS.fetch(request)

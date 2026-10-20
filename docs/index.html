@@ -1,57 +1,48 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en" class="font-en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>OS.neu docs</title>
     <link rel="icon" type="image/png" href="/brand/neuos-mark.png" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="docs.css" />
     <style>
-      :root {
-        color-scheme: dark;
-      }
       body {
-        margin: 0;
-        min-height: 100vh;
         display: grid;
         place-items: center;
-        background: #0b0c0a;
-        color: #f4efe6;
-        font-family: Pretendard, "Segoe UI", sans-serif;
-      }
-      .card {
-        width: min(420px, 92vw);
-        padding: 28px 24px;
-        border: 1px solid rgba(244, 239, 230, 0.18);
-        border-radius: 24px;
-        background: #1b1c17;
-      }
-      h1 {
-        margin: 0 0 8px;
-        font-size: 1.2rem;
-      }
-      p {
-        margin: 0 0 18px;
-        color: rgba(244, 239, 230, 0.62);
-        line-height: 1.45;
-      }
-      a {
-        color: #c5d4a3;
       }
     </style>
   </head>
   <body>
-    <article class="card">
-      <h1>os.neu docs</h1>
-      <p>다운로드, 설치 세 길(지금 파일은 Linux만), USB 콘솔, 말하기. 화면 위 Manual 아이콘과 같은 문서입니다.</p>
+    <article class="docs-card">
+      <h1 id="title">os.neu docs</h1>
+      <p id="lead">Download, Linux USB, Windows source-pack install, speak. Same document as the Manual icon.</p>
       <p>
-        <a href="manual.md">한국어 설명서</a>
+        <a id="en-manual" href="view.html?doc=manual.en.md&amp;lang=en">os.neu manual (Linux / Windows)</a>
         ·
-        <a href="manual.en.md">English manual</a>
+        <a id="win" href="view.html?doc=windows-install-guide.md&amp;lang=en">Windows</a>
         ·
-        <a href="usb-console-guide.md">USB 콘솔</a>
+        <a id="usb" href="https://os.neuavenue.com/tutorial">USB recovery</a>
         ·
         <a href="https://os.neuavenue.com">os.neuavenue.com</a>
       </p>
     </article>
+    <script src="docs-locale.js"></script>
+    <script>
+      window.osneuDocs.applyDocsLocale()
+      window.osneuDocs.installDocsBack()
+      window.osneuDocs.interceptDocsLinks()
+    </script>
   </body>
 </html>

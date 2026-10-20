@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OS.neu docs</title>
+    <link rel="icon" type="image/png" href="/brand/neuos-mark.png" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="docs.css" />
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      html,
+      body {
+        max-width: 100%;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: #0b0c0a;
+        color: #f4efe6;
+      }
+      html.docs-embed .bar {
+        display: none;
+      }
+      html.docs-embed,
+      html.docs-embed body {
+        min-height: 0;
+        overflow-x: hidden;
+      }
+      .bar {
+        position: sticky;
+        top: 0;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        padding: 12px 18px;
+        background: rgba(11, 12, 10, 0.92);
+        border-bottom: 1px solid rgba(244, 239, 230, 0.14);
+      }
+      .back {
+        border: 1px solid rgba(244, 239, 230, 0.22);
+        background: #1b1c17;
+        color: #f4efe6;
+        border-radius: 999px;
+        padding: 6px 12px;
+        font: inherit;
+        cursor: pointer;
+      }
+      .bar a {
+        color: #c5d4a3;
+      }
+      .doc {
+        max-width: min(46rem, 100%);
+        box-sizing: border-box;
+        margin: 0 auto;
+        padding: 24px 20px 64px;
+        line-height: 1.55;
+      }
+      .doc pre,
+      .doc table {
+        max-width: 100%;
+        overflow-x: auto;
+      }
+      @media (max-width: 520px) {
+        .bar {
+          padding: 8px 12px;
+        }
+        .doc {
+          padding: 16px 12px 40px;
+        }
+      }
+      .doc h1,
+      .doc h2,
+      .doc h3 {
+        line-height: 1.25;
+      }
+      .doc a {
+        color: #c5d4a3;
+      }
+      .doc code,
+      .doc pre {
+        font-family: ui-monospace, monospace;
+        background: #131410;
+      }
+      .doc pre {
+        overflow: auto;
+        padding: 12px;
+        border-radius: 12px;
+      }
+      .doc table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      .doc th,
+      .doc td {
+        border: 1px solid rgba(244, 239, 230, 0.14);
+        padding: 6px 8px;
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bar">
+      <button type="button" class="back" id="back">← Back</button>
+      <a href="index.html">os.neu docs</a>
+    </div>
+    <article class="doc" id="doc">…</article>
+    <script src="docs-locale.js"></script>
+    <script>
+      window.osneuDocs.applyDocsLocale()
+      document.getElementById('back').textContent = '← Back'
+      const ALLOWED = new Set(['manual.md', 'manual.en.md', 'usb-console-guide.md', 'windows-install-guide.md'])
+
+      function escapeHtml(text) {
+        return text
+          .replaceAll('&', '&amp;')
+          .replaceAll('<', '&lt;')
+          .replaceAll('>', '&gt;')
+          .replaceAll('"', '&quot;')
+      }
+
+      function inline(text) {
+        return escapeHtml(text)
+          .replaceAll(/`([^`]+)`/g, '<code>$1</code>')
+          .replaceAll(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+          .replaceAll(
+            /\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g,
+            '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>',
+          )
+      }
+
+      function markdownToHtml(source) {
+        const lines = source.replaceAll('\r\n', '\n').split('\n')
+        const out = []
+        let list = false
+        let fence = false
+        let table = false
+        const closeList = () => {
+          if (list) {
+            out.push('</ul>')
+            list = false
+          }
+        }
+        const closeTable = () => {
+          if (table) {
+            out.push('</table>')
+            table = false
+          }
+        }
+        for (let i = 0; i < lines.length; i++) {
+          const raw = lines[i]
+          const line = raw.trimEnd()
+          if (line.trim().startsWith('```')) {
+            closeList()
+            closeTable()
+            if (!fence) {
+              fence = true
+              out.push('<pre><code>')
+            } else {
+              fence = false
+              out.push('</code></pre>')
+            }
+            continue
+          }
+          if (fence) {
+            out.push(`${escapeHtml(line)}\n`)
+            continue
+          }
+          if (!line.trim()) {
+            closeList()
+            closeTable()
+            continue
+          }
+          const heading = /^(#{1,3})\s+(.+)$/.exec(line)
+          if (heading) {
+            closeList()
+            closeTable()
+            const n = heading[1].length
+            out.push(`<h${n}>${inline(heading[2])}</h${n}>`)
+            continue
+          }
+          if (/^\s*\|.*\|/.test(line) && i + 1 < lines.length && /^\s*\|?\s*:?-{3,}/.test(lines[i + 1])) {
+            closeList()
+            if (!table) {
+              out.push('<table>')
+              table = true
+            }
+            const cells = line.replace(/^\|/, '').replace(/\|$/, '').split('|')
+            out.push('<tr>' + cells.map((c) => `<th>${inline(c.trim())}</th>`).join('') + '</tr>')
+            i += 1
+            continue
+          }
+          if (table && /^\s*\|/.test(line) && !/^\s*\|?\s*:?-{3,}/.test(line)) {
+            const cells = line.replace(/^\|/, '').replace(/\|$/, '').split('|')
+            out.push('<tr>' + cells.map((c) => `<td>${inline(c.trim())}</td>`).join('') + '</tr>')
+            continue
+          }
+          if (/^\s*[-*]\s+/.test(line)) {
+            closeTable()
+            if (!list) {
+              out.push('<ul>')
+              list = true
+            }
+            out.push(`<li>${inline(line.replace(/^\s*[-*]\s+/, ''))}</li>`)
+            continue
+          }
+          closeList()
+          closeTable()
+          out.push(`<p>${inline(line)}</p>`)
+        }
+        closeList()
+        closeTable()
+        return out.join('\n')
+      }
+
+      const params = new URLSearchParams(location.search)
+      const asked = params.get('doc') || 'manual.en.md'
+      const doc = ALLOWED.has(asked) ? asked : 'manual.en.md'
+      const raw = new URL(doc, location.href)
+      raw.searchParams.set('raw', '1')
+
+      document.getElementById('back').addEventListener('click', () => {
+        if (history.length > 1) history.back()
+        else location.href = 'index.html'
+      })
+
+      fetch(raw.toString())
+        .then((res) => {
+          if (!res.ok) throw new Error(String(res.status))
+          return res.text()
+        })
+        .then((text) => {
+          document.getElementById('doc').innerHTML = markdownToHtml(text)
+          document.title = doc
+        })
+        .catch(() => {
+          document.getElementById('doc').innerHTML =
+            '<p>Could not open this document. Return to <a href="index.html">docs home</a>.</p>'
+        })
+      window.osneuDocs.interceptDocsLinks()
+    </script>
+  </body>
+</html>
