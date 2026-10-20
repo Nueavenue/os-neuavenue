@@ -558,8 +558,12 @@ export default {
       return Response.redirect(url.toString(), 302)
     }
 
-    if (url.pathname.endsWith('.md')) {
-      return serveAsset(env, request, url.pathname)
+    if (url.pathname.startsWith('/docs/') || url.pathname.endsWith('.md')) {
+      let path = url.pathname
+      if (path === '/docs' || path === '/docs/') path = '/docs/index.html'
+      else if (path === '/docs/view' || path === '/docs/view/') path = '/docs/view.html'
+      else if (path === '/docs/index' || path === '/docs/index/') path = '/docs/index.html'
+      return serveAsset(env, request, path)
     }
 
     return env.ASSETS.fetch(request)
