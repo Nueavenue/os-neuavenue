@@ -22,18 +22,28 @@ function assetRequest(request, path) {
   return new Request(url, { method: request.method, headers: request.headers })
 }
 
+function wantsMarkdownViewer(request) {
+  const reqUrl = new URL(request.url)
+  if (reqUrl.searchParams.get('raw') === '1') return false
+  const mode = (request.headers.get('sec-fetch-mode') || '').toLowerCase()
+  if (mode === 'cors' || mode === 'same-origin' || mode === 'no-cors') return false
+  if (mode === 'navigate' || mode === 'nested-navigate') return true
+  const dest = (request.headers.get('sec-fetch-dest') || '').toLowerCase()
+  if (dest === 'document' || dest === 'iframe') return true
+  const accept = (request.headers.get('accept') || '').toLowerCase()
+  return accept.includes('text/html') && !accept.includes('text/markdown')
+}
+
 async function serveAsset(env, request, path) {
-  if (path.endsWith('.md')) {
+  if (path.endsWith('.md') && wantsMarkdownViewer(request)) {
     const reqUrl = new URL(request.url)
-    if (reqUrl.searchParams.get('raw') !== '1') {
-      const doc = path.split('/').pop() || 'manual.en.md'
-      const view = new URL(request.url)
-      view.pathname = '/docs/view.html'
-      view.search = ''
-      view.searchParams.set('doc', doc)
-      view.searchParams.set('lang', reqUrl.searchParams.get('lang') || 'en')
-      return Response.redirect(view.toString(), 302)
-    }
+    const doc = path.split('/').pop() || 'manual.en.md'
+    const view = new URL(request.url)
+    view.pathname = '/docs/view.html'
+    view.search = ''
+    view.searchParams.set('doc', doc)
+    view.searchParams.set('lang', reqUrl.searchParams.get('lang') || 'en')
+    return Response.redirect(view.toString(), 302)
   }
   const res = await env.ASSETS.fetch(assetRequest(request, path))
   if (!path.endsWith('.md')) return res
