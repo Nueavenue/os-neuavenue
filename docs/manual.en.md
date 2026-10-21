@@ -10,7 +10,8 @@ USB recovery: [https://os.neuavenue.com/tutorial](https://os.neuavenue.com/tutor
 Windows (this chapter as its own page): [https://docs.neuavenue.com/windows-install-guide.md](https://docs.neuavenue.com/windows-install-guide.md)
 
 - Linux plant pack: [neuos-linux.tar.gz](https://os.neuavenue.com/downloads/neuos-linux.tar.gz)
-- Windows source pack: [neuos-windows.zip](https://os.neuavenue.com/downloads/neuos-windows.zip)
+- Windows Setup: [os.neu-Setup.exe](https://os.neuavenue.com/downloads/os.neu-Setup.exe)
+- Windows source pack (developers): [neuos-windows.zip](https://os.neuavenue.com/downloads/neuos-windows.zip)
 - USB kit: [neuos-boot-kit.tar.gz](https://os.neuavenue.com/downloads/neuos-boot-kit.tar.gz)
 
 There is no macOS installer yet. This page still opens in any browser.
@@ -138,9 +139,9 @@ Give up: hold power, unplug USB, power on. The internal disk is not wiped.
 
 ## Windows
 
-To see the **same screen as a Linux plant** (app.neu · Docs · Sheets · Slides), install the **source pack**. Do not use `os.neu.exe` for that screen.
+Customer path: [os.neu-Setup.exe](https://os.neuavenue.com/downloads/os.neu-Setup.exe) — **os.neu v1.0**, no Node. SmartScreen: More info → Run anyway.
 
-The welcome chip **Download os.neu on Windows** (`os.neu.exe`) is **Seat Face** (layers 01–10). That is not the Linux plant screen.
+Seat Face `os.neu.exe` (layers 01–10) is a different product. The source pack below is for developers (Node 20).
 
 ### 1. Before you start
 

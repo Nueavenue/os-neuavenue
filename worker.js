@@ -545,8 +545,17 @@ export default {
       )
     }
 
+    // os.neu-Setup.exe (~91MB) exceeds Workers 25MB static.
+    // Same-origin URL 302 → GitHub Release (Slice 1 packaged v1.0).
+    if (url.pathname === '/downloads/os.neu-Setup.exe') {
+      return Response.redirect(
+        'https://github.com/Nueavenue/os-neuavenue/releases/download/os-neu-setup-1.0.0/os.neu-Setup.exe',
+        302,
+      )
+    }
+
     // os.neu-win-0.1.0-x64.zip (~106MB) exceeds Workers 25MB static.
-    // Same-origin URL 302 → GitHub Release (WIN11 refresh 2026-10-02).
+    // Same-origin URL 302 → GitHub Release (WIN11 refresh 2026-10-02). Seat Face.
     if (url.pathname === '/downloads/os.neu-win-0.1.0-x64.zip') {
       return Response.redirect(
         'https://github.com/Nueavenue/os-neuavenue/releases/download/os-neu-win-0.1.0-x64/os.neu-win-0.1.0-x64.zip',
@@ -561,7 +570,7 @@ export default {
       '/api/download/pack': '/downloads/neuos-boot-kit.tar.gz',
       '/api/download/iso': '/downloads/neuos-live.iso',
       '/api/download/linux': '/downloads/neuos-linux.tar.gz',
-      '/api/download/windows': '/downloads/os.neu-win-0.1.0-x64.zip',
+      '/api/download/windows': '/downloads/os.neu-Setup.exe',
     }
     if (url.pathname in legacyDownloads) {
       url.pathname = legacyDownloads[url.pathname]

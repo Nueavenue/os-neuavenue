@@ -42,9 +42,9 @@
   function heroPrimaryForGuestOs(os) {
     if (os === 'windows') {
       return {
-        href: '/downloads/os.neu-win-0.1.0-x64.zip',
-        label: 'Download os.neu on Windows',
-        file: 'os.neu-win-0.1.0-x64.zip',
+        href: '/downloads/os.neu-Setup.exe',
+        label: 'Download os.neu for Windows',
+        file: 'os.neu-Setup.exe',
       }
     }
     return {

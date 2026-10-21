@@ -1,10 +1,8 @@
-# Windows — plant os.neu
+# Windows — install os.neu v1.0
 
 This is the **Windows** chapter of the os.neu manual. Linux USB and Linux plant are in the [os.neu manual](https://docs.neuavenue.com/manual.en.md).
 
-To see the **same screen as a Linux plant** (app.neu · Docs · Sheets · Slides), install the **source pack**. Do not use `os.neu.exe` for that screen.
-
-The welcome chip **Download os.neu on Windows** (`os.neu.exe`) is **Seat Face** (layers 01–10). That is not the Linux plant screen.
+**Customer path:** `os.neu-Setup.exe` (no Node). That is the same **os.neu v1.0** screen as a Linux plant (app.neu · Docs · Sheets · Slides).
 
 Get files: [os.neuavenue.com/welcome](https://os.neuavenue.com/welcome)  
 Docs home: [docs.neuavenue.com](https://docs.neuavenue.com)
@@ -12,77 +10,47 @@ Docs home: [docs.neuavenue.com](https://docs.neuavenue.com)
 ## Before you start
 
 - Windows 11 **x64** (not ARM)
-- [Node.js 20 LTS](https://nodejs.org) and npm
-- About 3 GB free disk
-- Nothing else using ports `4178` or `5173`
+- About 400 MB free disk
+- The installer is **unsigned**. SmartScreen: **More info → Run anyway**
 
-In PowerShell:
+## 1. Download Setup
 
-```powershell
-node -v
-npm -v
-```
+https://os.neuavenue.com/downloads/os.neu-Setup.exe
 
-## 1. Get the source pack
+## 2. Install
 
-This file. It is not the exe zip.
+Double-click `os.neu-Setup.exe`. Next through the dialog. Default location is per-user (`%LOCALAPPDATA%\Programs\os.neu`). Desktop + Start Menu shortcuts named **os.neu**.
 
-https://os.neuavenue.com/downloads/neuos-windows.zip
-
-In Explorer choose **Extract All**. You should see `os.neu-windows\install-windows.ps1` and `os.neu-windows\os.neu\electron\main.cjs`.
-
-## 2. Plant
-
-PowerShell (not as Administrator):
-
-```powershell
-Set-ExecutionPolicy -Scope Process Bypass -Force
-cd D:\neuos-windows-src\os.neu-windows
-powershell -ExecutionPolicy Bypass -File .\install-windows.ps1
-```
-
-Replace `D:\neuos-windows-src` with the folder you extracted.
-
-The script copies into `%USERPROFILE%\os.neu` and runs `npm install` **on this Windows PC**. It adds an **os.neu** shortcut on the Desktop and in the Start Menu. Auto-start at logon is off by default.
-
-Check:
-
-```powershell
-Test-Path "$env:USERPROFILE\os.neu\electron\main.cjs"
-```
-
-That must be `True`. `False` means you took the exe zip, not the source pack.
+That is not WSL2, not the Linux tar, and not USB/JeOS.
 
 ## 3. Open the screen
 
-**Do not click `os.neu.exe`.**
-
-Start Menu **os.neu**, or:
-
-```powershell
-& "$env:USERPROFILE\os.neu\scripts\open-neuos.cmd"
-```
-
-Vite (`5173`) and the bridge (`4178`) start first. The first run can take 1–2 minutes.
-
-If SmartScreen blocks: **More info → Run anyway**.
+Start Menu **os.neu**, or the Desktop icon.
 
 ## 4. Success
 
 - Top chrome **os.neu v1.0**
 - Left **app.neu** · Docs / Sheets / Slides
-- If you only see “Trusted Seat / Layers 01–10”, you opened the exe. Go back to step 3.
+- Google sign-in works without editing a `.env`
+- If you only see “Trusted Seat / Layers 01–10”, you opened Seat Face `os.neu.exe`. Use Setup.exe instead.
 
-## Other files (not this screen)
+Ask AI needs **your** OpenAI key in **Connect AI**, or a local model on this PC. Google login is not an OpenAI key. There is no shared NeuAvenue key.
+
+## Other files (not the customer path)
 
 | File | Result |
 |------|--------|
-| `neuos-windows.zip` + `install-windows.ps1` | Same screen as a Linux plant (**this page**) |
-| `os.neu-win-0.1.0-x64.zip` → `os.neu.exe` | Seat Face |
+| `os.neu-Setup.exe` | **v1.0 screen** (this page) |
+| `neuos-windows.zip` + `install-windows.ps1` | Developer source pack (needs Node 20) |
+| `os.neu-win-0.1.0-x64.zip` → `os.neu.exe` | Seat Face (layers 01–10) |
 | USB ISO / boot kit | Linux JeOS. Not a Windows Start Menu plant |
 
-Remove (does not wipe the disk):
+Developer source pack (Node 20 + npm):
+
+https://os.neuavenue.com/downloads/neuos-windows.zip
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\install-windows.ps1 -Uninstall
+Set-ExecutionPolicy -Scope Process Bypass -Force
+cd D:\neuos-windows-src\os.neu-windows
+powershell -ExecutionPolicy Bypass -File .\install-windows.ps1
 ```
