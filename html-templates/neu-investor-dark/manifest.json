@@ -1,0 +1,88 @@
+{
+  "id": "neu-investor-dark",
+  "title": "NEU Investor Deck",
+  "titleKo": "NEU 투자 덱",
+  "visual": "neu-investor",
+  "locks": [
+    "Trusted Agent Seat",
+    "Agent Operating Layer",
+    "not AI desktop OS",
+    "placeholders only · no invented revenue"
+  ],
+  "structure": [
+    "cover",
+    "problem",
+    "solution",
+    "market",
+    "product",
+    "technology",
+    "business-model",
+    "traction",
+    "roadmap",
+    "team",
+    "funding",
+    "closing"
+  ],
+  "slides": [
+    {
+      "id": "cover",
+      "file": "01-cover.html",
+      "label": "01 Cover"
+    },
+    {
+      "id": "problem",
+      "file": "02-problem.html",
+      "label": "02 Problem"
+    },
+    {
+      "id": "solution",
+      "file": "03-solution.html",
+      "label": "03 Solution"
+    },
+    {
+      "id": "market",
+      "file": "04-market.html",
+      "label": "04 Market"
+    },
+    {
+      "id": "product",
+      "file": "05-product.html",
+      "label": "05 Product"
+    },
+    {
+      "id": "technology",
+      "file": "06-technology.html",
+      "label": "06 Technology"
+    },
+    {
+      "id": "business-model",
+      "file": "07-business-model.html",
+      "label": "07 Business Model"
+    },
+    {
+      "id": "traction",
+      "file": "08-traction.html",
+      "label": "08 Traction"
+    },
+    {
+      "id": "roadmap",
+      "file": "09-roadmap.html",
+      "label": "09 Roadmap"
+    },
+    {
+      "id": "team",
+      "file": "10-team.html",
+      "label": "10 Team"
+    },
+    {
+      "id": "funding",
+      "file": "11-funding.html",
+      "label": "11 Funding"
+    },
+    {
+      "id": "closing",
+      "file": "12-closing.html",
+      "label": "12 Closing"
+    }
+  ]
+}

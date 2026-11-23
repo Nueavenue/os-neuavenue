@@ -1,0 +1,64 @@
+{
+  "id": "minimal-corporate",
+  "title": "Minimal Corporate",
+  "titleKo": "미니멀 코퍼레이트",
+  "visual": "minimal-corp",
+  "locks": [
+    "Trusted Agent Seat",
+    "Agent Operating Layer",
+    "not AI desktop OS",
+    "placeholders only · no invented revenue"
+  ],
+  "structure": [
+    "cover",
+    "summary",
+    "vision",
+    "progress",
+    "metrics",
+    "risks",
+    "team",
+    "next"
+  ],
+  "slides": [
+    {
+      "id": "cover",
+      "file": "01-cover.html",
+      "label": "01 Cover"
+    },
+    {
+      "id": "summary",
+      "file": "02-summary.html",
+      "label": "02 Summary"
+    },
+    {
+      "id": "vision",
+      "file": "03-vision.html",
+      "label": "03 Vision"
+    },
+    {
+      "id": "progress",
+      "file": "04-progress.html",
+      "label": "04 Progress"
+    },
+    {
+      "id": "metrics",
+      "file": "05-metrics.html",
+      "label": "05 Metrics"
+    },
+    {
+      "id": "risks",
+      "file": "06-risks.html",
+      "label": "06 Risks"
+    },
+    {
+      "id": "team",
+      "file": "07-team.html",
+      "label": "07 Team"
+    },
+    {
+      "id": "next",
+      "file": "08-next.html",
+      "label": "08 Next"
+    }
+  ]
+}

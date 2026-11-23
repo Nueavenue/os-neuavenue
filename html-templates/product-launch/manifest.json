@@ -1,0 +1,64 @@
+{
+  "id": "product-launch",
+  "title": "Product Launch",
+  "titleKo": "제품 런치",
+  "visual": "dark-tech",
+  "locks": [
+    "Trusted Agent Seat",
+    "Agent Operating Layer",
+    "not AI desktop OS",
+    "placeholders only · no invented revenue"
+  ],
+  "structure": [
+    "cover",
+    "problem",
+    "audience",
+    "steps",
+    "feature-comparison",
+    "benefits",
+    "timeline",
+    "next"
+  ],
+  "slides": [
+    {
+      "id": "cover",
+      "file": "01-cover.html",
+      "label": "01 Cover"
+    },
+    {
+      "id": "problem",
+      "file": "02-problem.html",
+      "label": "02 Problem"
+    },
+    {
+      "id": "audience",
+      "file": "03-audience.html",
+      "label": "03 Audience"
+    },
+    {
+      "id": "steps",
+      "file": "04-steps.html",
+      "label": "04 Steps"
+    },
+    {
+      "id": "feature-comparison",
+      "file": "05-feature-comparison.html",
+      "label": "05 Feature Comparison"
+    },
+    {
+      "id": "benefits",
+      "file": "06-benefits.html",
+      "label": "06 Benefits"
+    },
+    {
+      "id": "timeline",
+      "file": "07-timeline.html",
+      "label": "07 Timeline"
+    },
+    {
+      "id": "next",
+      "file": "08-next.html",
+      "label": "08 Next"
+    }
+  ]
+}

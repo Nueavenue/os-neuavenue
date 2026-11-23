@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>기존 PC에서 sample.desk로</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#ECE3D2;--paper-soft:#F4EEE1;--ink:#14181D;--ink-soft:#4A4D52;
+  --line:rgba(20,24,29,.16);
+  --ember:#BC4F2B;--teal:#1F3D44;--moss:#4D6B4A;--gold:#C49B3D;
+  --leaf:#DDE9D5;--lavender:#6A55B8;
+}
+body{margin:0;padding:0;overflow:hidden;font-family:'Inter','Noto Sans KR',sans-serif;color:var(--ink);background:var(--paper);}
+p{margin:0;}
+.hair{font-size:13px;font-weight:800;letter-spacing:.14em;color:var(--ember);}
+.title{font-size:42px;font-weight:800;line-height:1.18;letter-spacing:-.01em;}
+.sub{font-size:20px;line-height:1.5;color:var(--ink-soft);font-weight:500;}
+.body{font-size:18px;line-height:1.5;}
+.foot{font-size:13px;line-height:1.5;color:var(--ink-soft);}
+.node{display:flex;align-items:center;justify-content:center;}
+.chip{display:inline-block;padding:3px 10px;font-size:13px;font-weight:700;letter-spacing:.04em;border:1.5px solid currentColor;line-height:1.4;white-space:nowrap;}
+.arrow{color:var(--ink-soft);}
+</style></head>
+<body>
+<div class="slide-container" data-screen-label="기존 PC에서 sample.desk로" style="position:relative;width:1920px;height:1080px;overflow:hidden;background:var(--paper);">
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:48px;width:1100px;z-index:10;"><p class="hair">부록 · 자리 옮기기</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1700px;top:48px;width:140px;z-index:10;text-align:right;"><p style="font-size:13px;font-weight:600;color:var(--ink-soft);">22 / 25</p></div>
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:88px;width:1480px;z-index:10;">
+    <h1 class="title">기존 PC에서 <span style="color:var(--ember);">sample.desk</span>로 — 자리가 옮겨간다</h1>
+    <p class="sub" style="margin-top:10px;">같은 전력, 같은 화면, 같은 손. 자리의 <b>순서</b>만 다시 그려 봅니다 — 운영체제가 자리가 아니라, <b>의도가 자리</b>가 되도록.</p>
+  </div>
+
+  <!-- LEFT — existing PC stack (faded, kept smaller) -->
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:96px;top:288px;width:280px;height:600px;background:#FFFDF6;border:1.5px solid var(--line);border-radius:10px;z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:120px;top:308px;width:240px;z-index:10;">
+    <p class="hair" style="color:var(--ink-soft);">기존 · APPLICATION HIERARCHY</p>
+    <p style="margin-top:14px;font-size:14px;font-weight:700;color:var(--ink-soft);line-height:1.5;">Power</p>
+    <p class="arrow" style="margin:2px 0; text-align:center; font-size:18px;">↓</p>
+    <p style="font-size:14px;font-weight:700;color:var(--ink-soft);">Windows / macOS / Linux</p>
+    <p class="arrow" style="margin:2px 0; text-align:center; font-size:18px;">↓</p>
+    <p style="font-size:14px;font-weight:700;color:var(--ink-soft);">Desktop</p>
+    <p class="arrow" style="margin:2px 0; text-align:center; font-size:18px;">↓</p>
+    <p style="font-size:14px;font-weight:700;color:var(--ink-soft);">Browser</p>
+    <p class="arrow" style="margin:2px 0; text-align:center; font-size:18px;">↓</p>
+    <p style="font-size:14px;font-weight:700;color:var(--ink-soft);">Google</p>
+    <p class="arrow" style="margin:2px 0; text-align:center; font-size:18px;">↓</p>
+    <p style="font-size:14px;font-weight:700;color:var(--ink-soft);">Search</p>
+    <p class="arrow" style="margin:2px 0; text-align:center; font-size:18px;">↓</p>
+    <p style="font-size:14px;font-weight:700;color:var(--ink-soft);">Website</p>
+    <p style="margin-top:18px;font-size:12px;line-height:1.5;color:var(--ink-soft);">사용자가 손으로 URL을 외우고,<br>탭을 열고, 결과를 옮긴다.</p>
+  </div>
+
+  <!-- RIGHT — sample.desk stack -->
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:392px;top:288px;width:380px;height:600px;background:var(--paper-soft);border:1.5px solid var(--ink);border-radius:10px;z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:416px;top:308px;width:336px;z-index:10;">
+    <p class="hair">sample.desk · INTENT-FIRST</p>
+    <p style="margin-top:14px;font-size:16px;font-weight:800;color:var(--ink);">Power</p>
+    <p class="arrow" style="margin:2px 0; text-align:center; font-size:18px;color:var(--ember);">↓</p>
+    <p style="font-size:20px;font-weight:800;color:var(--ember);">sample.desk</p>
+    <p class="arrow" style="margin:2px 0; text-align:center; font-size:18px;color:var(--ember);">↓</p>
+    <p style="font-size:16px;font-weight:700;color:var(--ink);">AI</p>
+    <p class="arrow" style="margin:2px 0; text-align:center; font-size:18px;">↓</p>
+    <p style="font-size:15px;font-weight:700;color:var(--ink);">"Open Google"</p>
+    <p class="arrow" style="margin:2px 0; text-align:center; font-size:18px;color:var(--ember);">↓</p>
+    <p style="font-size:20px;font-weight:800;color:var(--ember);">sample.browse</p>
+    <p style="margin-top:18px;font-size:13px;line-height:1.5;color:var(--ink);">URL을 외우지 않는다 —<br>단어를 던지고, 자리가 그 자리에 답을 가져온다.</p>
+    <p style="margin-top:22px;"><span class="chip" style="color:var(--ember);border-color:var(--ember);">WAVE-1 자리에 이미 깔려 있음</span></p>
+  </div>
+
+  <!-- middle column band — color difference narrative -->
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:792px;top:288px;width:280px;height:600px;background:transparent;border-radius:10px;z-index:0;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:808px;top:316px;width:248px;z-index:10;">
+    <p class="hair" style="color:var(--ember);">한 줄 동의</p>
+    <p style="margin-top:12px;font-size:18px;line-height:1.45;color:var(--ink);">주소는 선택이 되고,<br>선택은 자국을 남기고,<br>자국은 다음 호출을 짧게 만든다.</p>
+  </div>
+  <p class="arrow" style="margin:118px 0 0;text-align:center;font-size:24px;color:var(--ember);">→</p>
+
+  <!-- LEFT big pull-quote / RIGHT side or below: deeper section -->
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:1100px;top:288px;width:724px;height:300px;background:var(--ink);border-radius:10px;z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1124px;top:308px;width:680px;z-index:10;">
+    <p style="font-size:13px;letter-spacing:.14em;font-weight:800;color:#E8A37E;">PRODUCT HIERARCHY</p>
+    <p style="margin-top:18px;font-size:20px;line-height:1.4;color:var(--paper);">Before —</p>
+    <div style="margin-top:8px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+      <span class="chip" style="color:var(--paper);border-color:#5A6472;background:rgba(90,100,114,.18);">Windows</span>
+      <span class="arrow" style="color:#A9A598;">→</span>
+      <span class="chip" style="color:var(--paper);border-color:#5A6472;background:rgba(90,100,114,.18);">Chrome</span>
+      <span class="arrow" style="color:#A9A598;">→</span>
+      <span class="chip" style="color:var(--paper);border-color:#5A6472;background:rgba(90,100,114,.18);">Google</span>
+    </div>
+    <p style="margin-top:24px;font-size:20px;line-height:1.4;color:var(--paper);">sample.desk —</p>
+    <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+      <span class="chip" style="color:#F4EEE1;border-color:var(--ember);background:var(--ember);">User Intent</span>
+      <span class="arrow" style="color:#A9A598;">→</span>
+      <span class="chip" style="color:#F4EEE1;border-color:var(--ember);background:var(--ember);">NEU</span>
+      <span class="arrow" style="color:#A9A598;">→</span>
+      <span class="chip" style="color:#F4EEE1;border-color:var(--ember);background:var(--ember);">Agent</span>
+      <span class="arrow" style="color:#A9A598;">→</span>
+      <span class="chip" style="color:#F4EEE1;border-color:#E8A37E;background:transparent;">Tool · Browser · App</span>
+    </div>
+  </div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:1100px;top:608px;width:724px;height:280px;background:transparent;border:1.5px dashed #E8A37E;border-radius:10px;z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1124px;top:624px;width:680px;z-index:10;">
+    <p style="font-size:13px;letter-spacing:.14em;font-weight:800;color:var(--ember);">한 줄 약속 · 사용자가 바뀌는 자리</p>
+    <p style="margin-top:14px;font-size:20px;line-height:1.45;color:var(--ink);">예전에는 <b>"Chrome을 열어야 한다."</b></p>
+    <p style="margin-top:18px;font-size:22px;font-weight:800;color:var(--ember);line-height:1.4;">이제는<br><span style="color:var(--ink);">"</span><b style="color:var(--ember);">Google에서 찾아줘.</b><span style="color:var(--ink);">"</span></p>
+    <p style="margin-top:18px;font-size:14px;line-height:1.5;color:var(--ink-soft);">NEU가 어떤 도구를 쓸지 결정한다 — 어떤 페이지를 열지, 어떤 결과를 모으는지, 어떻게 답하는지.</p>
+  </div>
+
+  <!-- Tagline bottom band -->
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:96px;top:918px;width:1728px;height:1px;background:var(--line);z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:932px;width:1728px;z-index:10;text-align:center;">
+    <p style="font-size:22px;font-weight:800;color:var(--ink);">The OS is no longer the destination. <span style="color:var(--ember);">Intent is.</span></p>
+  </div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:96px;top:1010px;width:1728px;height:1px;background:var(--line);z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:1024px;width:1100px;z-index:10;"><p style="font-size:13px;color:var(--ink-soft);">Sample Co. (DEMO) · sample.desk · 기존 자리에서 sample.desk 자리로</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1324px;top:1024px;width:500px;z-index:10;text-align:right;"><p style="font-size:13px;color:var(--ink-soft);">28 · 2026-10</p></div>
+
+</div>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","spa":2}' crossorigin="anonymous"></script>
+</body></html>

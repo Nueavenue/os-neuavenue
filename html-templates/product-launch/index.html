@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<title>HTML Deck</title>
+<link rel="stylesheet" href="/html-deck/shell.css" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="app" id="app">
+  <aside class="rail">
+    <div class="rail-h" id="railTitle">HTML DECK</div>
+    <div class="rail-sub">드래그로 순서 변경 · 클릭=미리보기 · Agent=부분수정/순서/이미지→HTML</div>
+    <div class="thumbs" id="thumbs"></div>
+  </aside>
+  <main class="stage-wrap">
+    <div class="topbar">
+      <div>
+        <h1 id="deckTitle">HTML Deck</h1>
+        <div class="meta" id="pageMeta">…</div>
+      </div>
+      <div class="navbtns">
+        <button type="button" id="prev">← 이전</button>
+        <button type="button" id="next">다음 →</button>
+        <button type="button" class="primary" id="presentBtn">Present</button>
+        <button type="button" id="exportCream">크림 내보내기</button>
+        <button type="button" id="openRaw">원본 HTML</button>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="viewport" id="viewport">
+        <div class="viewport-inner" id="viewportInner">
+          <iframe id="stageFrame" title="slide" sandbox="allow-same-origin allow-scripts"></iframe>
+        </div>
+      </div>
+    </div>
+  </main>
+  <aside class="agent" id="agentPane">
+    <div class="agent-h">HTML Deck · Agent</div>
+    <div class="agent-sub">intent → route → ChangeSet → Apply. 순서 이동 · 이미지 추출 지원.</div>
+    <div class="agent-body">
+      <div class="lock" id="lockBox">LOCK 로드 중…</div>
+      <div class="route" id="routeBox">
+        <div class="route-title">AGENT ROUTE</div>
+        <ol id="routeList">
+          <li data-step="idle" class="on">idle · 슬라이드 선택 대기</li>
+          <li data-step="thinking">thinking · 지시 해석</li>
+          <li data-step="planning">planning · 템플릿 슬롯 맞춤</li>
+          <li data-step="previewing">previewing · ChangeSet 제안</li>
+          <li data-step="waiting_approval">waiting_approval · Apply / Reject</li>
+          <li data-step="applying">applying · override 기록</li>
+          <li data-step="completed">completed / failed</li>
+        </ol>
+      </div>
+      <div class="chips" id="chips">
+        <button type="button" class="chip" data-prompt='삭제: "여기에 지울 문장을 그대로 인용"'>인용 삭제</button>
+        <button type="button" class="chip" data-prompt="제목 문구만 더 짧게. 표·카드·좌표는 건드리지 마. 수치 발명 금지.">짧게(부분)</button>
+        <button type="button" class="chip" data-prompt="순서: 표지를 맨 앞으로">표지 맨앞</button>
+        <button type="button" class="chip" data-prompt="자동 순서 정렬: cover→problem→solution→market→product→team→ask→closing">자동 순서</button>
+        <button type="button" class="chip" data-prompt="3번을 1번으로 이동">3→1 이동</button>
+        <button type="button" class="chip" data-prompt="이미지에서 레이아웃 추출">이미지→HTML</button>
+      </div>
+      <label class="file-lab" for="imageIn">이미지 파일 → HTML 슬라이드</label>
+      <input type="file" id="imageIn" accept="image/*,.png,.jpg,.jpeg,.webp" />
+      <label for="prompt" style="font-size:12px;color:var(--muted);">프롬프트 · 기본=부분 수정 · 순서/이미지 명령 지원</label>
+      <textarea id="prompt" placeholder='예: 삭제: "문장"  ·  2번을 5번 뒤로  ·  자동 순서 정렬'></textarea>
+      <div class="navbtns">
+        <button type="button" class="btn primary" id="runAgent">Agent 실행</button>
+        <button type="button" class="btn" id="applyCs" disabled>Apply</button>
+        <button type="button" class="btn" id="rejectCs" disabled>Reject</button>
+        <button type="button" class="btn" id="restore">원본 복원</button>
+      </div>
+      <div class="changeset" id="csBox">ChangeSet: 없음</div>
+      <div class="log" id="log">드래그로 썸네일 순서 변경 · Agent로 순서/이미지→HTML</div>
+    </div>
+  </aside>
+</div>
+<div class="present-hint" id="presentHint">클릭/← → 넘기기 · Esc 종료</div>
+<nav class="present-nav" id="presentNav" aria-label="Present navigation">
+  <button type="button" class="hit hit-prev" id="presentHitPrev" aria-label="Previous slide"></button>
+  <button type="button" class="hit hit-next" id="presentHitNext" aria-label="Next slide"></button>
+  <button type="button" class="fab fab-prev" id="presentFabPrev">← 이전</button>
+  <button type="button" class="fab fab-next" id="presentFabNext">다음 →</button>
+  <button type="button" class="fab fab-exit" id="presentFabExit">Esc · 종료</button>
+</nav>
+<script src="/html-deck/runtime.js"></script>
+</body>
+</html>

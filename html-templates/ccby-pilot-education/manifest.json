@@ -1,0 +1,65 @@
+{
+  "id": "ccby-pilot-education",
+  "title": "Education Outline (CC BY pilot)",
+  "titleKo": "교육 개요 (CC BY 파일럿)",
+  "visual": "report",
+  "locks": [
+    "Trusted Agent Seat",
+    "Agent Operating Layer",
+    "not AI desktop OS",
+    "placeholders only · no invented revenue",
+    "CC BY 4.0 · ppttemplate.ai"
+  ],
+  "structure": [
+    "cover",
+    "objectives",
+    "overview",
+    "steps",
+    "comparison",
+    "resources",
+    "next",
+    "closing"
+  ],
+  "slides": [
+    {
+      "id": "cover",
+      "file": "01-cover.html",
+      "label": "01 Cover"
+    },
+    {
+      "id": "objectives",
+      "file": "02-objectives.html",
+      "label": "02 Objectives"
+    },
+    {
+      "id": "overview",
+      "file": "03-overview.html",
+      "label": "03 Overview"
+    },
+    {
+      "id": "steps",
+      "file": "04-steps.html",
+      "label": "04 Steps"
+    },
+    {
+      "id": "comparison",
+      "file": "05-comparison.html",
+      "label": "05 Comparison"
+    },
+    {
+      "id": "resources",
+      "file": "06-resources.html",
+      "label": "06 Resources"
+    },
+    {
+      "id": "next",
+      "file": "07-next.html",
+      "label": "07 Next"
+    },
+    {
+      "id": "closing",
+      "file": "08-closing.html",
+      "label": "08 Closing"
+    }
+  ]
+}

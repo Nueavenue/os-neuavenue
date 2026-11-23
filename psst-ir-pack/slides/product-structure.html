@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><title>05 제품 구조</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;family=Noto+Sans+KR:wght@400;500;700;800&amp;display=swap" rel="stylesheet">
+<style>
+:root{--paper:#ECE3D2;--paper-soft:#F4EEE1;--ink:#14181D;--ink-soft:#4A4D52;--line:rgba(20,24,29,.16);--ember:#BC4F2B;--teal:#1F3D44;--moss:#4D6B4A;--gold:#C49B3D;}
+body{margin:0;padding:0;overflow:hidden;font-family:'Inter','Noto Sans KR',sans-serif;color:var(--ink);background:var(--paper);}
+p{margin:0;}
+.eb{font-size:18px;font-weight:700;letter-spacing:.14em;color:var(--ember);}
+.chip{display:inline-block;padding:2px 10px;font-size:15px;font-weight:700;letter-spacing:.06em;border:1.5px solid currentColor;line-height:1.4;white-space:nowrap;vertical-align:middle;}
+.ok{background:var(--moss);color:#F4EEE1;border-color:var(--moss);}
+.pt{color:var(--ember);}
+.tg{background:var(--gold);color:#14181D;border-color:var(--gold);}
+.uk{color:var(--ink-soft);}
+.bh{font-size:26px;font-weight:800;}
+.bs{margin-top:6px;font-size:18px;line-height:1.4;color:var(--ink-soft);}
+.st{display:flex;gap:14px;align-items:flex-start;margin-top:22px;}
+.sn{width:46px;height:46px;flex:none;background:var(--ember);color:#F4EEE1;font-size:22px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+.sh{font-size:22px;font-weight:800;}
+.sb{margin-top:4px;font-size:18px;line-height:1.4;color:var(--ink-soft);}
+</style></head>
+<body>
+<div class="slide-container" data-screen-label="05 제품 구조" style="position:relative;width:1920px;height:1080px;overflow:hidden;background:var(--paper);">
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:52px;width:1100px;z-index:10;"><p class="eb">PSST · 2. 실현가능성 (Solution)</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1624px;top:52px;width:200px;z-index:10;text-align:right;"><p style="font-size:18px;font-weight:600;color:var(--ink-soft);">05 / 26</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:90px;width:1728px;z-index:10;"><h1 style="margin:0;font-size:52px;font-weight:800;line-height:1.15;">제품 구조 — PC를 바꾸지 않고, 쓰는 경험을 바꿈.</h1></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:172px;width:1728px;z-index:10;"><p style="font-size:22px;line-height:1.45;color:var(--ink-soft);font-weight:500;">We don't ask users to replace their PC. We change what using that PC feels like.</p></div>
+
+  <!-- intent -->
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:356px;top:240px;width:560px;height:60px;background:var(--ember);z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:356px;top:252px;width:560px;z-index:10;text-align:center;"><p style="font-size:24px;font-weight:800;color:#F4EEE1;letter-spacing:.06em;">USER INTENT</p></div>
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:634px;top:300px;width:4px;height:30px;background:var(--ink);z-index:1;"></div>
+
+  <!-- seat -->
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:276px;top:330px;width:720px;height:120px;background:var(--ink);z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:306px;top:346px;width:660px;z-index:10;text-align:center;">
+    <p style="font-size:30px;font-weight:800;color:var(--paper);">os.neu · Ambient Seat</p>
+    <p style="margin-top:8px;"><span class="chip ok">Linux SHIPPED</span> <span class="chip pt">Windows EARLY</span> <span class="chip" style="color:#A9A598;">macOS TARGET</span></p>
+  </div>
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:634px;top:450px;width:4px;height:30px;background:var(--ink);z-index:1;"></div>
+
+  <!-- 4 capabilities -->
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:96px;top:480px;width:340px;height:200px;background:var(--paper-soft);border:2px solid var(--teal);z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:120px;top:498px;width:292px;z-index:10;">
+    <p class="bh">daf.neu</p><p class="bs">좌석 안의 실웹 브라우저 · Electron BrowserView</p>
+    <p style="margin-top:12px;"><span class="chip ok">SHIPPED</span></p>
+  </div>
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:466px;top:480px;width:340px;height:200px;background:var(--paper-soft);border:2px solid var(--teal);z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:490px;top:498px;width:292px;z-index:10;">
+    <p class="bh">AI</p><p class="bs">디스크 위 10억 매개변수 초소형 모델(실험 단계 · 느림) · 무거운 AI는 사용자 본인 키로 호출</p>
+    <p style="margin-top:12px;"><span class="chip ok">이미 출하 · 안정화 단계</span></p>
+  </div>
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:836px;top:480px;width:340px;height:200px;background:var(--paper-soft);border:2px dashed var(--gold);z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position: absolute; left: 861.5px; top: 498px; width: 292px; z-index: 10; height: 126px; transform: none !important;">
+    <p class="bh">Docs · Sheet · Slides</p><p class="bs">기본 문서 편집기 및 word/excel/pptx 변환 — sidecar (시스템 토큰 아님)</p>
+    <p style="margin-top:12px;"><span class="chip ok">PRESENT</span> &nbsp; <span class="chip pt">sidecar $0</span></p>
+  </div>
+
+  <!-- host os -->
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:96px;top:712px;width:1080px;height:84px;background:transparent;border:2px solid var(--ink);z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:126px;top:728px;width:1020px;z-index:10;text-align:center;">
+    <p style="font-size:24px;font-weight:800;">기존 PC OS — 그대로 남는 기반 계층</p>
+    <p style="margin-top:4px;font-size:18px;color:var(--ink-soft);">설치 = 홈 폴더에 복사 · 디스크 · 부트로더는 건드리지 않음 · Host OS untouched</p>
+  </div>
+
+  <!-- life-force -->
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:96px;top:824px;width:1080px;height:96px;background:var(--paper-soft);border-left:6px solid var(--gold);z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:126px;top:838px;width:1030px;z-index:10;">
+    <p style="font-size:20px;font-weight:800;">좌석 밖 · 운영 웹(Life-Force hub) <span class="chip pt">부분</span></p>
+    <p style="margin-top:6px;font-size:17px;line-height:1.45;color:var(--ink-soft);">회사와 계정은 같은 인증 허브 하나를 공유하지만, 초대 페이지 · 랜딩 · 좌석 사이에서 묵음 자동 로그인은 하지 않음 — 로그인은 항상 명시적으로.</p>
+  </div>
+
+  <!-- demo loop -->
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:1224px;top:240px;width:600px;height:680px;background:var(--ink);z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1260px;top:268px;width:528px;z-index:10;">
+    <p class="eb" style="color:#E8A37E;">데모 흐름 · 설치형 Linux 좌석 기준</p>
+    <p style="margin-top:10px;font-size:28px;font-weight:800;color:var(--paper);">의도 → 좌석 → daf.neu → AI</p>
+    <p style="margin-top:8px;font-size:18px;color:#A9A598;">한 줄 의도 → 좌석 → 실웹 → AI. 편집 화면은 시연 가능. Assisted 등급 과금안은 1차 검증 후 단계부터 계획.</p>
+    <div class="st"><span class="sn">1</span><div><p class="sh" style="color:var(--paper);">의도</p><p class="sb" style="color:#D6D2C4;">"이 주제를 조사해줘" — 한 줄</p></div></div>
+    <div class="st"><span class="sn">2</span><div><p class="sh" style="color:var(--paper);">좌석</p><p class="sb" style="color:#D6D2C4;">아이콘 하나로 열리는 전체화면 좌석 화면</p></div></div>
+    <div class="st"><span class="sn">3</span><div><p class="sh" style="color:var(--paper);">daf.neu</p><p class="sb" style="color:#D6D2C4;">좌석 안의 실웹으로 조사·정리</p></div></div>
+    <div class="st"><span class="sn">4</span><div><p class="sh" style="color:var(--paper);">AI</p><p class="sb" style="color:#D6D2C4;">요약·비교 — 사용자 키 또는 로컬 소형 AI</p></div></div>
+    <div class="st"><span class="sn" style="background:transparent;border:2px solid var(--gold);color:var(--gold);">5</span><div><p class="sh" style="color:var(--paper);">문서 · 시트 · 슬라이드 <span class="chip" style="color:#E8C98A;border-color:#E8C98A;">미리보기 가능</span></p><p class="sb" style="color:#D6D2C4;">시연 가능 · 변환 도구는 무료 부가 도구</p></div></div>
+    <div class="st"><span class="sn" style="background:transparent;border:2px dashed var(--ink-soft);color:#A9A598;">6</span><div><p class="sh" style="color:var(--paper);">Assisted 등급 <span class="chip tg">TARGET</span></p><p class="sb" style="color:#D6D2C4;">유료 과금 — 1차 검증 이후 단계부터</p></div></div>
+  </div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:96px;top:1004px;width:1728px;height:1px;background:var(--line);z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:1020px;width:1200px;z-index:10;"><p style="font-size:15px;color:var(--ink-soft);"><span class="chip ok">SHIPPED</span> 출하 &nbsp; <span class="chip pt">PARTIAL</span> 부분 &nbsp; <span class="chip tg">TARGET</span> 계획 &nbsp; <span class="chip uk">UNKNOWN</span> 미확인 &nbsp; · 가정 = 미검증 계획치</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1324px;top:1024px;width:500px;z-index:10;text-align:right;"><p style="font-size:15px;color:var(--ink-soft);">NeuAvenue Inc. · os.neu 사업계획서 · 2026-10</p></div>
+</div>
+
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","spa":2}' crossorigin="anonymous"></script>
+</body></html>

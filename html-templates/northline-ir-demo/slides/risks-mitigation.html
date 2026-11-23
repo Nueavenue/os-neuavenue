@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>13 리스크</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#ECE3D2;--paper-soft:#F4EEE1;--ink:#14181D;--ink-soft:#4A4D52;--line:rgba(20,24,29,.16);--ember:#BC4F2B;--teal:#1F3D44;--moss:#4D6B4A;--gold:#C49B3D;}
+body{margin:0;padding:0;overflow:hidden;font-family:'Inter','Noto Sans KR',sans-serif;color:var(--ink);background:var(--paper);}
+p{margin:0;}
+.eb{font-size:18px;font-weight:700;letter-spacing:.14em;color:var(--ember);}
+.chip{display:inline-block;padding:2px 10px;font-size:15px;font-weight:700;letter-spacing:.06em;border:1.5px solid currentColor;line-height:1.4;white-space:nowrap;vertical-align:middle;}
+.ok{background:var(--moss);color:#F4EEE1;border-color:var(--moss);}
+.pt{color:var(--ember);}
+.tg{background:var(--gold);color:#14181D;border-color:var(--gold);}
+.uk{color:var(--ink-soft);}
+table.t{border-collapse:collapse;width:100%;}
+table.t th{background:var(--ink);color:var(--paper);text-align:left;padding:12px 18px;font-size:18px;font-weight:700;}
+table.t td{padding:13px 18px;border-bottom:1px solid var(--line);font-size:20px;line-height:1.4;vertical-align:top;}
+table.t td.k{font-weight:700;width:360px;}
+table.t td.s{width:170px;}
+</style></head>
+<body>
+<div class="slide-container" data-screen-label="17 리스크" style="position:relative;width:1920px;height:1080px;overflow:hidden;background:var(--paper);">
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:52px;width:1100px;z-index:10;"><p class="eb">DEMO IR · 4. 팀구성 (Team) · 리스크 관리</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1624px;top:52px;width:200px;z-index:10;text-align:right;"><p style="font-size:18px;font-weight:600;color:var(--ink-soft);">15 / 25</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:90px;width:1728px;z-index:10;"><h1 style="margin:0;font-size:54px;font-weight:800;line-height:1.15;">주요 리스크와 대응</h1></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:172px;width:1728px;z-index:10;"><p style="font-size:22px;line-height:1.45;color:var(--ink-soft);font-weight:500;">원칙은 하나 — 검증하기 전에는 주장하지 않음. 계획의 리스크 항목과 실제 출하 사이의 차이에서 출발.</p></div>
+
+  <div data-object="true" data-object-type="table" style="position:absolute;left:96px;top:236px;width:1728px;z-index:10;">
+    <table class="t">
+      <tr><th>리스크</th><th>상태</th><th>대응</th></tr>
+      <tr><td class="k">USB 부팅형 진입 화면 미완</td><td class="s"><span class="chip pt">미완료</span></td><td>첫 해에는 좌석만 사용 · USB는 시연이나 상품에 쓰지 않음</td></tr>
+      <tr><td class="k">안내 화면과 좌석 세션의 혼동</td><td class="s"><span class="chip pt">관리 중</span></td><td>안내 ≠ 좌석 표현 고정 · 지금 받기 카드는 이름 교체 · 외부 임베디드 Google 금지</td></tr>
+      <tr><td class="k">Windows 인증 모듈 임시 구현</td><td class="s"><span class="chip tg">계획</span></td><td>Windows 더블 버전의 인증 모듈은 임시 · 본선으로 가기 전까지 1차 거점에서 제외</td></tr>
+      <tr><td class="k">점수 테이블 둘로 나뉨</td><td class="s"><span class="chip pt">부분</span></td><td>내부 점수 테이블과 공개 점수 테이블이 함께 있음 · 단일 엔진으로 정리 필요</td></tr>
+      <tr><td class="k">90일 무료 호스팅 작업 한도</td><td class="s"><span class="chip pt">목표 한도</span></td><td>습관 형성용으로만 · 무제한 무료 금지 · 유료 정식 출시 안 함 · 90일 안에 한도 조정</td></tr>
+      <tr><td class="k">3단계 사용량 과금의 오해</td><td class="s"><span class="chip pt">설계 보완 필요</span></td><td>자체 호스팅 모델·검색에만 측정 · 토큰 되팔기 아님 · 장부와 등급을 분리</td></tr>
+      <tr><td class="k">POC 다섯 곳 · 제휴 수익 약속</td><td class="s"><span class="chip pt">언급하지 않음</span></td><td> 영업 수사로 미언급 · 1년 차 수치에 넣지 않음</td></tr>
+      <tr><td class="k">관찰 매출 없음</td><td class="s"><span class="chip uk">UNKNOWN</span></td><td>첫 해 셸 좌석 0원 · 일주일 생존 지표 먼저 · 유료화는 좌석 구독 단계에서</td></tr>
+      <tr><td class="k">오픈소스 라이선스 점검</td><td class="s"><span class="chip pt">미실행</span></td><td>두 저장소 모두 라이선스 명시·표준 식별자 없음 · 점검 도구 실행 기록 없음 → 점검 실행</td></tr>
+      <tr><td class="k">변경 통제 항목 4종 / 삭제 금지</td><td class="s"><span class="chip pt">운영 중</span></td><td>삭제 금지 운영 중 · 대표 해소 전까지 유지</td></tr>
+      <tr><td class="k">사용자 키 원칙 의존</td><td class="s"><span class="chip tg">가정</span></td><td>사용자 키 모델이 흔들리면 수익 구조를 다시 설계</td></tr>
+      <tr><td class="k">사용자 컴퓨팅 습관 변화 실패</td><td class="s"><span class="chip pt">관리 중</span></td><td>좌석 활성화 · 한 달 잔존 먼저 관찰 · 무리한 확장 이전에 습관 형성을 입증</td></tr>
+      <tr><td class="k">다른 큰 회사들이 더 빠르게</td><td class="s"><span class="chip pt">관리 중</span></td><td>모델이나 플랫폼에 종속되지 않음 · 정면 승부 자제 · 여러 환경을 잇는 좌석으로 공존</td></tr>
+    </table>
+  </div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:96px;top:1004px;width:1728px;height:1px;background:var(--line);z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:1020px;width:1200px;z-index:10;"><p style="font-size:15px;color:var(--ink-soft);"><span class="chip ok">SHIPPED</span> 출하 &nbsp; <span class="chip pt">PARTIAL</span> 부분 &nbsp; <span class="chip tg">TARGET</span> 계획 &nbsp; <span class="chip uk">UNKNOWN</span> 미확인 &nbsp; · 가정 = 미검증 계획치</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1324px;top:1024px;width:500px;z-index:10;text-align:right;"><p style="font-size:15px;color:var(--ink-soft);">Sample Co. (DEMO) · sample.desk 샘플 덱 · 2026-10</p></div>
+</div>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","spa":2}' crossorigin="anonymous"></script>
+</body></html>

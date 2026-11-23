@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><title>11 재무 모델</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;family=Noto+Sans+KR:wght@400;500;700;800&amp;display=swap" rel="stylesheet">
+<style>
+:root{--paper:#ECE3D2;--paper-soft:#F4EEE1;--ink:#14181D;--ink-soft:#4A4D52;--line:rgba(20,24,29,.16);--ember:#BC4F2B;--teal:#1F3D44;--moss:#4D6B4A;--gold:#C49B3D;}
+body{margin:0;padding:0;overflow:hidden;font-family:'Inter','Noto Sans KR',sans-serif;color:var(--ink);background:var(--paper);}
+p{margin:0;}
+.eb{font-size:18px;font-weight:700;letter-spacing:.14em;color:var(--ember);}
+.chip{display:inline-block;padding:2px 10px;font-size:15px;font-weight:700;letter-spacing:.06em;border:1.5px solid currentColor;line-height:1.4;white-space:nowrap;vertical-align:middle;}
+.ok{background:var(--moss);color:#F4EEE1;border-color:var(--moss);}
+.pt{color:var(--ember);}
+.tg{background:var(--gold);color:#14181D;border-color:var(--gold);}
+.uk{color:var(--ink-soft);}
+table.t{border-collapse:collapse;width:100%;}
+table.t th{background:var(--ink);color:var(--paper);text-align:right;padding:10px 14px;font-size:18px;font-weight:700;}
+table.t th:first-child{text-align:left;}
+table.t td{padding:8px 14px;border-bottom:1px solid var(--line);font-size:20px;text-align:right;font-variant-numeric:tabular-nums;}
+table.t td:first-child{text-align:left;font-weight:700;}
+table.t tr.hl td{background:#F6DCCB;}
+.row{display:grid;grid-template-columns:120px 1fr;align-items:center;gap:14px;margin-top:20px;}
+.bl{font-size:21px;font-weight:700;color:var(--paper);}
+.bar{height:50px;display:flex;align-items:center;padding-left:16px;font-size:22px;font-weight:800;}
+.bs{margin-top:4px;font-size:17px;color:#A9A598;grid-column:2;}
+.note{font-size:15px;line-height:1.4;color:var(--ink-soft);margin-top:8px;}
+</style></head>
+<body>
+<div class="slide-container" data-screen-label="11 재무 모델" style="position:relative;width:1920px;height:1080px;overflow:hidden;background:var(--paper);">
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:52px;width:1100px;z-index:10;"><p class="eb">PSST · 3. 성장전략 (Scale-up) · 재무 모델</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1624px;top:52px;width:200px;z-index:10;text-align:right;"><p style="font-size:18px;font-weight:600;color:var(--ink-soft);">11 / 26</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:90px;width:1728px;z-index:10;"><h1 style="margin:0;font-size:50px;font-weight:800;line-height:1.18;">재무 모델 — 보수 · 기본 · 공격, 세 궤도 모두 가정</h1></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:170px;width:1728px;z-index:10;"><p style="font-size:21px;line-height:1.45;color:var(--ink-soft);font-weight:500;">모든 수치는 USD 가정 기준이며, 실제 매출이 아닌 계획 가정임. 가정 시트는 비공개로 별도 보관 — 외부에 배포하지 않음. 확정 수치로 읽지 말 것.</p></div>
+
+  <!-- scenario chart -->
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:96px;top:236px;width:760px;height:540px;background:var(--ink);z-index:1;"></div>
+  <div data-object="true" data-object-type="chart" style="position:absolute;left:132px;top:264px;width:690px;z-index:10;">
+    <p class="eb" style="color:#E8A37E;">2028년 말 · 유료 ARR(기업용 제외) <span class="chip tg">가정</span></p>
+    <div class="row"><p class="bl">낮은 가정 2.0%</p><div class="bar" style="width:55%;background:#6E7A72;color:#F4EEE1;">$0.47M</div><p class="bs">유료 약 6,400명</p></div>
+    <div class="row"><p class="bl">기준 가정 2.6%</p><div class="bar" style="width:68%;background:#E8A37E;color:#14181D;">$0.59M</div><p class="bs">유료 약 7,980명 · 발화 기준 (약 8,000명 / 약 $0.59M)</p></div>
+    <div class="row"><p class="bl">높은 가정 4.0%</p><div class="bar" style="width:100%;background:var(--gold);color:#14181D;">$0.86M</div><p class="bs">유료 약 11,650명</p></div>
+    <p style="margin-top:18px;font-size:15px;line-height:1.4;color:#A9A598;">%는 평균 활성 사용자 대비 연간 유료 전환율. 이전 초안의 60,000명 · $4.5M은 폐기 — 무료 베이스의 6~9배 확장이 전제된 수치이며 계획치가 아님.</p>
+    <p style="margin-top:10px;font-size:15px;line-height:1.4;color:#D6D2C4;">PMF가 먼저, 매출은 그 뒤 — 좌석 활성화 · 주간 유지 · 한 달 잔존 · 작업 횟수 · 브라우저 대체 · AI 보조 활용 · 유료 전환 — 관찰값 <span style="color:#A9A598;">모두 UNKNOWN</span>.</p>
+  </div>
+
+  <!-- annual table -->
+  <div data-object="true" data-object-type="table" style="position:absolute;left:900px;top:236px;width:924px;z-index:10;">
+    <table class="t">
+      <tbody><tr><th>기준 시나리오</th><th>2026</th><th>2027</th><th>2028</th><th>2029</th><th>2030</th></tr>
+      <tr><td>활성 사용자(연말)</td><td>16K</td><td>120K</td><td>405K</td><td>900K</td><td>1.62M</td></tr>
+      <tr><td>유료 전환율</td><td>0.8%</td><td>1.8%</td><td>2.6%</td><td>3.2%</td><td>3.6%</td></tr>
+      <tr><td>유료 구독자(연말)</td><td>64</td><td>1,282</td><td>7,978</td><td>28,061</td><td>70,615</td></tr>
+      <tr class="hl"><td>연말 ARR</td><td>$4K</td><td>$91K</td><td>$0.59M</td><td>$2.16M</td><td>$5.52M</td></tr>
+      <tr><td>연간 매출</td><td>$2K</td><td>$48K</td><td>$0.46M</td><td>$1.79M</td><td>$4.76M</td></tr>
+      <tr><td>총 비용</td><td>$0.95M</td><td>$1.55M</td><td>$3.21M</td><td>$6.61M</td><td>$11.64M</td></tr>
+      <tr class="hl"><td>영업 손익</td><td>−$0.95M</td><td>−$1.50M</td><td>−$2.74M</td><td>−$4.82M</td><td>−$6.88M</td></tr>
+      <tr><td>조달 가정</td><td>$3M</td><td>—</td><td>$10M</td><td>—</td><td>$25M</td></tr>
+      <tr><td>기말 현금</td><td>$2.55M</td><td>$1.05M</td><td>$8.30M</td><td>$3.48M</td><td>$21.60M</td></tr>
+    </tbody></table>
+  </div>
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:900px;top:696px;width:924px;z-index:10;">
+    <p style="font-size:17px;line-height:1.5;"><b>가격 가정(HOLD · 검토용)</b> <span class="chip tg" style="font-size:13px;">HOLD</span></p>
+    <p class="note" style="font-size:14px;margin-top:4px;">아래 두 값, 비중, 이탈률은 모두 가정이며 좌석당 실제 가격으로 확정하지 않았음.</p>
+    <div style="margin-top:6px;display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <div style="border-left:3px solid var(--ember);padding:6px 10px;background:rgba(188,79,43,0.06);">
+        <p style="font-size:15px;font-weight:700;color:var(--ember);">Plus $59/년 <span class="chip uk" style="font-size:11px;padding:1px 7px;">HOLD 가정</span></p>
+        <p style="font-size:13px;line-height:1.4;color:var(--ink-soft);margin-top:3px;">좌석당 확정가가 아님 · 비중 10% 가정과 묶음</p>
+      </div>
+      <div style="border-left:3px solid var(--ember);padding:6px 10px;background:rgba(188,79,43,0.06);">
+        <p style="font-size:15px;font-weight:700;color:var(--ember);">Pro $119/년 <span class="chip uk" style="font-size:11px;padding:1px 7px;">HOLD 가정</span></p>
+        <p style="font-size:13px;line-height:1.4;color:var(--ink-soft);margin-top:3px;">비중 10% → 32% 단계 상향 · 연간 이탈률 10% 가정</p>
+      </div>
+    </div>
+    <p style="margin-top:6px;font-size:14px;line-height:1.4;color:var(--ink-soft);">Plus와 Pro 둘 다 HOLD 가정이며, 실제 가격은 등급을 열 시점에 결정.</p>
+    <p style="margin-top:8px;font-size:16px;line-height:1.45;"><b>기업용 파일럿</b>은 2028년부터(연 $120K → $900K) 가정 — 현재 기업용 등급은 판매하지 않음.</p>
+    <p style="margin-top:2px;font-size:16px;line-height:1.45;color:var(--ink-soft);">연말 ARR과 연간 매출은 다른 수치. 2028 기준 시나리오 매출 $0.46M · 파일럿 포함.</p>
+  </div>
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:900px;top:922px;width:924px;z-index:10;"><p style="font-size:15px;line-height:1.45;color:var(--ink-soft);">성장형 모델: 2030년까지 영업 손익은 적자. 인건비 · 영업 · AI/인프라 투자를 조달 가정(Seed · Series A · Series B)으로 메움.</p><p style="font-size:15px;line-height:1.45;color:var(--ink-soft);">현재 외부 자금 NOT RAISED. <b>$4.5M · 60,000명 가설은 폐기.</b></p></div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:96px;top:800px;width:760px;height:196px;background:transparent;border:1.5px dashed var(--ink-soft);z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:120px;top:812px;width:710px;z-index:10;">
+    <p style="font-size:15px;letter-spacing:.1em;color:var(--ink-soft);font-weight:800;">한 줄 가정 — 자리에 대응되는 단일 가격은 없음</p>
+    <p style="margin-top:4px;font-size:15px;line-height:1.4;color:var(--ink-soft);">모든 수치는 가정. 직접 확인된 ARR · 주간 유지 · 작업 횟수 · AI 보조 활용 · 유료 전환 · 유료 잔존 — 모두 <span class="chip uk">관찰값 UNKNOWN</span>.</p>
+    <p style="margin-top:6px;font-size:15px;line-height:1.45;color:var(--ember);font-weight:700;">기업용 등급(SSO) = 지금 판매 안 함 · 등급 이름 일반화 금지 · 멀티 에이전트 팀 = 계획 단계 · 오늘은 단일 라우터 + 단일 Writer 1명.</p>
+  </div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:96px;top:1004px;width:1728px;height:1px;background:var(--line);z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:1020px;width:1200px;z-index:10;"><p style="font-size:15px;color:var(--ink-soft);"><span class="chip ok">SHIPPED</span> 출하 &nbsp; <span class="chip pt">PARTIAL</span> 부분 &nbsp; <span class="chip tg">TARGET</span> 계획 &nbsp; <span class="chip uk">UNKNOWN</span> 미확인 &nbsp; · 가정 = 미검증 계획치</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1324px;top:1024px;width:500px;z-index:10;text-align:right;"><p style="font-size:15px;color:var(--ink-soft);">NeuAvenue Inc. · os.neu 사업계획서 · 2026-10</p></div>
+</div>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","spa":2}' crossorigin="anonymous"></script>
+</body></html>

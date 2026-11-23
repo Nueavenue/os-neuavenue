@@ -1,0 +1,52 @@
+{
+  "id": "popular-pitch-deck",
+  "title": "Pitch Deck",
+  "titleKo": "피치 덱",
+  "visual": "pitch",
+  "locks": [
+    "Trusted Agent Seat",
+    "Agent Operating Layer",
+    "not AI desktop OS",
+    "placeholders only · no invented revenue"
+  ],
+  "structure": [
+    "cover",
+    "problem",
+    "solution",
+    "market",
+    "team",
+    "ask"
+  ],
+  "slides": [
+    {
+      "id": "cover",
+      "file": "01-cover.html",
+      "label": "01 Cover"
+    },
+    {
+      "id": "problem",
+      "file": "02-problem.html",
+      "label": "02 Problem"
+    },
+    {
+      "id": "solution",
+      "file": "03-solution.html",
+      "label": "03 Solution"
+    },
+    {
+      "id": "market",
+      "file": "04-market.html",
+      "label": "04 Market"
+    },
+    {
+      "id": "team",
+      "file": "05-team.html",
+      "label": "05 Team"
+    },
+    {
+      "id": "ask",
+      "file": "06-ask.html",
+      "label": "06 Ask"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "id": "research-report",
+  "title": "Research Report",
+  "titleKo": "리서치 보고",
+  "visual": "report",
+  "locks": [
+    "Trusted Agent Seat",
+    "Agent Operating Layer",
+    "not AI desktop OS",
+    "placeholders only · no invented revenue"
+  ],
+  "structure": [
+    "cover",
+    "summary",
+    "method",
+    "findings",
+    "metrics",
+    "recommendations"
+  ],
+  "slides": [
+    {
+      "id": "cover",
+      "file": "01-cover.html",
+      "label": "01 Cover"
+    },
+    {
+      "id": "summary",
+      "file": "02-summary.html",
+      "label": "02 Summary"
+    },
+    {
+      "id": "method",
+      "file": "03-method.html",
+      "label": "03 Method"
+    },
+    {
+      "id": "findings",
+      "file": "04-findings.html",
+      "label": "04 Findings"
+    },
+    {
+      "id": "metrics",
+      "file": "05-metrics.html",
+      "label": "05 Metrics"
+    },
+    {
+      "id": "recommendations",
+      "file": "06-recommendations.html",
+      "label": "06 Recommendations"
+    }
+  ]
+}

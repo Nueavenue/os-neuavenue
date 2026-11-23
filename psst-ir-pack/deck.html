@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<title>IR PSST · HTML Deck</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ember:#BC4F2B;--paper:#ECE3D2;--shell:#12151a;--rail:#0d0f12;--line:#2a2e35;
+  --ink:#e8eaed;--muted:#9aa0a8;--ok:#8fbf88;--err:#e08a7a;--gold:#E8A37E;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;height:100%;background:var(--shell);color:var(--ink);font-family:'Inter','Noto Sans KR',sans-serif;overflow:hidden;}
+.app{display:grid;grid-template-columns:280px minmax(0,1fr) 360px;height:100%;}
+.app.embed{grid-template-columns:220px minmax(0,1fr) 320px;}
+.app.presenting{grid-template-columns:1fr;}
+.app.presenting .rail,.app.presenting .agent,.app.presenting .topbar{display:none !important;}
+.app.presenting .stage{padding:0;background:#000;position:relative;}
+.app.presenting .viewport{
+  width:100vw !important;height:100vh !important;max-width:none;aspect-ratio:auto;
+  box-shadow:none;border-radius:0;
+}
+.app.presenting .viewport-inner iframe{pointer-events:none;}
+.present-nav{
+  display:none;position:fixed;inset:0;z-index:40;pointer-events:none;
+}
+.app.presenting .present-nav{display:block;}
+.present-nav .hit{
+  position:absolute;top:0;bottom:0;width:28%;pointer-events:auto;cursor:pointer;
+  background:transparent;border:0;padding:0;
+}
+.present-nav .hit-prev{left:0;}
+.present-nav .hit-next{right:0;}
+.present-nav .fab{
+  position:fixed;bottom:56px;z-index:45;pointer-events:auto;
+  background:rgba(20,24,29,.82);border:1px solid rgba(255,255,255,.25);color:#fff;
+  border-radius:999px;padding:10px 16px;font-size:14px;cursor:pointer;
+}
+.present-nav .fab-prev{left:24px;}
+.present-nav .fab-next{right:24px;}
+.present-nav .fab-exit{left:50%;transform:translateX(-50%);bottom:16px;font-size:12px;opacity:.9;}
+.present-nav .fab:hover{border-color:#E8A37E;}
+.rail,.agent{background:var(--rail);min-height:0;display:flex;flex-direction:column;}
+.rail{border-right:1px solid var(--line);}
+.agent{border-left:1px solid var(--line);}
+.rail-h,.agent-h{padding:14px 12px 6px;font-size:12px;font-weight:700;letter-spacing:.1em;color:var(--gold);}
+.rail-sub,.agent-sub{padding:0 12px 10px;font-size:11px;color:var(--muted);line-height:1.45;}
+.thumbs{flex:1;overflow:auto;padding:8px 12px 20px;display:flex;flex-direction:column;gap:12px;}
+.thumb{
+  border:1px solid #333842;border-radius:6px;background:#161a20;cursor:pointer;
+  padding:0;overflow:hidden;text-align:left;color:inherit;flex:0 0 auto;width:100%;
+}
+.thumb.active{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold);}
+/* Full 16:9 frame — never a horizontal slice */
+.thumb-frame{
+  position:relative;width:100%;height:0;padding-bottom:56.25%;
+  background:var(--paper);overflow:hidden;
+}
+.thumb-scale{
+  position:absolute;left:0;top:0;width:1920px;height:1080px;
+  transform-origin:0 0;pointer-events:none;background:var(--paper);
+}
+.thumb-scale iframe{width:1920px;height:1080px;border:0;display:block;background:var(--paper);}
+.thumb-label{padding:7px 9px;font-size:11px;color:#c5c9d0;line-height:1.3;}
+.thumb-badge{float:right;font-size:10px;color:var(--gold);}
+.stage-wrap{display:flex;flex-direction:column;min-width:0;min-height:0;}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;border-bottom:1px solid var(--line);background:#12151a;}
+.topbar h1{margin:0;font-size:15px;font-weight:700;}
+.meta{font-size:12px;color:var(--muted);}
+.navbtns{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.navbtns button,.agent button.btn{
+  background:#232830;border:1px solid #3a404a;color:#eee;border-radius:4px;padding:6px 12px;font-size:12px;cursor:pointer;
+}
+.navbtns button:hover,.agent button.btn:hover{border-color:var(--gold);}
+.navbtns button.primary{background:var(--ember);border-color:var(--ember);font-weight:700;}
+.stage{flex:1;display:flex;align-items:center;justify-content:center;padding:16px;min-height:0;background:#0b0d10;}
+.viewport{position:relative;width:min(100%,calc((100vh - 100px)*16/9));aspect-ratio:16/9;background:#000;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.45);}
+.viewport-inner{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;background:var(--paper);}
+.viewport-inner iframe{width:1920px;height:1080px;border:0;background:var(--paper);display:block;}
+.agent-body{flex:1;overflow:auto;padding:0 12px 14px;display:flex;flex-direction:column;gap:10px;}
+.agent textarea{
+  width:100%;min-height:100px;resize:vertical;background:#161a20;border:1px solid #3a404a;
+  border-radius:4px;color:#eee;padding:10px;font:inherit;font-size:13px;line-height:1.45;
+}
+.chips{display:flex;flex-wrap:wrap;gap:6px;}
+.chip{font-size:11px;padding:4px 8px;border:1px solid #3a404a;border-radius:999px;cursor:pointer;background:#1a1f26;color:#c5c9d0;}
+.chip:hover{border-color:var(--gold);color:#fff;}
+.lock{font-size:11px;color:var(--gold);line-height:1.4;border:1px dashed #5a4030;padding:8px;border-radius:4px;}
+.route{border:1px solid #2f3540;border-radius:6px;padding:8px;background:#14181f;}
+.route-title{font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--gold);margin-bottom:6px;}
+.route ol{margin:0;padding-left:18px;font-size:12px;line-height:1.55;color:var(--muted);}
+.route li.on{color:#fff;font-weight:600;}
+.route li.done{color:var(--ok);}
+.route li.fail{color:var(--err);}
+.changeset{border:1px solid #2f3540;border-radius:6px;padding:8px;font-size:12px;line-height:1.45;color:var(--muted);min-height:4.5em;white-space:pre-wrap;}
+.changeset.proposed{border-color:var(--gold);color:#ddd;}
+.log{font-size:12px;color:var(--muted);line-height:1.45;white-space:pre-wrap;}
+.status-ok{color:var(--ok);}
+.status-err{color:var(--err);}
+.present-hint{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.7);color:#fff;padding:8px 14px;border-radius:6px;font-size:12px;z-index:50;display:none;}
+.app.presenting .present-hint{display:block;}
+@media print{
+  .rail,.agent,.topbar,.present-hint{display:none !important;}
+  .app{display:block;}
+  .viewport{width:100% !important;height:auto !important;box-shadow:none;}
+}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <aside class="rail">
+    <div class="rail-h">IR PSST</div>
+    <div class="rail-sub">HTML 덱 · 썸네일 = 1920×1080 전체 축소<br>클릭 → 가운데 미리보기 · 오른쪽 Agent</div>
+    <div class="thumbs" id="thumbs"></div>
+  </aside>
+  <main class="stage-wrap">
+    <div class="topbar">
+      <div>
+        <h1 id="deckTitle">IR PSST · 사업계획서</h1>
+        <div class="meta" id="pageMeta">…</div>
+      </div>
+      <div class="navbtns">
+        <button type="button" id="prev">← 이전</button>
+        <button type="button" id="next">다음 →</button>
+        <button type="button" class="primary" id="presentBtn">Present</button>
+        <button type="button" id="exportCream">크림 내보내기</button>
+        <button type="button" id="openRaw">원본 HTML</button>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="viewport" id="viewport">
+        <div class="viewport-inner" id="viewportInner">
+          <iframe id="stageFrame" title="slide" sandbox="allow-same-origin allow-scripts"></iframe>
+        </div>
+      </div>
+    </div>
+  </main>
+  <aside class="agent" id="agentPane">
+    <div class="agent-h">IR PSST · Agent</div>
+    <div class="agent-sub">SPEC: intent → route → ChangeSet → preview → Apply. Scope = 선택 슬라이드. LOCK · paper template.</div>
+    <div class="agent-body">
+      <div class="lock" id="lockBox">LOCK 로드 중…</div>
+      <div class="route" id="routeBox">
+        <div class="route-title">AGENT ROUTE</div>
+        <ol id="routeList">
+          <li data-step="idle" class="on">idle · 슬라이드 선택 대기</li>
+          <li data-step="thinking">thinking · 지시 해석</li>
+          <li data-step="planning">planning · 템플릿 슬롯 맞춤</li>
+          <li data-step="previewing">previewing · ChangeSet 제안</li>
+          <li data-step="waiting_approval">waiting_approval · Apply / Reject</li>
+          <li data-step="applying">applying · override 기록</li>
+          <li data-step="completed">completed / failed</li>
+        </ol>
+      </div>
+      <div class="chips" id="chips">
+        <button type="button" class="chip" data-prompt='삭제: "여기에 지울 문장을 그대로 인용"'>인용 삭제</button>
+        <button type="button" class="chip" data-prompt="제목 문구만 더 짧게. 표·카드·좌표는 건드리지 마. 수치 발명 금지.">짧게(부분)</button>
+        <button type="button" class="chip" data-prompt="AI Operating System, 독립 OS, USB 출시 완료 표현만 Trusted Agent Seat / Agent Operating Layer 로 치환.">LOCK 교정</button>
+        <button type="button" class="chip" data-prompt="전체 재작성: paper 크림 유지. Trusted Agent Seat. 수치 발명 금지.">전체 재작성</button>
+      </div>
+      <label for="prompt" style="font-size:12px;color:var(--muted);">프롬프트 · 기본=부분 수정(ops) · 선택 슬라이드만</label>
+      <textarea id="prompt" placeholder='예: 삭제: "불필요한 문장"  — 레이아웃은 유지됩니다'></textarea>
+      <div class="navbtns">
+        <button type="button" class="btn primary" id="runAgent">Agent 실행</button>
+        <button type="button" class="btn" id="applyCs" disabled>Apply</button>
+        <button type="button" class="btn" id="rejectCs" disabled>Reject</button>
+        <button type="button" class="btn" id="restore">원본 복원</button>
+      </div>
+      <div class="changeset" id="csBox">ChangeSet: 없음 · 슬라이드를 고르고 프롬프트를 실행하세요.</div>
+      <div class="log" id="log">Seat LLM → HTML ChangeSet. 실패 시 로컬 LOCK 패치로 폴백. 매출·USB 출시 수치 발명 금지.</div>
+    </div>
+  </aside>
+</div>
+<div class="present-hint" id="presentHint">클릭/← → 넘기기 · Esc 종료</div>
+<nav class="present-nav" id="presentNav" aria-label="Present navigation">
+  <button type="button" class="hit hit-prev" id="presentHitPrev" aria-label="Previous slide"></button>
+  <button type="button" class="hit hit-next" id="presentHitNext" aria-label="Next slide"></button>
+  <button type="button" class="fab fab-prev" id="presentFabPrev">← 이전</button>
+  <button type="button" class="fab fab-next" id="presentFabNext">다음 →</button>
+  <button type="button" class="fab fab-exit" id="presentFabExit">Esc · 종료</button>
+</nav>
+<script>
+(async function () {
+  const base = new URL('.', location.href);
+  const app = document.getElementById('app');
+  const thumbsEl = document.getElementById('thumbs');
+  const stage = document.getElementById('stageFrame');
+  const meta = document.getElementById('pageMeta');
+  const log = document.getElementById('log');
+  const promptEl = document.getElementById('prompt');
+  const csBox = document.getElementById('csBox');
+  const OV_KEY = 'os.neu.psst-ir.overrides.v1';
+  const CS_KEY = 'os.neu.psst-ir.changeset.v1';
+  const PAPER = {
+    fonts: "Inter, 'Noto Sans KR', sans-serif",
+    colors: { paper: '#ECE3D2', ember: '#BC4F2B', teal: '#1F3D44', ink: '#14181D' },
+    size: { w: 1920, h: 1080 },
+  };
+
+  let slides = [];
+  let i = 0;
+  let manifest = null;
+  let presenting = false;
+  let pendingCs = null;
+  let agentStatus = 'idle';
+
+  function overrides() {
+    try { return JSON.parse(localStorage.getItem(OV_KEY) || '{}'); } catch { return {}; }
+  }
+  function saveOverrides(map) { localStorage.setItem(OV_KEY, JSON.stringify(map)); }
+
+  function setRoute(step, failed) {
+    agentStatus = step;
+    document.querySelectorAll('#routeList li').forEach((li) => {
+      const s = li.getAttribute('data-step');
+      li.classList.remove('on', 'done', 'fail');
+      const order = ['idle','thinking','planning','previewing','waiting_approval','applying','completed'];
+      const a = order.indexOf(s);
+      const b = order.indexOf(step);
+      if (s === step) li.classList.add(failed ? 'fail' : 'on');
+      else if (a >= 0 && b >= 0 && a < b) li.classList.add('done');
+    });
+  }
+
+  function setLog(msg, ok) {
+    log.textContent = msg;
+    log.className = 'log ' + (ok === true ? 'status-ok' : ok === false ? 'status-err' : '');
+  }
+
+  function setCsUi() {
+    const apply = document.getElementById('applyCs');
+    const reject = document.getElementById('rejectCs');
+    if (!pendingCs) {
+      csBox.className = 'changeset';
+      csBox.textContent = 'ChangeSet: 없음 · 슬라이드를 고르고 프롬프트를 실행하세요.';
+      apply.disabled = true;
+      reject.disabled = true;
+      return;
+    }
+    csBox.className = 'changeset proposed';
+    csBox.textContent =
+      'ChangeSet ' + pendingCs.id + '\n' +
+      'status: ' + pendingCs.status + '\n' +
+      'scope: slide · ' + pendingCs.slideId + '\n' +
+      'action: ' + pendingCs.action + '\n' +
+      'source: ' + pendingCs.source + '\n' +
+      'reason: ' + (pendingCs.reason || '') + '\n' +
+      'before→after bytes: ' + (pendingCs.beforeHtml || '').length + ' → ' + (pendingCs.afterHtml || '').length;
+    apply.disabled = pendingCs.status !== 'proposed';
+    reject.disabled = pendingCs.status !== 'proposed';
+  }
+
+  function slideUrl(slide, bust) {
+    const ov = overrides()[slide.id];
+    if (ov && ov.html) {
+      return URL.createObjectURL(new Blob([ov.html], { type: 'text/html;charset=utf-8' }));
+    }
+    const u = new URL('slides/' + slide.file, base);
+    if (bust) u.searchParams.set('t', String(Date.now()));
+    return u.href;
+  }
+
+  function fitScales() {
+    thumbsEl.querySelectorAll('.thumb-frame').forEach((frame) => {
+      const scaleEl = frame.querySelector('.thumb-scale');
+      if (!scaleEl) return;
+      const w = frame.clientWidth || frame.offsetWidth || 240;
+      if (w < 8) return;
+      const s = w / 1920;
+      scaleEl.style.transform = 'scale(' + s + ')';
+      scaleEl.style.width = '1920px';
+      scaleEl.style.height = '1080px';
+    });
+    const vp = document.getElementById('viewport');
+    const inner = document.getElementById('viewportInner');
+    if (vp && inner) {
+      const s = Math.min(vp.clientWidth / 1920, vp.clientHeight / 1080) || 0.4;
+      inner.style.transform = 'scale(' + s + ')';
+      const left = (vp.clientWidth - 1920 * s) / 2;
+      const top = (vp.clientHeight - 1080 * s) / 2;
+      inner.style.left = Math.max(0, left) + 'px';
+      inner.style.top = Math.max(0, top) + 'px';
+    }
+  }
+
+  function refreshThumb(idx) {
+    const btn = thumbsEl.children[idx];
+    if (!btn || !slides[idx]) return;
+    const fr = btn.querySelector('iframe');
+    if (fr) fr.src = slideUrl(slides[idx], true);
+    const badge = btn.querySelector('.thumb-badge');
+    if (badge) badge.textContent = overrides()[slides[idx].id] ? 'modified' : '';
+  }
+
+  function show(n) {
+    if (!slides.length) return;
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    const slide = slides[i];
+    stage.src = slideUrl(slide, true);
+    meta.textContent = (i + 1) + ' / ' + slides.length + ' · ' + slide.label + ' · ' + slide.file +
+      (overrides()[slide.id] ? ' · modified' : '');
+    Array.from(thumbsEl.children).forEach((btn, idx) => btn.classList.toggle('active', idx === i));
+    if (agentStatus === 'idle' || agentStatus === 'completed') setRoute('idle');
+    fitScales();
+  }
+
+  function enterPresent() {
+    presenting = true;
+    app.classList.add('presenting');
+    // Slide iframe steals Arrow keys — disable pointer/focus while presenting
+    try {
+      stage.setAttribute('tabindex', '-1');
+      stage.style.pointerEvents = 'none';
+      if (stage.blur) stage.blur();
+    } catch (_) {}
+    fitScales();
+    try { app.setAttribute('tabindex', '-1'); app.focus({ preventScroll: true }); } catch (_) {}
+    try {
+      if (app.requestFullscreen) void app.requestFullscreen();
+    } catch (_) {}
+    // Re-fit after fullscreen settles
+    setTimeout(fitScales, 80);
+    setTimeout(fitScales, 300);
+  }
+  function exitPresent() {
+    presenting = false;
+    app.classList.remove('presenting');
+    try { stage.style.pointerEvents = ''; } catch (_) {}
+    if (document.fullscreenElement) {
+      try { document.exitFullscreen(); } catch (_) {}
+    }
+    fitScales();
+  }
+
+  function presentNext() { show(i + 1); }
+  function presentPrev() { show(i - 1); }
+
+  function localPatch(html, instruction) {
+    const lower = instruction.toLowerCase();
+    let out = html;
+    let action = 'REWRITE_CONTENT';
+    if (/lock|ai os|operating system|독립\s*os|usb/.test(lower)) {
+      action = 'REPLACE_TEXT';
+      out = out
+        .replace(/AI Operating System/gi, 'Trusted Agent Seat')
+        .replace(/AI desktop operating system/gi, 'Trusted Agent Seat')
+        .replace(/검색 운영체제/g, 'Intent-first Trusted Agent Seat');
+    }
+    if (/짧게|shorten/.test(instruction)) {
+      out = out.replace(/font-size:(\d+)px/g, (_, n) => 'font-size:' + Math.max(14, Math.round(Number(n) * 0.92)) + 'px');
+    }
+    if (/한 줄 요약|요약/.test(instruction)) {
+      const note = '<div data-agent-summary="1" style="position:absolute;left:96px;top:980px;width:1728px;z-index:50;font-size:16px;font-family:' +
+        PAPER.fonts + ';color:#4A4D52;">Agent note: ' + instruction.replace(/[<>]/g, '').slice(0, 160) + '</div>';
+      if (!out.includes('data-agent-summary')) {
+        out = out.includes('</body>') ? out.replace('</body>', note + '</body>') : out + note;
+      }
+    }
+    if (/ir 톤|투자자/.test(lower)) {
+      out = out.replace(/론칭/g, '출시');
+    }
+    const stamp = '<!-- ir-psst-agent:' + instruction.replace(/--/g, '—').slice(0, 160) + ' -->';
+    if (!out.includes('ir-psst-agent:')) out = out.replace('<body>', '<body>\n' + stamp);
+    // Keep paper tokens if stripped
+    if (!/ECE3D2/.test(out) && /<style>/.test(out)) {
+      out = out.replace('<style>', '<style>\n/* IR PSST paper lock */\n');
+    }
+    return { html: out, action };
+  }
+
+  function extractOpsPayload(text) {
+    if (!text) return null;
+    const fence = text.match(/```(?:json)?\s*([\s\S]*?)```/i);
+    const raw = (fence ? fence[1] : text).trim();
+    try {
+      const j = JSON.parse(raw.match(/\{[\s\S]*\}/)[0]);
+      if (j && Array.isArray(j.ops) && j.ops.length) return j;
+      if (j && j.changeset && Array.isArray(j.changeset.ops)) return j.changeset;
+    } catch (_) {}
+    return null;
+  }
+
+  function applyOps(html, ops) {
+    let out = html;
+    for (const row of ops || []) {
+      const op = String(row.op || row.type || '').toLowerCase();
+      if (op === 'replace' || op === 'replace_text') {
+        const find = String(row.find || row.from || '');
+        const rep = String(row.replace || row.to || '');
+        if (find) out = out.split(find).join(rep);
+      } else if (op === 'delete_contains' || op === 'delete') {
+        const find = String(row.text || row.find || '');
+        if (find) out = out.split(find).join('');
+      } else if (op === 'delete_regex') {
+        try {
+          out = out.replace(new RegExp(String(row.pattern || ''), String(row.flags || 'g')), '');
+        } catch (_) {}
+      }
+    }
+    return out;
+  }
+
+  function extractHtmlFromModel(text) {
+    if (!text) return null;
+    const fence = text.match(/```html\s*([\s\S]*?)```/i);
+    if (fence) return fence[1].trim();
+    const doc = text.match(/(<!DOCTYPE html[\s\S]*<\/html>)/i);
+    if (doc) return doc[1].trim();
+    try {
+      const j = JSON.parse(text);
+      if (j && typeof j.afterHtml === 'string') return j.afterHtml;
+      if (j && j.changeset && typeof j.changeset.afterHtml === 'string') return j.changeset.afterHtml;
+    } catch (_) {}
+    return null;
+  }
+
+  function wantsFullRewrite(instruction) {
+    return /전체\s*재작성|full\s*rewrite|rewrite\s*whole|슬라이드\s*전체/i.test(instruction || '');
+  }
+
+  function localSurgical(html, instruction) {
+    const m = instruction.match(/삭제\s*[:：]\s*[「"'](.+?)[」"']/);
+    const m2 = instruction.match(/delete\s*[:：]\s*[「"'](.+?)[」"']/i);
+    const quoted = (m && m[1]) || (m2 && m2[1]) || '';
+    if (quoted) {
+      return { html: applyOps(html, [{ op: 'delete_contains', text: quoted }]), action: 'REPLACE_TEXT', source: 'local-quote-delete' };
+    }
+    // Fallback light LOCK patches only — never full regenerate
+    return { ...localPatch(html, instruction), source: 'local-lock-patch' };
+  }
+
+  async function seatRewrite(slide, instruction, beforeHtml) {
+    const model =
+      localStorage.getItem('os.neu.officeModel') ||
+      localStorage.getItem('os.neu.mvp.model') ||
+      'local';
+    const full = wantsFullRewrite(instruction);
+    const systemHint = full
+      ? 'You may return full HTML only because user asked for whole-slide rewrite. Keep 1920x1080 cream paper. Return ```html ...```. Never invent revenue/USB-shipped/AI OS claims.'
+      : 'SURGICAL EDIT ONLY. Do NOT return a full HTML page. Return JSON only: ' +
+        '{"version":1,"action":"REPLACE_TEXT","ops":[{"op":"replace","find":"...","replace":"..."},{"op":"delete_contains","text":"..."}],"reason":"..."}. ' +
+        'Ops must change the minimum text. Preserve all layout, absolute positions, CSS, tables, chips. ' +
+        'Product LOCK: Trusted Agent Seat / Agent Operating Layer. No invented metrics.';
+    const content = beforeHtml.length > 28000 ? beforeHtml.slice(0, 28000) + '\n<!-- truncated -->' : beforeHtml;
+    try {
+      const headers = { 'content-type': 'application/json' };
+      try {
+        // Match PPT Studio office assist session (x-osneu-ui)
+        const boot = await fetch('/api/ui-session', { method: 'GET' });
+        const tok = boot.headers.get('x-osneu-ui') || '';
+        if (tok.trim()) headers['x-osneu-ui'] = tok.trim();
+        else {
+          const row = await boot.json().catch(() => null);
+          if (row && (row.token || row.uiToken)) headers['x-osneu-ui'] = String(row.token || row.uiToken);
+        }
+      } catch (_) {}
+      const res = await fetch('/api/office/assist', {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          app: 'slides',
+          model,
+          mode: 'rewrite',
+          instruction: systemHint + '\n\nUser instruction:\n' + instruction + '\n\nSlide id: ' + slide.id + ' · file: ' + slide.file,
+          content,
+          title: 'IR PSST · ' + slide.label,
+        }),
+        signal: AbortSignal.timeout(130000),
+      });
+      const row = await res.json();
+      if (!row || !row.ok || !row.text) {
+        return { ok: false, reason: (row && row.reason) || 'seat-failed' };
+      }
+      if (!full) {
+        const payload = extractOpsPayload(row.text);
+        if (payload && payload.ops) {
+          const after = applyOps(beforeHtml, payload.ops);
+          if (after === beforeHtml) return { ok: false, reason: 'ops-no-change', text: row.text.slice(0, 400) };
+          return {
+            ok: true,
+            html: after,
+            source: 'seat-ops:' + (row.model || model),
+            action: payload.action || 'REPLACE_TEXT',
+            reason: payload.reason || 'Surgical ops ChangeSet',
+            ops: payload.ops,
+          };
+        }
+        const illegalFull = extractHtmlFromModel(row.text);
+        if (illegalFull) return { ok: false, reason: 'full-html-rejected', text: 'model returned full HTML; surgical mode refused' };
+        return { ok: false, reason: 'no-ops-in-reply', text: row.text.slice(0, 400) };
+      }
+      const after = extractHtmlFromModel(row.text);
+      if (!after || after.length < 200) return { ok: false, reason: 'no-html-in-reply', text: row.text.slice(0, 400) };
+      return { ok: true, html: after, source: 'seat-full:' + (row.model || model), action: 'REWRITE_CONTENT', reason: 'Whole-slide rewrite (explicit)' };
+    } catch (err) {
+      return { ok: false, reason: err && err.name === 'TimeoutError' ? 'timeout' : 'network' };
+    }
+  }
+
+  async function proposeChange(instruction) {
+    const slide = slides[i];
+    if (!slide) return;
+    if (!instruction.trim()) { setLog('프롬프트를 입력하세요.', false); return; }
+    pendingCs = null;
+    setCsUi();
+    setRoute('thinking');
+    setLog('thinking · 선택 슬라이드 HTML 로드…');
+    let beforeHtml = '';
+    try {
+      const ov = overrides()[slide.id];
+      if (ov && ov.html) beforeHtml = ov.html;
+      else beforeHtml = await (await fetch(new URL('slides/' + slide.file, base))).text();
+    } catch (err) {
+      setRoute('completed', true);
+      setLog('로드 실패: ' + err, false);
+      return;
+    }
+    setRoute('planning');
+    setLog(wantsFullRewrite(instruction)
+      ? 'planning · 전체 재작성 모드…'
+      : 'planning · 부분 수정(ops) · 레이아웃 유지…');
+    let result = await seatRewrite(slide, instruction, beforeHtml);
+    if (!result.ok) {
+      setLog('Seat 실패 (' + result.reason + ') · 로컬 부분 수정 폴백…');
+      const local = localSurgical(beforeHtml, instruction);
+      result = {
+        ok: true,
+        html: local.html,
+        source: local.source || ('local-fallback:' + (result.reason || '')),
+        action: local.action,
+        reason: 'Local surgical / LOCK patch',
+      };
+    }
+    setRoute('previewing');
+    pendingCs = {
+      id: 'cs-' + Date.now().toString(36),
+      scope: 'slide',
+      slideId: slide.id,
+      file: slide.file,
+      action: result.action || 'REWRITE_CONTENT',
+      beforeHtml,
+      afterHtml: result.html,
+      reason: result.reason || instruction.slice(0, 120),
+      source: result.source || 'unknown',
+      status: 'proposed',
+      at: Date.now(),
+    };
+    try { sessionStorage.setItem(CS_KEY, JSON.stringify({ id: pendingCs.id, slideId: pendingCs.slideId, status: 'proposed' })); } catch (_) {}
+    // Live preview of proposal
+    stage.src = URL.createObjectURL(new Blob([pendingCs.afterHtml], { type: 'text/html;charset=utf-8' }));
+    setRoute('waiting_approval');
+    setCsUi();
+    setLog('ChangeSet proposed · Apply로 확정 / Reject로 취소\nsource: ' + pendingCs.source, true);
+    try {
+      parent.postMessage({ type: 'os.neu.psst-ir.changeset', changeset: { id: pendingCs.id, slideId: pendingCs.slideId, status: 'proposed' } }, '*');
+    } catch (_) {}
+  }
+
+  function applyChange() {
+    if (!pendingCs || pendingCs.status !== 'proposed') return;
+    setRoute('applying');
+    const map = overrides();
+    map[pendingCs.slideId] = {
+      html: pendingCs.afterHtml,
+      instruction: pendingCs.reason,
+      changesetId: pendingCs.id,
+      source: pendingCs.source,
+      at: Date.now(),
+    };
+    saveOverrides(map);
+    pendingCs.status = 'applied';
+    setCsUi();
+    const idx = slides.findIndex((s) => s.id === pendingCs.slideId);
+    if (idx >= 0) refreshThumb(idx);
+    show(i);
+    setRoute('completed');
+    setLog('Apply 완료 · override 저장 · ' + pendingCs.slideId, true);
+    pendingCs = null;
+    setCsUi();
+  }
+
+  function rejectChange() {
+    if (!pendingCs) return;
+    pendingCs.status = 'rejected';
+    setRoute('completed', true);
+    setLog('Reject · 덱 변경 없음', false);
+    pendingCs = null;
+    setCsUi();
+    show(i);
+    setRoute('idle');
+  }
+
+  async function exportCream() {
+    // Cream path: print-ready HTML pack + recipe JSON for PPT Studio PPTX (text frames)
+    setLog('크림 내보내기 준비…');
+    const recipe = { version: 1, title: (manifest && (manifest.titleKo || manifest.title)) || 'IR PSST', slides: [] };
+    for (const slide of slides.slice(0, 20)) {
+      let html = '';
+      try {
+        const ov = overrides()[slide.id];
+        html = ov && ov.html ? ov.html : await (await fetch(new URL('slides/' + slide.file, base))).text();
+      } catch (_) { html = ''; }
+      const tmp = document.createElement('div');
+      tmp.innerHTML = html;
+      const title = (tmp.querySelector('h1') && tmp.querySelector('h1').textContent.trim()) || slide.label;
+      const paras = Array.from(tmp.querySelectorAll('p')).map((p) => p.textContent.trim()).filter(Boolean).slice(0, 6);
+      recipe.slides.push({
+        layout: paras.length ? 'bullets' : 'title',
+        title: title.slice(0, 120),
+        body: paras.join('\n'),
+        bullets: paras,
+        table: null,
+        primitive: 'paper-cream',
+      });
+    }
+    const blob = new Blob([JSON.stringify(recipe, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'IR-PSST-cream-recipe.json';
+    a.click();
+    setLog('크림 recipe JSON 다운로드 (최대 20장 · PPT Studio에서 PPTX 가능). Present 후 Ctrl+P = PDF.', true);
+    try {
+      parent.postMessage({ type: 'os.neu.psst-ir.export-recipe', recipe }, '*');
+    } catch (_) {}
+  }
+
+  async function loadManifest() {
+    const res = await fetch(new URL('manifest.json', base));
+    manifest = await res.json();
+    slides = manifest.slides || [];
+    document.getElementById('deckTitle').textContent = (manifest.titleKo || manifest.title) + ' · HTML Deck';
+    document.getElementById('lockBox').textContent = 'LOCK · ' + (manifest.locks || []).join(' · ');
+    thumbsEl.innerHTML = '';
+    slides.forEach((slide, idx) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'thumb' + (idx === 0 ? ' active' : '');
+      btn.innerHTML =
+        '<div class="thumb-frame"><div class="thumb-scale"><iframe loading="lazy" sandbox="allow-same-origin" tabindex="-1" title=""></iframe></div></div>' +
+        '<div class="thumb-label"><span class="thumb-badge"></span></div>';
+      btn.querySelector('.thumb-label').insertAdjacentText('afterbegin', slide.label);
+      if (overrides()[slide.id]) btn.querySelector('.thumb-badge').textContent = 'modified';
+      const fr = btn.querySelector('iframe');
+      fr.addEventListener('load', () => fitScales());
+      // Lazy: only first 8 eager; rest when near
+      if (idx < 8) fr.src = new URL('slides/' + slide.file, base).href;
+      else {
+        fr.dataset.src = new URL('slides/' + slide.file, base).href;
+      }
+      btn.addEventListener('click', () => show(idx));
+      thumbsEl.appendChild(btn);
+    });
+    // IntersectionObserver for lazy thumbs
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        const fr = en.target.querySelector('iframe');
+        if (fr && fr.dataset.src && !fr.getAttribute('src')) {
+          fr.src = fr.dataset.src;
+          delete fr.dataset.src;
+        }
+        fitScales();
+      });
+    }, { root: thumbsEl, rootMargin: '160px' });
+    Array.from(thumbsEl.children).forEach((btn) => io.observe(btn));
+
+    if (typeof ResizeObserver !== 'undefined') {
+      const ro = new ResizeObserver(() => fitScales());
+      ro.observe(thumbsEl);
+      const vp = document.getElementById('viewport');
+      if (vp) ro.observe(vp);
+    }
+
+    const q = new URLSearchParams(location.search).get('slide');
+    const start = q ? Math.max(0, slides.findIndex((s) => s.id === q || s.file === q)) : 0;
+    show(start >= 0 ? start : 0);
+    requestAnimationFrame(() => {
+      fitScales();
+      setTimeout(fitScales, 50);
+      setTimeout(fitScales, 250);
+      setTimeout(fitScales, 800);
+    });
+  }
+
+  document.getElementById('prev').onclick = () => presentPrev();
+  document.getElementById('next').onclick = () => presentNext();
+  document.getElementById('presentBtn').onclick = () => (presenting ? exitPresent() : enterPresent());
+  document.getElementById('presentHitPrev').onclick = () => presentPrev();
+  document.getElementById('presentHitNext').onclick = () => presentNext();
+  document.getElementById('presentFabPrev').onclick = () => presentPrev();
+  document.getElementById('presentFabNext').onclick = () => presentNext();
+  document.getElementById('presentFabExit').onclick = () => exitPresent();
+  document.getElementById('exportCream').onclick = () => exportCream();
+  document.getElementById('openRaw').onclick = () => {
+    // Same-window: load original HTML in the stage (no popup)
+    const slide = slides[i];
+    if (!slide) return;
+    stage.style.pointerEvents = '';
+    stage.src = new URL('slides/' + slide.file, base).href + '?t=' + Date.now();
+    setLog('원본 HTML을 가운데 스테이지에 표시 · Present로 발표 모드', true);
+  };
+  document.getElementById('runAgent').onclick = () => proposeChange(promptEl.value || '');
+  document.getElementById('applyCs').onclick = () => applyChange();
+  document.getElementById('rejectCs').onclick = () => rejectChange();
+  document.getElementById('restore').onclick = () => {
+    const slide = slides[i];
+    if (!slide) return;
+    const map = overrides();
+    delete map[slide.id];
+    saveOverrides(map);
+    pendingCs = null;
+    setCsUi();
+    refreshThumb(i);
+    show(i);
+    setRoute('idle');
+    setLog('원본 복원: ' + slide.file, true);
+  };
+  document.getElementById('chips').addEventListener('click', (e) => {
+    const t = e.target.closest('[data-prompt]');
+    if (!t) return;
+    promptEl.value = t.getAttribute('data-prompt') || '';
+  });
+
+  // capture:true so keys work even if focus drifts (iframe / fullscreen)
+  window.addEventListener('keydown', (e) => {
+    const tag = e.target && e.target.tagName;
+    if (!presenting && (tag === 'TEXTAREA' || tag === 'INPUT')) return;
+    if (e.key === 'Escape' && presenting) { e.preventDefault(); exitPresent(); return; }
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || (presenting && (e.key === ' ' || e.key === 'Enter'))) {
+      e.preventDefault();
+      presentNext();
+      return;
+    }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp' || (presenting && e.key === 'Backspace')) {
+      e.preventDefault();
+      presentPrev();
+      return;
+    }
+    if ((e.key === 'f' || e.key === 'F') && !presenting && !e.metaKey && !e.ctrlKey) {
+      e.preventDefault();
+      enterPresent();
+    }
+  }, true);
+  document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement && presenting) exitPresent();
+    else if (document.fullscreenElement) setTimeout(fitScales, 50);
+  });
+  window.addEventListener('resize', fitScales);
+
+  // Embedded inside os.neu Slides (same window) — mark UI + keep Agent route visible
+  if (new URLSearchParams(location.search).get('embed') === '1') {
+    app.classList.add('embed');
+    document.title = 'IR PSST · HTML Deck (embed)';
+  }
+
+  // Live route mirror for parent shell (optional listener)
+  const routeMirror = new MutationObserver(() => {
+    try {
+      parent.postMessage({
+        type: 'os.neu.psst-ir.route',
+        status: agentStatus,
+        slideId: slides[i] && slides[i].id,
+      }, '*');
+    } catch (_) {}
+  });
+  const routeList = document.getElementById('routeList');
+  if (routeList) routeMirror.observe(routeList, { attributes: true, subtree: true, attributeFilter: ['class'] });
+
+  try {
+    await loadManifest();
+    setRoute('idle');
+  } catch (err) {
+    setLog('manifest 로드 실패: ' + err, false);
+  }
+})();
+</script>
+</body>
+</html>

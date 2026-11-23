@@ -1,0 +1,15 @@
+{
+  "id": "ir-psst-sample",
+  "title": "IR PSST Sample",
+  "titleKo": "IR PSST · 예제 레이아웃",
+  "visual": "paper-cream",
+  "locks": ["Trusted Agent Seat", "Agent Operating Layer", "sample only · no revenue claims"],
+  "slides": [
+    { "id": "s1", "file": "01-cover.html", "label": "01 Cover · YC opener" },
+    { "id": "s2", "file": "02-problem.html", "label": "02 Problem · memo" },
+    { "id": "s3", "file": "03-solution.html", "label": "03 EIC 3-box" },
+    { "id": "s4", "file": "04-grid.html", "label": "04 Paper grid" },
+    { "id": "s5", "file": "05-table.html", "label": "05 Table" },
+    { "id": "s6", "file": "06-closing.html", "label": "06 Closing" }
+  ]
+}

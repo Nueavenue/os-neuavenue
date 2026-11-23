@@ -1,0 +1,76 @@
+{
+  "id": "tech-architecture",
+  "title": "Tech Architecture",
+  "titleKo": "기술 아키텍처",
+  "visual": "tech-arch",
+  "locks": [
+    "Trusted Agent Seat",
+    "Agent Operating Layer",
+    "not AI desktop OS",
+    "placeholders only · no invented revenue"
+  ],
+  "structure": [
+    "cover",
+    "context",
+    "architecture",
+    "components",
+    "data-flow",
+    "security",
+    "scalability",
+    "integration",
+    "roadmap",
+    "closing"
+  ],
+  "slides": [
+    {
+      "id": "cover",
+      "file": "01-cover.html",
+      "label": "01 Cover"
+    },
+    {
+      "id": "context",
+      "file": "02-context.html",
+      "label": "02 Context"
+    },
+    {
+      "id": "architecture",
+      "file": "03-architecture.html",
+      "label": "03 Architecture"
+    },
+    {
+      "id": "components",
+      "file": "04-components.html",
+      "label": "04 Components"
+    },
+    {
+      "id": "data-flow",
+      "file": "05-data-flow.html",
+      "label": "05 Data Flow"
+    },
+    {
+      "id": "security",
+      "file": "06-security.html",
+      "label": "06 Security"
+    },
+    {
+      "id": "scalability",
+      "file": "07-scalability.html",
+      "label": "07 Scalability"
+    },
+    {
+      "id": "integration",
+      "file": "08-integration.html",
+      "label": "08 Integration"
+    },
+    {
+      "id": "roadmap",
+      "file": "09-roadmap.html",
+      "label": "09 Roadmap"
+    },
+    {
+      "id": "closing",
+      "file": "10-closing.html",
+      "label": "10 Closing"
+    }
+  ]
+}

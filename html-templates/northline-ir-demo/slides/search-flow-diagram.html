@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>검색 흐름 그림</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#ECE3D2;--paper-soft:#F4EEE1;--ink:#14181D;--ink-soft:#4A4D52;
+  --line:rgba(20,24,29,.16);
+  --ember:#BC4F2B;--teal:#1F3D44;--moss:#4D6B4A;--gold:#C49B3D;
+  --lavender:#6A55B8;--leaf:#DDE9D5;
+}
+body{margin:0;padding:0;overflow:hidden;font-family:'Inter','Noto Sans KR',sans-serif;color:var(--ink);background:var(--paper);}
+p{margin:0;}
+.hair{font-size:10px;font-weight:800;letter-spacing:.12em;color:var(--ink-soft);}
+.eb{font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--ember);}
+.chip{display:inline-block;padding:1px 6px;font-size:9.5px;font-weight:700;letter-spacing:.04em;border:1.5px solid currentColor;line-height:1.4;white-space:nowrap;vertical-align:middle;}
+.tg{background:var(--gold);color:#14181D;border-color:var(--gold);}
+.cap{width:16px;height:16px;flex:none;border-radius:50%;background:var(--lavender);color:#fff;font-size:9px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+.title-c{font-size:10.5px;font-weight:800;color:var(--lavender);}
+.bd-c{font-size:10px;font-weight:700;color:var(--ink);}
+</style></head>
+<body>
+<div class="slide-container" data-screen-label="검색 흐름 그림" style="position:relative;width:1920px;height:1080px;overflow:hidden;background:var(--paper);">
+
+  <!-- header -->
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:32px;width:900px;z-index:10;"><p class="eb">부록 · 검색 흐름 그림</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1740px;top:32px;width:120px;z-index:10;text-align:right;"><p style="font-size:12px;font-weight:600;color:var(--ink-soft);">20 / 25</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:54px;width:1100px;z-index:10;">
+    <h1 style="margin:0;font-size:22px;font-weight:800;line-height:1.2;letter-spacing:-.01em;">주소를 외우지 않습니다 · 단어를 던집니다</h1>
+  </div>
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:1380px;top:32px;width:444px;height:54px;background:var(--ink);border-radius:6px;z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1396px;top:38px;width:416px;z-index:10;">
+    <p style="font-size:11px;font-weight:800;color:var(--paper);letter-spacing:.02em;">Your word. Your engine. Our door.</p>
+    <p style="margin-top:2px;font-size:9.5px;color:#D6D2C4;">단어 한 줄 · 고른 엔진 · 우리 문</p>
+  </div>
+
+  <!-- ===== left: Customer, Search Seat, Address ===== -->
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:96px;top:200px;width:108px;height:46px;background:var(--leaf);border:1.5px solid var(--moss);border-radius:6px;z-index:2;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:200px;width:108px;z-index:10;text-align:center;">
+    <p class="hair" style="color:#3F5B3C;">Customer</p>
+    <p style="margin-top:1px;font-size:11px;font-weight:700;color:var(--moss);">사람</p>
+  </div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:96px;top:256px;width:108px;height:46px;background:var(--moss);border-radius:6px;z-index:2;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:256px;width:108px;z-index:10;text-align:center;">
+    <p style="font-size:9.5px;font-weight:700;color:#DDE9D5;">sample.browse</p>
+    <p style="margin-top:1px;font-size:11px;font-weight:800;color:var(--paper);">Search Seat</p>
+  </div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:96px;top:320px;width:164px;height:78px;background:#FFFFFF;border:1.5px solid var(--ink);border-radius:6px;z-index:2;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:328px;width:164px;z-index:10;text-align:center;">
+    <p class="hair">Address · engine pick</p>
+    <p style="margin-top:6px;font-size:9.5px;color:var(--ink-soft);">단어 + 엔진</p>
+  </div>
+
+  <!-- pipeline bg (tight) -->
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:300px;top:160px;width:800px;height:400px;background:#EFE6F5;border:1.5px solid var(--lavender);border-radius:8px;z-index:1;"></div>
+
+  <!-- 1 Query — top-left of cascade -->
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:340px;top:200px;width:104px;height:46px;background:#FFFFFF;border:1.5px solid var(--lavender);border-radius:6px;z-index:3;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:340px;top:200px;width:104px;z-index:10;text-align:center;">
+    <div style="display:flex;align-items:center;justify-content:center;gap:5px;"><span class="cap">1</span><p class="title-c">Query</p></div>
+    <p class="title-c">Understanding</p>
+  </div>
+
+  <!-- Plan Model — directly under 1 -->
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:340px;top:254px;width:104px;height:42px;background:#FFFFFF;border:1.5px dashed var(--lavender);border-radius:6px;z-index:3;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:340px;top:254px;width:104px;z-index:10;text-align:center;">
+    <p class="title-c">Plan · Model</p>
+    <p class="title-c">Router</p>
+  </div>
+
+  <!-- 2 — right of Plan, slightly lower -->
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:480px;top:336px;width:120px;height:46px;background:#FFFFFF;border:1.5px solid var(--lavender);border-radius:6px;z-index:3;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:480px;top:336px;width:120px;z-index:10;text-align:center;">
+    <div style="display:flex;align-items:center;justify-content:center;gap:5px;"><span class="cap">2</span><p class="title-c">Live</p></div>
+    <p class="title-c">Retrieval</p>
+  </div>
+
+  <!-- 3 — below-right of 2 -->
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:640px;top:408px;width:120px;height:46px;background:#FFFFFF;border:1.5px solid var(--lavender);border-radius:6px;z-index:3;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:640px;top:408px;width:120px;z-index:10;text-align:center;">
+    <div style="display:flex;align-items:center;justify-content:center;gap:5px;"><span class="cap">3</span><p class="title-c">Extract</p></div>
+    <p class="title-c">&amp; Rank</p>
+  </div>
+
+  <!-- 4 — below-right of 3 -->
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:340px;top:480px;width:120px;height:46px;background:#FFFFFF;border:1.5px solid var(--lavender);border-radius:6px;z-index:3;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:340px;top:480px;width:120px;z-index:10;text-align:center;">
+    <div style="display:flex;align-items:center;justify-content:center;gap:5px;"><span class="cap">4</span><p class="title-c">LLM</p></div>
+    <p class="title-c">Synthesis</p>
+  </div>
+
+  <!-- 5 — right of 4 -->
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:480px;top:480px;width:120px;height:46px;background:#FFFFFF;border:1.5px solid var(--lavender);border-radius:6px;z-index:3;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:480px;top:480px;width:120px;z-index:10;text-align:center;">
+    <div style="display:flex;align-items:center;justify-content:center;gap:5px;"><span class="cap">5</span><p class="title-c">Citation</p></div>
+    <p class="title-c">Mapping</p>
+  </div>
+
+  <!-- ====== DB column — right side, half sized ====== -->
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1180px;top:140px;width:240px;z-index:10;"><p class="hair">데이터 7개</p></div>
+
+  <!-- 1 Keyword -->
+  <svg data-object="true" data-object-type="shape" width="200" height="44" viewBox="0 0 200 44" style="position:absolute;left:1180px;top:160px;z-index:2;">
+    <ellipse cx="100" cy="8" rx="92" ry="8" fill="#FFFFFF" stroke="#5A6472" stroke-width="1.2"/>
+    <rect x="8" y="8" width="184" height="28" fill="#FFFFFF" stroke="none"/>
+    <line x1="8" y1="8" x2="8" y2="36" stroke="#5A6472" stroke-width="1.2"/>
+    <line x1="192" y1="8" x2="192" y2="36" stroke="#5A6472" stroke-width="1.2"/>
+    <ellipse cx="100" cy="36" rx="92" ry="8" fill="none" stroke="#5A6472" stroke-width="1.2"/>
+  </svg>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1196px;top:174px;width:168px;z-index:10;text-align:center;"><p class="bd-c">Keyword Info Store</p></div>
+
+  <!-- 2 LLM Catalog -->
+  <svg data-object="true" data-object-type="shape" width="200" height="44" viewBox="0 0 200 44" style="position:absolute;left:1180px;top:212px;z-index:2;">
+    <ellipse cx="100" cy="8" rx="92" ry="8" fill="#FFFFFF" stroke="#5A6472" stroke-width="1.2"/>
+    <rect x="8" y="8" width="184" height="28" fill="#FFFFFF" stroke="none"/>
+    <line x1="8" y1="8" x2="8" y2="36" stroke="#5A6472" stroke-width="1.2"/>
+    <line x1="192" y1="8" x2="192" y2="36" stroke="#5A6472" stroke-width="1.2"/>
+    <ellipse cx="100" cy="36" rx="92" ry="8" fill="none" stroke="#5A6472" stroke-width="1.2"/>
+  </svg>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1196px;top:226px;width:168px;z-index:10;text-align:center;"><p class="bd-c">LLM Catalog <span class="chip tg" style="font-size:8px;margin-left:3px;">계획</span></p></div>
+
+  <!-- 3 SearXNG -->
+  <svg data-object="true" data-object-type="shape" width="200" height="44" viewBox="0 0 200 44" style="position:absolute;left:1180px;top:264px;z-index:2;">
+    <ellipse cx="100" cy="8" rx="92" ry="8" fill="#FFFFFF" stroke="#5A6472" stroke-width="1.2"/>
+    <rect x="8" y="8" width="184" height="28" fill="#FFFFFF" stroke="none"/>
+    <line x1="8" y1="8" x2="8" y2="36" stroke="#5A6472" stroke-width="1.2"/>
+    <line x1="192" y1="8" x2="192" y2="36" stroke="#5A6472" stroke-width="1.2"/>
+    <ellipse cx="100" cy="36" rx="92" ry="8" fill="none" stroke="#5A6472" stroke-width="1.2"/>
+  </svg>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1196px;top:278px;width:168px;z-index:10;text-align:center;"><p class="bd-c">SearXNG + 엔진</p></div>
+
+  <!-- 4 Score History -->
+  <svg data-object="true" data-object-type="shape" width="200" height="44" viewBox="0 0 200 44" style="position:absolute;left:1180px;top:316px;z-index:2;">
+    <ellipse cx="100" cy="8" rx="92" ry="8" fill="#FFFFFF" stroke="#5A6472" stroke-width="1.2"/>
+    <rect x="8" y="8" width="184" height="28" fill="#FFFFFF" stroke="none"/>
+    <line x1="8" y1="8" x2="8" y2="36" stroke="#5A6472" stroke-width="1.2"/>
+    <line x1="192" y1="8" x2="192" y2="36" stroke="#5A6472" stroke-width="1.2"/>
+    <ellipse cx="100" cy="36" rx="92" ry="8" fill="none" stroke="#5A6472" stroke-width="1.2"/>
+  </svg>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1196px;top:330px;width:168px;z-index:10;text-align:center;"><p class="bd-c">Score History</p></div>
+
+  <!-- 5 Citation Ledger -->
+  <svg data-object="true" data-object-type="shape" width="200" height="44" viewBox="0 0 200 44" style="position:absolute;left:1180px;top:368px;z-index:2;">
+    <ellipse cx="100" cy="8" rx="92" ry="8" fill="#FFFFFF" stroke="#5A6472" stroke-width="1.2"/>
+    <rect x="8" y="8" width="184" height="28" fill="#FFFFFF" stroke="none"/>
+    <line x1="8" y1="8" x2="8" y2="36" stroke="#5A6472" stroke-width="1.2"/>
+    <line x1="192" y1="8" x2="192" y2="36" stroke="#5A6472" stroke-width="1.2"/>
+    <ellipse cx="100" cy="36" rx="92" ry="8" fill="none" stroke="#5A6472" stroke-width="1.2"/>
+  </svg>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1196px;top:382px;width:168px;z-index:10;text-align:center;"><p class="bd-c">Citation Ledger</p></div>
+
+  <!-- 6 Buyer (rectangle card, smaller) -->
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:1180px;top:424px;width:200px;height:36px;background:#FFFFFF;border:1.5px solid var(--ink-soft);border-radius:6px;z-index:2;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1196px;top:432px;width:168px;z-index:10;text-align:center;"><p class="bd-c">Buyer &amp; local LLMs</p></div>
+
+  <!-- 7 Live crawl -->
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:1180px;top:472px;width:200px;height:36px;background:#FFFFFF;border:1.5px solid var(--ink-soft);border-radius:6px;z-index:2;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1196px;top:480px;width:168px;z-index:10;text-align:center;"><p class="bd-c">Live crawl · APIs</p></div>
+
+  <!-- ====== connectors layer ====== -->
+  <svg width="1920" height="1080" viewBox="0 0 1920 1080" style="position:absolute;left:0;top:0;z-index:4;pointer-events:none;">
+    <defs>
+      <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#4A4D52"/>
+      </marker>
+      <marker id="ahv" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#6A55B8"/>
+      </marker>
+    </defs>
+
+    <!-- Customer → Search Seat -->
+    <line x1="150" y1="246" x2="150" y2="256" stroke="#4A4D52" stroke-width="1.5" marker-end="url(#ah)"/>
+
+    <!-- Search Seat → Address bar. End at Address bar right-mid (260, 359). -->
+    <path d="M 204 280 H 220 V 359" stroke="#4A4D52" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
+
+    <!-- Address bar → 1 Query. End at 1 left-top (340, 220). -->
+    <path d="M 260 320 H 320 V 220 H 340" stroke="#4A4D52" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
+
+    <!-- 1 → Plan Model. Direct down. -->
+    <line x1="392" y1="246" x2="392" y2="254" stroke="#6A55B8" stroke-width="1.5" marker-end="url(#ahv)"/>
+
+    <!-- Plan Model → 2. End at 2 left mid (480, 359). -->
+    <path d="M 444 275 H 460 V 359 H 480" stroke="#6A55B8" stroke-width="1.5" fill="none" marker-end="url(#ahv)"/>
+
+    <!-- 2 → 3. Down-right. End at 3 left-mid (640, 431). -->
+    <path d="M 600 359 V 410 H 640 V 431" stroke="#6A55B8" stroke-width="1.5" fill="none" marker-end="url(#ahv)"/>
+
+    <!-- 3 → 4. Down-left then left. End at 4 right-mid (460, 503). -->
+    <path d="M 700 454 V 472 H 460 V 503" stroke="#6A55B8" stroke-width="1.5" fill="none" marker-end="url(#ahv)"/>
+
+    <!-- 4 → 5. End at 5 left-mid (480, 503). -->
+    <path d="M 460 503 H 480" stroke="#6A55B8" stroke-width="1.5" fill="none" marker-end="url(#ahv)"/>
+
+    <!-- 1 → Keyword (top-right line) -->
+    <path d="M 444 200 V 158 H 1180 V 182" stroke="#4A4D52" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
+
+    <!-- 2 → LLM Catalog dashed -->
+    <path d="M 600 350 V 230 H 1180 V 234" stroke="#4A4D52" stroke-width="1.5" fill="none" stroke-dasharray="6 4" marker-end="url(#ah)"/>
+
+    <!-- 2 → SearXNG -->
+    <path d="M 600 365 V 286 H 1180" stroke="#4A4D52" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
+
+    <!-- 3 → Score History -->
+    <path d="M 760 408 V 338 H 1180" stroke="#4A4D52" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
+
+    <!-- 5 → Citation Ledger -->
+    <path d="M 600 503 V 390 H 1180" stroke="#4A4D52" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
+
+    <!-- 4 → Buyer LLMs dashed -->
+    <path d="M 460 526 V 442 H 1180" stroke="#6A55B8" stroke-width="1.5" fill="none" stroke-dasharray="6 4" marker-end="url(#ahv)"/>
+
+    <!-- 2 → Live crawl dashed -->
+    <path d="M 600 350 V 488 H 1180" stroke="#6A55B8" stroke-width="1.5" fill="none" stroke-dasharray="6 4" marker-end="url(#ahv)"/>
+  </svg>
+
+  <!-- labels -->
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:212px;top:312px;width:48px;z-index:10;"><p style="font-size:9px;color:var(--ink-soft);font-weight:700;">의도</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:344px;top:296px;width:80px;z-index:10;"><p style="font-size:9px;color:var(--ink-soft);font-weight:700;">해석 의도</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:444px;top:296px;width:48px;z-index:10;"><p style="font-size:9px;color:var(--lavender);font-weight:700;">Plan</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:520px;top:372px;width:80px;z-index:10;"><p style="font-size:9px;color:var(--lavender);font-weight:700;">다중</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:660px;top:444px;width:64px;z-index:10;"><p style="font-size:9px;color:var(--ink-soft);font-weight:700;">단락</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:300px;top:516px;width:80px;z-index:10;"><p style="font-size:9px;color:var(--lavender);font-weight:700;">인용</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:140px;top:412px;width:80px;z-index:10;display:none;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1140px;top:118px;width:200px;z-index:10;"><p style="font-size:9px;color:var(--ink-soft);font-weight:700;">키워드 자국</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1140px;top:218px;width:48px;z-index:10;"><p style="font-size:9px;color:var(--ink-soft);font-weight:700;">읽기</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1140px;top:268px;width:48px;z-index:10;"><p style="font-size:9px;color:var(--ink-soft);font-weight:700;">엔진</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1140px;top:324px;width:48px;z-index:10;"><p style="font-size:9px;color:var(--ink-soft);font-weight:700;">점수</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1140px;top:372px;width:48px;z-index:10;"><p style="font-size:9px;color:var(--ink-soft);font-weight:700;">인용</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:700px;top:540px;width:160px;z-index:10;"><p style="font-size:9px;color:var(--lavender);font-weight:700;">구매자 LLM 합성</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1392px;top:486px;width:200px;z-index:10;display:none;"><p style="font-size:9px;color:var(--lavender);font-weight:700;"></p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1392px;top:498px;width:140px;z-index:10;"><p style="font-size:9px;color:var(--lavender);font-weight:700;">라이브 가져오기</p></div>
+
+  <!-- ====== compact bottom band ====== -->
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:96px;top:600px;width:1060px;height:84px;background:var(--paper-soft);border:1px solid var(--line);border-radius:6px;z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:114px;top:610px;width:520px;z-index:10;">
+    <p class="hair">오늘 · 빈 시트</p>
+    <div style="margin-top:6px;display:flex;flex-wrap:wrap;gap:5px;align-items:center;">
+      <span style="font-size:11px;font-weight:700;">SearXNG</span>
+      <span class="chip" style="color:var(--ink);border-color:var(--ink);font-size:9px;">DuckDuckGo</span>
+      <span class="chip" style="color:var(--ink);border-color:var(--ink);font-size:9px;">Brave</span>
+      <span class="chip" style="color:var(--ink);border-color:var(--ink);font-size:9px;">Mojeek</span>
+      <span class="chip" style="color:var(--ink);border-color:var(--ink);font-size:9px;">위키</span>
+      <span class="chip" style="color:var(--ink-soft);border-color:var(--ink-soft);font-size:9px;">Google</span>
+    </div>
+    <p style="margin-top:4px;font-size:9.5px;color:var(--ink-soft);">sample.browse 검색·탭은 오늘 <b style="color:var(--ember);">DEMO</b></p>
+  </div>
+
+  <div data-object="true" style="position:absolute;left:600px;top:610px;width:1px;height:64px;background:var(--line);z-index:1;"></div>
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:620px;top:610px;width:240px;z-index:10;">
+    <p class="hair">나중 · 카탈로그 <span class="chip tg" style="font-size:9px;margin-left:4px;">계획</span></p>
+    <p style="margin-top:6px;font-size:10.5px;line-height:1.4;color:var(--ink);">Meilisearch 자리 — <b>추천만</b>.</p>
+  </div>
+
+  <div data-object="true" style="position:absolute;left:880px;top:610px;width:1px;height:64px;background:var(--line);z-index:1;"></div>
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:900px;top:610px;width:240px;z-index:10;">
+    <p class="hair">한 줄 동의</p>
+    <p style="margin-top:6px;font-size:10.5px;line-height:1.4;color:var(--ink);">선택은 자국을 남김 · 자국은 다음 호출을 짧게.</p>
+  </div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:1180px;top:600px;width:660px;height:84px;background:var(--ink);border-radius:6px;z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1200px;top:610px;width:620px;z-index:10;">
+    <p style="font-size:10px;font-weight:800;letter-spacing:.1em;color:#E8A37E;">자리는 자리</p>
+    <p style="margin-top:8px;font-size:10.5px;line-height:1.4;color:var(--paper);">Read &amp; edit on user OS · agents stay on seat · Identity stays with you.</p>
+  </div>
+
+  <!-- footer -->
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:96px;top:982px;width:1728px;height:1px;background:var(--line);z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:996px;width:1100px;z-index:10;"><p style="font-size:11px;color:var(--ink-soft);">자국은 자국대로 · 문은 항상 우리 것</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1380px;top:998px;width:444px;z-index:10;text-align:right;"><p style="font-size:11px;color:var(--ink-soft);">Sample Co. (DEMO) · sample.desk · 2026-10</p></div>
+
+</div>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","spa":2}' crossorigin="anonymous"></script>
+</body></html>

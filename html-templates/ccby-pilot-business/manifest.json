@@ -1,0 +1,65 @@
+{
+  "id": "ccby-pilot-business",
+  "title": "Business Brief (CC BY pilot)",
+  "titleKo": "비즈니스 브리프 (CC BY 파일럿)",
+  "visual": "modern-business",
+  "locks": [
+    "Trusted Agent Seat",
+    "Agent Operating Layer",
+    "not AI desktop OS",
+    "placeholders only · no invented revenue",
+    "CC BY 4.0 · ppttemplate.ai"
+  ],
+  "structure": [
+    "cover",
+    "problem",
+    "solution",
+    "market",
+    "traction",
+    "roadmap",
+    "ask",
+    "closing"
+  ],
+  "slides": [
+    {
+      "id": "cover",
+      "file": "01-cover.html",
+      "label": "01 Cover"
+    },
+    {
+      "id": "problem",
+      "file": "02-problem.html",
+      "label": "02 Problem"
+    },
+    {
+      "id": "solution",
+      "file": "03-solution.html",
+      "label": "03 Solution"
+    },
+    {
+      "id": "market",
+      "file": "04-market.html",
+      "label": "04 Market"
+    },
+    {
+      "id": "traction",
+      "file": "05-traction.html",
+      "label": "05 Traction"
+    },
+    {
+      "id": "roadmap",
+      "file": "06-roadmap.html",
+      "label": "06 Roadmap"
+    },
+    {
+      "id": "ask",
+      "file": "07-ask.html",
+      "label": "07 Ask"
+    },
+    {
+      "id": "closing",
+      "file": "08-closing.html",
+      "label": "08 Closing"
+    }
+  ]
+}

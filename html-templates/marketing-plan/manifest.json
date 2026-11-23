@@ -1,0 +1,52 @@
+{
+  "id": "marketing-plan",
+  "title": "Marketing Plan",
+  "titleKo": "마케팅 계획",
+  "visual": "marketing",
+  "locks": [
+    "Trusted Agent Seat",
+    "Agent Operating Layer",
+    "not AI desktop OS",
+    "placeholders only · no invented revenue"
+  ],
+  "structure": [
+    "cover",
+    "audience",
+    "message",
+    "channels",
+    "timeline",
+    "kpis"
+  ],
+  "slides": [
+    {
+      "id": "cover",
+      "file": "01-cover.html",
+      "label": "01 Cover"
+    },
+    {
+      "id": "audience",
+      "file": "02-audience.html",
+      "label": "02 Audience"
+    },
+    {
+      "id": "message",
+      "file": "03-message.html",
+      "label": "03 Message"
+    },
+    {
+      "id": "channels",
+      "file": "04-channels.html",
+      "label": "04 Channels"
+    },
+    {
+      "id": "timeline",
+      "file": "05-timeline.html",
+      "label": "05 Timeline"
+    },
+    {
+      "id": "kpis",
+      "file": "06-kpis.html",
+      "label": "06 Kpis"
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>데모 · 30초</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#ECE3D2;--paper-soft:#F4EEE1;--ink:#14181D;--ink-soft:#4A4D52;
+  --line:rgba(20,24,29,.16);
+  --ember:#BC4F2B;--teal:#1F3D44;--moss:#4D6B4A;--gold:#C49B3D;
+  --leaf:#DDE9D5;--lavender:#6A55B8;
+}
+body{margin:0;padding:0;overflow:hidden;font-family:'Inter','Noto Sans KR',sans-serif;color:var(--ink);background:var(--paper);}
+p{margin:0;}
+.hair{font-size:13px;font-weight:800;letter-spacing:.14em;color:var(--ember);}
+.title{font-size:42px;font-weight:800;line-height:1.18;letter-spacing:-.01em;}
+.sub{font-size:18px;line-height:1.5;color:var(--ink-soft);font-weight:500;}
+.body{font-size:16px;line-height:1.5;}
+.chip{display:inline-block;padding:2px 9px;font-size:12px;font-weight:700;letter-spacing:.04em;border:1.5px solid currentColor;line-height:1.4;white-space:nowrap;}
+.cap{width:22px;height:22px;border-radius:50%;background:var(--ember);color:#F4EEE1;font-size:11.5px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+.small{font-size:13px;line-height:1.5;}
+.foot{font-size:13px;line-height:1.5;color:var(--ink-soft);}
+</style></head>
+<body>
+<div class="slide-container" data-screen-label="데모 · 30초" style="position:relative;width:1920px;height:1080px;overflow:hidden;background:var(--paper);">
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:48px;width:1100px;z-index:10;"><p class="hair">연설 노트 · 데모 시나리오</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1624px;top:48px;width:200px;z-index:10;text-align:right;"><p style="font-size:13px;font-weight:600;color:var(--ink-soft);">17 / 25</p></div>
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:88px;width:1500px;z-index:10;">
+    <h1 class="title">다섯 번의 시험 · 열 명의 사용자 · 한 번의 발견</h1>
+    <p class="sub" style="margin-top:8px;">기술 직원 없이 — 전원 OFF, USB, 전원 ON. 그리고 그들은 자기 입으로 답을 적는다.</p>
+  </div>
+
+  <!-- Five tests row -->
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:232px;width:1728px;z-index:10;"><p class="hair">다섯 번의 시험</p></div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:96px;top:264px;width:336px;height:200px;background:#FFFDF6;border:1.5px solid var(--line);border-radius:8px;z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:120px;top:280px;width:288px;z-index:10;">
+    <div style="display:flex;align-items:center;gap:8px;"><span class="cap">1</span><p style="font-size:15px;font-weight:800;color:var(--ember);">Test #1</p></div>
+    <p style="margin-top:14px;font-size:14px;color:var(--ink);line-height:1.55;">전원 OFF</p>
+    <p style="margin-top:6px;font-size:14px;color:var(--ink);line-height:1.55;">USB 삽입</p>
+    <p style="margin-top:6px;font-size:14px;color:var(--ink);line-height:1.55;">전원 ON</p>
+  </div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:448px;top:264px;width:336px;height:200px;background:#FFFDF6;border:1.5px solid var(--line);border-radius:8px;z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:472px;top:280px;width:288px;z-index:10;">
+    <div style="display:flex;align-items:center;gap:8px;"><span class="cap">2</span><p style="font-size:15px;font-weight:800;color:var(--ember);">Test #2</p></div>
+    <p style="margin-top:14px;font-size:14px;color:var(--ink);line-height:1.55;">사용자가 자기 손으로</p>
+    <p style="margin-top:6px;font-size:14px;color:var(--ink);line-height:1.55;">boot menu를 고른다.</p>
+    <p style="margin-top:14px;"><span class="chip" style="color:var(--moss);border-color:var(--moss);">설명 없이</span></p>
+  </div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:800px;top:264px;width:336px;height:200px;background:#FFFDF6;border:1.5px solid var(--line);border-radius:8px;z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:824px;top:280px;width:288px;z-index:10;">
+    <div style="display:flex;align-items:center;gap:8px;"><span class="cap">3</span><p style="font-size:15px;font-weight:800;color:var(--ember);">Test #3</p></div>
+    <p style="margin-top:14px;font-size:13px;letter-spacing:.06em;color:var(--ink-soft);">sample.desk console</p>
+    <p style="margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--ink);background:rgba(31,61,68,.08);padding:6px 10px;border-radius:4px;display:inline-block;">&gt; open.neu</p>
+  </div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:1152px;top:264px;width:280px;height:200px;background:var(--paper-soft);border:1.5px solid var(--ink);border-radius:8px;z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1176px;top:280px;width:232px;z-index:10;">
+    <div style="display:flex;align-items:center;gap:8px;"><span class="cap">4</span><p style="font-size:15px;font-weight:800;color:var(--ember);">Test #4</p></div>
+    <p style="margin-top:14px;font-size:13px;letter-spacing:.06em;color:var(--ink-soft);">AI 화면에서</p>
+    <p style="margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--ink);background:rgba(188,79,43,.10);padding:6px 10px;border-radius:4px;display:inline-block;">"open google website"</p>
+  </div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:1448px;top:264px;width:376px;height:200px;background:var(--ember);border-radius:8px;z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1474px;top:280px;width:328px;z-index:10;">
+    <div style="display:flex;align-items:center;gap:8px;"><span class="cap" style="background:#F4EEE1;color:var(--ember);">5</span><p style="font-size:15px;font-weight:800;color:#F4EEE1;">Test #5</p></div>
+    <p style="margin-top:14px;font-size:14px;color:#F4EEE1;line-height:1.55;">sample.browse가 열린다.</p>
+    <p style="margin-top:6px;font-size:14px;color:#F4EEE1;line-height:1.55;">실제 웹사이트가 열린다.</p>
+    <p style="margin-top:14px;font-size:12px;color:#D6D2C4;">그 다음, 한 가지 질문.</p>
+  </div>
+
+  <!-- Question panel -->
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:96px;top:496px;width:660px;height:200px;background:var(--ink);border-radius:8px;z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:120px;top:516px;width:612px;z-index:10;">
+    <p style="font-size:13px;letter-spacing:.14em;font-weight:800;color:#E8A37E;">그 다음 · 한 가지 질문</p>
+    <p style="margin-top:14px;font-size:24px;font-weight:800;color:var(--paper);line-height:1.4;">"이걸 보면서 뭔가라고<br>생각하셨습니까?"</p>
+    <p style="margin-top:14px;font-size:13px;color:#D6D2C4;">우리는 "AI Operating System입니다"라고 먼저 설명하지 <b>않는다</b>.</p>
+    <p style="margin-top:6px;font-size:13px;color:var(--paper);">사용자가 먼저 뭐라고 부르는지가 — 진짜 답이다.</p>
+  </div>
+
+  <!-- Right side, second test -->
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:776px;top:496px;width:1048px;height:200px;background:var(--paper-soft);border:1.5px solid var(--ink);border-radius:8px;z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:800px;top:516px;width:1000px;z-index:10;">
+    <p class="hair" style="color:var(--ember);">두 번째 시험 · 첫 성공 직후</p>
+    <div style="margin-top:14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
+      <span class="chip">"open google website"</span>
+      <span class="chip muted">→</span>
+      <span class="chip">"find information about Sample City startups"</span>
+      <span class="chip muted">→</span>
+      <span class="chip">"summarize the results"</span>
+      <span class="chip muted">→</span>
+      <span class="chip" style="color:var(--ember);border-color:var(--ember);">"save as a document"</span>
+    </div>
+    <p style="margin-top:14px;font-size:14px;line-height:1.55;color:var(--ink-soft);">기술자의 손을 빌리지 않고 자기 목소리로. 그리고 사용자는 깨닫는다.</p>
+  </div>
+
+  <!-- Big bottom callout -->
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:96px;top:728px;width:1728px;height:170px;background:var(--paper-soft);border-left:6px solid var(--ember);border-radius:6px;z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:120px;top:746px;width:200px;z-index:10;"><p class="hair">사용자가 깨닫는 순간</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:120px;top:780px;width:1100px;z-index:10;">
+    <p style="font-size:18px;font-weight:800;color:var(--ink);line-height:1.45;">"아 · 이건 Linux를 USB에서 실행하는 게 아니구나."</p>
+    <p style="margin-top:18px;font-size:24px;font-weight:800;color:var(--ember);line-height:1.4;">"내가 컴퓨터에게 일을 시키는 거구나."</p>
+  </div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1280px;top:780px;width:530px;z-index:10;text-align:right;">
+    <p style="font-size:13px;letter-spacing:.14em;font-weight:800;color:var(--ember);">이 순간이 진짜<br>PRODUCT DISCOVERY</p>
+    <p style="margin-top:10px;font-size:13px;line-height:1.5;color:var(--ink-soft);">우리는 그 순간까지 자리가 아니라 그 순간 이후 자리를 만든다.</p>
+  </div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:96px;top:920px;width:1728px;height:1px;background:var(--line);z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:932px;width:1100px;z-index:10;"><p style="font-size:13px;color:var(--ink-soft);">Sample Co. (DEMO) · sample.desk · 다섯 번의 시험, 열 명의 사용자, 한 번의 발견</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1324px;top:932px;width:500px;z-index:10;text-align:right;"><p style="font-size:13px;color:var(--ink-soft);">30 · 2026-10</p></div>
+
+</div>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","spa":2}' crossorigin="anonymous"></script>
+</body></html>

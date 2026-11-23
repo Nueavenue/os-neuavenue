@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><title>07 개발 현황</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;family=Noto+Sans+KR:wght@400;500;700;800&amp;display=swap" rel="stylesheet">
+<style>
+:root{--paper:#ECE3D2;--paper-soft:#F4EEE1;--ink:#14181D;--ink-soft:#4A4D52;--line:rgba(20,24,29,.16);--ember:#BC4F2B;--teal:#1F3D44;--moss:#4D6B4A;--gold:#C49B3D;}
+body{margin:0;padding:0;overflow:hidden;font-family:'Inter','Noto Sans KR',sans-serif;color:var(--ink);background:var(--paper);}
+p{margin:0;}
+.eb{font-size:18px;font-weight:700;letter-spacing:.14em;color:var(--ember);}
+.chip{display:inline-block;padding:2px 10px;font-size:15px;font-weight:700;letter-spacing:.06em;border:1.5px solid currentColor;line-height:1.4;white-space:nowrap;vertical-align:middle;}
+.ok{background:var(--moss);color:#F4EEE1;border-color:var(--moss);}
+.pt{color:var(--ember);}
+.tg{background:var(--gold);color:#14181D;border-color:var(--gold);}
+.uk{color:var(--ink-soft);}
+.mono{font-family:'JetBrains Mono',monospace;font-size:.88em;}
+table.t{border-collapse:collapse;width:100%;}
+table.t th{background:var(--ink);color:var(--paper);text-align:left;padding:12px 20px;font-size:18px;font-weight:700;letter-spacing:.04em;}
+table.t td{padding:13px 20px;border-bottom:1px solid var(--line);vertical-align:top;font-size:21px;line-height:1.4;}
+table.t td.k{font-weight:700;width:520px;}
+table.t td.s{width:190px;}
+</style></head>
+<body>
+<div class="slide-container" data-screen-label="07 실현가능성" style="position:relative;width:1920px;height:1080px;overflow:hidden;background:var(--paper);">
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:52px;width:1100px;z-index:10;"><p class="eb">PSST · 2. 실현가능성 (Solution)</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1624px;top:52px;width:200px;z-index:10;text-align:right;"><p style="font-size:18px;font-weight:600;color:var(--ink-soft);">07 / 26</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:90px;width:1728px;z-index:10;"><h1 style="margin:0;font-size:50px;font-weight:800;line-height:1.18;">개발 현황 — 이미 디스크 위에 있는 것만</h1></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:170px;width:1728px;z-index:10;"><p style="font-size:22px;line-height:1.45;color:var(--ink-soft);font-weight:500;">2026-09-07 시점에 이미 나온 핵심과 2026-10 Windows 단계를 함께 모음. 소망 목록이 아니라 코드와 검증 경로가 있는 것만 기록함.</p></div>
+
+  <div data-object="true" data-object-type="table" style="position: absolute; left: 96px; top: 240px; width: 1728px; z-index: 10;">
+    <table class="t">
+      <tbody><tr><th>구성 요소</th><th>상태</th><th>근거 · 한계</th></tr>
+      <tr><td class="k">설치형 os.neu v1.0 (Ubuntu 홈 폴더)</td><td class="s"><span class="chip ok">SHIPPED</span></td><td>아이콘 더블클릭 → 한 번에 실행. 파일 복사 방식, 디스크 · 부트로더는 건드리지 않음</td></tr>
+      <tr><td class="k">daf.neu 좌석 안 브라우저</td><td class="s"><span class="chip ok">SHIPPED</span></td><td>Electron 기반 내장 브라우저 · Google 로그인은 시스템 Chrome으로 위임 · Gmail 내장은 미출시</td></tr>
+      <tr><td class="k">문서 변환 도구(word/excel/pptx)</td><td class="s"><span class="chip ok">PRESENT</span> <span class="chip pt">부가 도구 무료</span></td><td>docx/xlsx/pptx 변환 보조 · 사내 토큰 아님 · 5번 데모 단계에서 미리보기 가능</td></tr>
+      <tr><td class="k">운영 웹 + 단일 인증</td><td class="s"><span class="chip pt">PARTIAL</span></td><td>Supabase 기반 단일 인증 · 초대·랜딩·좌석 사이 묵음 로그인 없음</td></tr>
+      <tr><td class="k">통제 흐름과 권한 기록</td><td class="s"><span class="chip ok">이미 출하</span></td><td>실행 결과를 권한 기록 테이블에 남김 · 1차 파일럿 인증 흐름은 2026-09-11에 종료</td></tr>
+      <tr><td class="k">주주 전용 화면</td><td class="s"><span class="chip pt">부분</span></td><td>대표 권한 알림 화면 · 지분표 · 세무 항목은 비어 있음</td></tr>
+      <tr><td class="k">Windows 설치(사용자 폴더)</td><td class="s"><span class="chip pt">EARLY</span></td><td>패키지 + 소스 형태로 더블 다운로드 · 노트북 기본 점검 PASS A · 인증 모듈은 임시 구현 상태</td></tr>
+      <tr><td class="k">USB 부팅형 그래픽 진입</td><td class="s"><span class="chip pt">PARTIAL</span></td><td>부팅 USB 항목은 미완 · 본선 데모로 쓰지 않음</td></tr>
+    </tbody></table>
+  </div>
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:918px;width:1728px;z-index:10;"><p style="font-size:18px;line-height:1.5;color:var(--ink-soft);"><b style="color:var(--ink);">이번에 다루지 않음(핵심 아님):</b> 브라우저 안 Gmail · 클라우드 문서 편집(1차 검증 이후 단계) · 학습 허브 · 호스팅 검색 · 실시간 워크플로 엔진 · 플러그인 상점</p></div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:96px;top:1004px;width:1728px;height:1px;background:var(--line);z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:1020px;width:1200px;z-index:10;"><p style="font-size:15px;color:var(--ink-soft);"><span class="chip ok">SHIPPED</span> 출하 &nbsp; <span class="chip pt">PARTIAL</span> 부분 &nbsp; <span class="chip tg">TARGET</span> 계획 &nbsp; <span class="chip uk">UNKNOWN</span> 미확인 &nbsp; · 가정 = 미검증 계획치</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1324px;top:1024px;width:500px;z-index:10;text-align:right;"><p style="font-size:15px;color:var(--ink-soft);">NeuAvenue Inc. · os.neu 사업계획서 · 2026-10</p></div>
+</div>
+
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","spa":2}' crossorigin="anonymous"></script>
+</body></html>

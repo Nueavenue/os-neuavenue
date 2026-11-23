@@ -1,0 +1,52 @@
+{
+  "id": "dark-tech",
+  "title": "Dark Tech",
+  "titleKo": "다크 테크",
+  "visual": "dark-tech",
+  "locks": [
+    "Trusted Agent Seat",
+    "Agent Operating Layer",
+    "not AI desktop OS",
+    "placeholders only · no invented revenue"
+  ],
+  "structure": [
+    "cover",
+    "problem",
+    "product",
+    "features",
+    "comparison",
+    "next"
+  ],
+  "slides": [
+    {
+      "id": "cover",
+      "file": "01-cover.html",
+      "label": "01 Cover"
+    },
+    {
+      "id": "problem",
+      "file": "02-problem.html",
+      "label": "02 Problem"
+    },
+    {
+      "id": "product",
+      "file": "03-product.html",
+      "label": "03 Product"
+    },
+    {
+      "id": "features",
+      "file": "04-features.html",
+      "label": "04 Features"
+    },
+    {
+      "id": "comparison",
+      "file": "05-comparison.html",
+      "label": "05 Comparison"
+    },
+    {
+      "id": "next",
+      "file": "06-next.html",
+      "label": "06 Next"
+    }
+  ]
+}

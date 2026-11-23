@@ -1,0 +1,64 @@
+{
+  "id": "modern-business",
+  "title": "Modern Business",
+  "titleKo": "모던 비즈니스",
+  "visual": "modern-business",
+  "locks": [
+    "Trusted Agent Seat",
+    "Agent Operating Layer",
+    "not AI desktop OS",
+    "placeholders only · no invented revenue"
+  ],
+  "structure": [
+    "cover",
+    "agenda",
+    "overview",
+    "highlights",
+    "next-steps",
+    "team",
+    "risks",
+    "closing"
+  ],
+  "slides": [
+    {
+      "id": "cover",
+      "file": "01-cover.html",
+      "label": "01 Cover"
+    },
+    {
+      "id": "agenda",
+      "file": "02-agenda.html",
+      "label": "02 Agenda"
+    },
+    {
+      "id": "overview",
+      "file": "03-overview.html",
+      "label": "03 Overview"
+    },
+    {
+      "id": "highlights",
+      "file": "04-highlights.html",
+      "label": "04 Highlights"
+    },
+    {
+      "id": "next-steps",
+      "file": "05-next-steps.html",
+      "label": "05 Next Steps"
+    },
+    {
+      "id": "team",
+      "file": "06-team.html",
+      "label": "06 Team"
+    },
+    {
+      "id": "risks",
+      "file": "07-risks.html",
+      "label": "07 Risks"
+    },
+    {
+      "id": "closing",
+      "file": "08-closing.html",
+      "label": "08 Closing"
+    }
+  ]
+}

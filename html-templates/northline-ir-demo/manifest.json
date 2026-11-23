@@ -1,0 +1,150 @@
+{
+  "id": "northline-ir-demo",
+  "title": "Sample Co. DEMO IR",
+  "titleKo": "Sample Co. · DEMO IR 샘플",
+  "visual": "paper-cream",
+  "locks": [
+    "DEMO only · fictional / sanitized",
+    "no founder personal name",
+    "posters 23–29 omitted from deck (files retained on disk)",
+    "not a live business plan",
+    "Sample Operator Desk"
+  ],
+  "sourceNote": "Layout cloned from psst-ir-pack; branding rewritten for public gallery demo.",
+  "slides": [
+    {
+      "id": "cover",
+      "file": "cover.html",
+      "label": "01 표지"
+    },
+    {
+      "id": "item-overview",
+      "file": "item-overview.html",
+      "label": "02 창업아이템 개요"
+    },
+    {
+      "id": "problem-pain-points",
+      "file": "problem-pain-points.html",
+      "label": "03 문제인식"
+    },
+    {
+      "id": "intent-first-category",
+      "file": "intent-first-category.html",
+      "label": "04 새로운 카테고리"
+    },
+    {
+      "id": "customer-personas",
+      "file": "customer-personas.html",
+      "label": "05 목표고객"
+    },
+    {
+      "id": "differentiation-moat",
+      "file": "differentiation-moat.html",
+      "label": "06 차별성·해자"
+    },
+    {
+      "id": "feasibility-as-built",
+      "file": "feasibility-as-built.html",
+      "label": "07 개발 현황"
+    },
+    {
+      "id": "financial-model",
+      "file": "financial-model.html",
+      "label": "08 샘플 지표 표"
+    },
+    {
+      "id": "funding-plan",
+      "file": "funding-plan.html",
+      "label": "09 샘플 조달란"
+    },
+    {
+      "id": "go-to-market",
+      "file": "go-to-market.html",
+      "label": "10 시장진입"
+    },
+    {
+      "id": "target-market",
+      "file": "target-market.html",
+      "label": "11 목표시장"
+    },
+    {
+      "id": "roadmap-milestones",
+      "file": "roadmap-milestones.html",
+      "label": "12 로드맵"
+    },
+    {
+      "id": "long-term-vision",
+      "file": "long-term-vision.html",
+      "label": "13 장기 비전"
+    },
+    {
+      "id": "team-governance",
+      "file": "team-governance.html",
+      "label": "14 팀·거버넌스"
+    },
+    {
+      "id": "risks-mitigation",
+      "file": "risks-mitigation.html",
+      "label": "15 위험·대응"
+    },
+    {
+      "id": "verification-matrix",
+      "file": "verification-matrix.html",
+      "label": "16 제품 검증표"
+    },
+    {
+      "id": "demo-30seconds",
+      "file": "demo-30seconds.html",
+      "label": "17 30초 데모"
+    },
+    {
+      "id": "message-reframe",
+      "file": "message-reframe.html",
+      "label": "18 이름·메시지"
+    },
+    {
+      "id": "product-structure",
+      "file": "product-structure.html",
+      "label": "19 제품 구조"
+    },
+    {
+      "id": "search-flow-diagram",
+      "file": "search-flow-diagram.html",
+      "label": "20 검색 흐름"
+    },
+    {
+      "id": "seat-flow",
+      "file": "seat-flow.html",
+      "label": "21 Seat flow"
+    },
+    {
+      "id": "shift-from-pc",
+      "file": "shift-from-pc.html",
+      "label": "22 PC → north.seat"
+    },
+    {
+      "id": "sources",
+      "file": "sources.html",
+      "label": "23 샘플 근거"
+    },
+    {
+      "id": "early-voice-feedback",
+      "file": "early-voice-feedback.html",
+      "label": "24 Early Voice · DEMO"
+    },
+    {
+      "id": "ir-early-voice-feedback",
+      "file": "ir-early-voice-feedback.html",
+      "label": "25 Early Voice · IR"
+    }
+  ],
+  "omittedFromDeck": [
+    "poster-a",
+    "poster-b",
+    "poster-c",
+    "poster-d",
+    "poster-c4-architecture",
+    "poster-oauth-flow",
+    "poster-trust-boundary"
+  ]
+}

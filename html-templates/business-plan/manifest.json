@@ -1,0 +1,52 @@
+{
+  "id": "business-plan",
+  "title": "Business Plan",
+  "titleKo": "사업 계획",
+  "visual": "paper",
+  "locks": [
+    "Trusted Agent Seat",
+    "Agent Operating Layer",
+    "not AI desktop OS",
+    "placeholders only · no invented revenue"
+  ],
+  "structure": [
+    "cover",
+    "vision",
+    "market",
+    "model",
+    "plan",
+    "milestones"
+  ],
+  "slides": [
+    {
+      "id": "cover",
+      "file": "01-cover.html",
+      "label": "01 Cover"
+    },
+    {
+      "id": "vision",
+      "file": "02-vision.html",
+      "label": "02 Vision"
+    },
+    {
+      "id": "market",
+      "file": "03-market.html",
+      "label": "03 Market"
+    },
+    {
+      "id": "model",
+      "file": "04-model.html",
+      "label": "04 Model"
+    },
+    {
+      "id": "plan",
+      "file": "05-plan.html",
+      "label": "05 Plan"
+    },
+    {
+      "id": "milestones",
+      "file": "06-milestones.html",
+      "label": "06 Milestones"
+    }
+  ]
+}

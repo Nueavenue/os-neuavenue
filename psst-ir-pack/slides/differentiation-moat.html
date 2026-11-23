@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><title>06 차별성</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;family=Noto+Sans+KR:wght@400;500;700;800&amp;display=swap" rel="stylesheet">
+<style>
+:root{--paper:#ECE3D2;--paper-soft:#F4EEE1;--ink:#14181D;--ink-soft:#4A4D52;--line:rgba(20,24,29,.16);--ember:#BC4F2B;--teal:#1F3D44;--moss:#4D6B4A;--gold:#C49B3D;}
+body{margin:0;padding:0;overflow:hidden;font-family:'Inter','Noto Sans KR',sans-serif;color:var(--ink);background:var(--paper);}
+p{margin:0;}
+.eb{font-size:18px;font-weight:700;letter-spacing:.14em;color:var(--ember);}
+.chip{display:inline-block;padding:2px 10px;font-size:15px;font-weight:700;letter-spacing:.06em;border:1.5px solid currentColor;line-height:1.4;white-space:nowrap;vertical-align:middle;}
+.ok{background:var(--moss);color:#F4EEE1;border-color:var(--moss);}
+.pt{color:var(--ember);}
+.tg{background:var(--gold);color:#14181D;border-color:var(--gold);}
+.uk{color:var(--ink-soft);}
+table.t{border-collapse:collapse;width:100%;}
+table.t th{background:var(--ink);color:var(--paper);text-align:left;padding:12px 18px;font-size:18px;font-weight:700;}
+table.t td{padding:14px 18px;border-bottom:1px solid var(--line);vertical-align:top;font-size:22px;line-height:1.4;}
+table.t td.k{font-weight:700;width:250px;}
+table.t tr.us td{background:#F6DCCB;}
+.li{margin-top:8px;font-size:18px;line-height:1.4;color:var(--paper);}
+.lx{margin-top:8px;font-size:17px;line-height:1.4;color:#A9A598;}
+table.t td{font-size:18px;padding:10px 14px;}
+table.t th{font-size:16px;padding:10px 14px;}
+table.t td.k{width:200px;}
+</style></head>
+<body>
+<div class="slide-container" data-screen-label="06 차별성" style="position:relative;width:1920px;height:1080px;overflow:hidden;background:var(--paper);">
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:52px;width:1100px;z-index:10;"><p class="eb">PSST · 2. 실현가능성 · 차별성</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1624px;top:52px;width:200px;z-index:10;text-align:right;"><p style="font-size:18px;font-weight:600;color:var(--ink-soft);">06 / 23</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:90px;width:1728px;z-index:10;"><h1 style="margin:0;font-size:50px;font-weight:800;line-height:1.18;">차별성 — Seat + Identity + Trust로 싸움</h1></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:156px;width:1728px;z-index:10;">
+    <p style="margin:0;font-size:22px;line-height:1.4;font-weight:700;color:var(--ember);"><b>Don't build another Agent.</b> Build the Seat for Agents. 카테고리는 Agent Operating Layer — Host OS 위의 userspace, 커널 아님.</p>
+  </div>
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:96px;top:220px;width:1728px;height:56px;background:var(--ink);border-radius:4px;z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:116px;top:232px;width:1688px;z-index:10;">
+    <p style="margin:0;font-size:20px;line-height:1.35;font-weight:700;color:#F4EEE1;">승부 단위는 Seat + Identity + Trust · AI 단일 모델이 아님 · "더 좋은 에이전트"도 아님.</p>
+  </div>
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:298px;width:1080px;z-index:10;">
+    <p style="margin:0 0 10px 0;font-size:18px;font-weight:700;letter-spacing:.04em;color:var(--ember);">비교표 — 곁에 두고 보는 자리들</p>
+    <table class="t">
+      <tbody><tr><th>제품</th><th>중심 단위</th><th>우리의 대응</th></tr>
+      <tr><td class="k">BrowserOS</td><td>AI를 품은 브라우저 · Chromium 기반</td><td>직접 경쟁하지 않음 · 좌석 안 구성 후보로만 고려 (반영 보류)</td></tr>
+      <tr><td class="k">Comet</td><td>AI 검색 + 브라우저 에이전트</td><td>정면으로 부딪히지 않음 · "더 좋은 에이전트"를 내세우지 않음</td></tr>
+      <tr><td class="k">Dia</td><td>AI 작업용 브라우저</td><td>전략 비교 자료로만 봄 · 가격 구조를 그대로 가져오지 않음</td></tr>
+      <tr><td class="k">Atlas → ChatGPT / Codex</td><td>독립된 에이전트 작업 환경</td><td>아키텍처 참고만 · 현재 경쟁 제품 아님</td></tr>
+      <tr class="us"><td class="k">os.neu</td><td><b>좌석 + 신원 + 신뢰</b></td><td>좌석 안 브라우저 · 단일 인증 · 권한 기록 · 자체 인증 호스트 <span class="chip tg">TARGET</span></td></tr>
+    </tbody></table>
+  </div>
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1216px;top:298px;width:608px;height:300px;background:var(--ink);border-radius:6px;padding:22px 24px;box-sizing:border-box;z-index:10;">
+    <p class="eb" style="color:#E8A37E;margin:0;">기술 해자 — 이미 돌아가는 조합</p>
+    <p class="li">· 이미 있는 PC에 그대로 심는 좌석</p>
+    <p class="li">· 좌석 안의 실웹 브라우저 daf.neu</p>
+    <p class="li">· 설치 = 지우지 않는 방식으로 복사</p>
+    <p class="li">· 권한 기록 — 실행이력 남기는 통제</p>
+    <p class="li">· 단일 인증 · 묵음 로그인 없음</p>
+    <p class="li">· 내 디스크 우선 — 초소형 AI · 사용자 키</p>
+    <p style="margin-top:16px;"><span class="chip ok">SHIPPED</span></p>
+  </div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1216px;top:614px;width:608px;height:150px;background:var(--paper-soft);border:1px solid var(--line);border-radius:6px;padding:18px 22px;box-sizing:border-box;z-index:10;">
+    <p style="margin:0;font-size:18px;font-weight:800;color:var(--ember);">주장하지 않는 자리</p>
+    <p class="lx" style="color:var(--ink-soft);">자체 커널 · GPU 노드 · Chrome보다 빠른 엔진 · 전 장치 드라이버 · 특허 · 보안관제 SOC</p>
+    <p style="margin-top:12px;"><span class="chip uk">UNKNOWN</span></p>
+  </div>
+
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:820px;width:1728px;height:100px;background:#F4EEE1;border:1px solid var(--line);border-radius:6px;padding:14px 20px;box-sizing:border-box;z-index:10;">
+    <p style="margin:0;font-size:17px;font-weight:800;color:var(--ember);">같은 우산 아래 다른 자리들 · 한 줄씩</p>
+    <p style="margin-top:8px;font-size:17px;line-height:1.45;color:var(--ink);">· KAIT — 개발자 런타임이 아님 · Cogni — 모델 수학 영역이 아님 · 은유 OS — 자리에 비유되는 다른 시도들과도 다름</p>
+  </div>
+
+  <div data-object="true" data-object-type="shape" style="position:absolute;left:96px;top:1004px;width:1728px;height:1px;background:var(--line);z-index:1;"></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:96px;top:1020px;width:1200px;z-index:10;"><p style="font-size:15px;color:var(--ink-soft);"><span class="chip ok">SHIPPED</span> 출하 &nbsp; <span class="chip pt">PARTIAL</span> 부분 &nbsp; <span class="chip tg">TARGET</span> 계획 &nbsp; <span class="chip uk">UNKNOWN</span> 미확인 &nbsp; · 가정 = 미검증 계획치</p></div>
+  <div data-object="true" data-object-type="textbox" style="position:absolute;left:1324px;top:1024px;width:500px;z-index:10;text-align:right;"><p style="font-size:15px;color:var(--ink-soft);">NeuAvenue Inc. · os.neu 사업계획서 · 2026-10</p></div>
+</div>
+
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","spa":2}' crossorigin="anonymous"></script>
+</body></html>
