@@ -109,6 +109,19 @@
         padding: 6px 8px;
         text-align: left;
       }
+      .doc img {
+        display: block;
+        max-width: min(100%, 42rem);
+        height: auto;
+        margin: 12px 0 6px;
+        border-radius: 12px;
+        border: 1px solid rgba(244, 239, 230, 0.14);
+        background: #12130f;
+      }
+      .doc em {
+        color: rgba(244, 239, 230, 0.78);
+        font-style: italic;
+      }
     </style>
   </head>
   <body>
@@ -121,7 +134,7 @@
     <script>
       window.osneuDocs.applyDocsLocale()
       document.getElementById('back').textContent = '← Back'
-      const ALLOWED = new Set(['manual.md', 'manual.en.md', 'usb-console-guide.md', 'windows-install-guide.md'])
+      const ALLOWED = new Set(['manual.md', 'manual.en.md', 'usb-console-guide.md', 'windows-install-guide.md', 'home-screen-guide.md', 'try-it-and-plant-guide.md', 'usb-first-customer-guide.md'])
 
       function escapeHtml(text) {
         return text
@@ -133,11 +146,21 @@
 
       function inline(text) {
         return escapeHtml(text)
+          .replaceAll(/!\[([^\]]*)\]\(([^)\s]+)\)/g, '<img src="$2" alt="$1" loading="lazy" />')
           .replaceAll(/`([^`]+)`/g, '<code>$1</code>')
           .replaceAll(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+          .replaceAll(/(^|[^*])\*([^*]+)\*(?!\*)/g, '$1<em>$2</em>')
           .replaceAll(
             /\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g,
             '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>',
+          )
+          .replaceAll(
+            /\[([^\]]+)\]\((?:\.\/)?([^)\s]+\.md)\)/g,
+            '<a href="view.html?doc=$2">$1</a>',
+          )
+          .replaceAll(
+            /\[([^\]]+)\]\((\.\/?[^)\s]+)\)/g,
+            '<a href="$2">$1</a>',
           )
       }
 
