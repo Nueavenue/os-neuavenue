@@ -16,6 +16,23 @@ Windows (this chapter as its own page): [https://docs.neuavenue.com/windows-inst
 
 There is no macOS installer yet. This page still opens in any browser.
 
+### Short tutorials (start here)
+
+- [Home screen guide](./home-screen-guide.md) — first-screen tour (Try it and planted).
+- [Try it vs plant (safe)](./try-it-and-plant-guide.md) — browser Next does **not** copy to disk; real plant = download + install.sh / Setup.exe (no wipe).
+
+In the OS.neu Manual icon: **Tour of the home screen** · **Try it in the browser** · **Plant for real (no disk wipe)**.
+
+## Try it on the website (safe)
+
+1. Open `https://os.neuavenue.com` in a browser.
+2. Use the prompt, Docs / Sheets / Slides, and icons as a **trial**. The address bar still shows the website.
+3. If you press **Plant on this device** and see **Could not read the profile**, that means the cloud preview has no device bridge — **your PC was not planted**.
+4. **Next** only continues to the body check. It does **not** wipe disks, write `~/os.neu`, or burn USB.
+5. To plant for real, download the Linux tar or Windows Setup (links above), then follow **Linux** / **Windows** below.
+
+Full step list: [try-it-and-plant-guide.md](./try-it-and-plant-guide.md).
+
 ## Linux
 
 ### 1. Get it
