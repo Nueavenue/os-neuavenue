@@ -164,7 +164,9 @@ Give up: hold power, unplug USB, power on. The internal disk is not wiped.
 
 ## Windows
 
-Customer path: [os.neu-Setup.exe](https://os.neuavenue.com/downloads/os.neu-Setup.exe) — **os.neu v1.0**, no Node. SmartScreen: More info → Run anyway.
+Customer path: [os.neu-Setup.exe](https://os.neuavenue.com/downloads/os.neu-Setup.exe) — **os.neu v1.0.21**, no Node. SmartScreen: More info → Run anyway.
+
+English Coach **Live Call** (one-click continuous talk): see [ec-live-call-windows-guide.md](./ec-live-call-windows-guide.md).
 
 Seat Face `os.neu.exe` (layers 01–10) is a different product. The source pack below is for developers (Node 20).
 
