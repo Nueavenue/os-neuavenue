@@ -546,10 +546,10 @@ export default {
     }
 
     // os.neu-Setup.exe exceeds Workers 25MB static.
-    // Same-origin URL 302 → the current GitHub Release (v1.0.19, 2026-11-25).
+    // Same-origin URL 302 → the current GitHub Release (v1.0.20, 2026-11-25).
     if (url.pathname === '/downloads/os.neu-Setup.exe') {
       return Response.redirect(
-        'https://github.com/Nueavenue/os-neuavenue/releases/download/os-neu-setup-1.0.19-2026-11-25/os.neu-Setup.exe',
+        'https://github.com/Nueavenue/os-neuavenue/releases/download/os-neu-setup-1.0.20-2026-11-25/os.neu-Setup.exe',
         302,
       )
     }
