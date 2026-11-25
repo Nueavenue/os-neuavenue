@@ -540,7 +540,7 @@ export default {
     // here (WO-UI-NEU-DOWNLOAD-1). Update the release tag below if rebuilt.
     if (url.pathname === '/downloads/neuos-live.iso') {
       return Response.redirect(
-        'https://github.com/Nueavenue/os-neuavenue/releases/download/neuos-live-iso-2026-08-31/neuos-live.iso',
+        'https://github.com/Nueavenue/os-neuavenue/releases/download/neuos-live-iso-2026-11-25/neuos-live.iso',
         302,
       )
     }

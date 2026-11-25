@@ -3,6 +3,8 @@
 This page is **only for Windows**.  
 If you use Ubuntu / Linux, open the Linux guide instead: [usb-boot-linux-guide.md](./usb-boot-linux-guide.md)
 
+> **Current address (2026-11-25):** Multi-boot (GRUB) **works (S8 PASS)**. The **old** Door B ISO could stop at **BusyBox** before `[os.neu] >` (**S9 FAIL** — published on purpose). Prefer a **fresh ISO download** after 2026-11-25, or ask a Linux friend for **Boot kit / make-usb** (official SoT). Setup.exe is **not** USB boot.
+
 You will: turn on Windows → open welcome → download the USB file → burn with **Rufus** → restart → pick USB.
 
 Your Windows disk (`C:`) is **not** wiped when you burn a USB stick — as long as you pick **only the stick** in Rufus.
@@ -18,7 +20,8 @@ Full manual: [manual.en.md](./manual.en.md) · Plant as a Windows app (not USB):
 | **USB image ISO (Linux JeOS)** | **Download os.neu for Windows** (= Setup app on Start Menu) |
 | Burn with **Rufus** (or Etcher) | That Setup path does not make a boot stick |
 
-The ISO is a **Linux JeOS** image. Windows only helps you **burn** it. After reboot from USB you see a Linux-style console first.
+The ISO is a **Linux JeOS** image. Windows only helps you **burn** it. After reboot from USB you see a Linux-style console first.  
+If BusyBox appears: hold power, unplug USB, return to Windows, re-download ISO or use Boot kit path.
 
 ---
 

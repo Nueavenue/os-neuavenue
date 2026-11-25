@@ -1,5 +1,7 @@
 # USB boot — pick your computer first
 
+> **Where we are (2026-11-25):** GRUB multi-boot = **reached (S8)**. Old ISO alone could end in **BusyBox (S9 FAIL)** — that fact is public. Official first-customer path = **Boot kit / make-usb**. See [STATUS](./STATUS-USB-BOOT-CURRENT-ADDRESS-S8-PASS-S9-2026-11-25.md) on docs after sync.
+
 Users get mixed up when Windows and Linux steps sit on one page.  
 **Choose one guide below.** Do not follow both at the same time.
 

@@ -3,6 +3,8 @@
 This page is **only for Ubuntu / Linux**.  
 If you use Windows, open the Windows guide instead: [usb-boot-windows-guide.md](./usb-boot-windows-guide.md)
 
+> **Current address (2026-11-25):** You **do** reach the multi-boot (GRUB) menu (**S8 PASS**). On the **old** Door B ISO (2026-08-31), the next step could stop at **BusyBox** instead of `[os.neu] >` (**S9 FAIL** — we tell you on purpose). **Official path:** **Boot kit** + `make-usb`. New ISO release aims to fix ISO-only S9 too.
+
 You will: turn on Linux → open welcome → download ISO or **Boot kit** → burn → restart → pick USB.
 
 Your Linux system disk (`/`) is **not** wiped — never burn that disk. Only burn the USB stick.
@@ -19,7 +21,7 @@ Full manual: [manual.en.md](./manual.en.md) · Console detail: [usb-console-guid
 | Burn with Etcher / `make-usb` | Plant puts os.neu in Applications — different door |
 
 **Best path for `[os.neu] >`:** Boot kit + `make-usb.sh` (see console guide).  
-Plain ISO burn can stop at BusyBox (step 6).
+If you see BusyBox: power off, unplug USB, use Boot kit / re-download ISO.
 
 ---
 
