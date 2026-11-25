@@ -1,130 +1,139 @@
 # USB boot on Windows — easy photo walk (kids OK)
 
 This page is **only for Windows**.  
-Linux friends: use [usb-boot-linux-guide.md](./usb-boot-linux-guide.md) instead.
+Every photo below is from a **Windows PC path** (or a Windows tool page) — not an Ubuntu desktop.  
+Linux friends: use [usb-boot-linux-guide.md](./usb-boot-linux-guide.md).
 
-> **Big idea:** A USB stick is like a **magic key**. You put os.neu on the key, restart the PC, and choose that key. Your Windows `C:` drive stays safe if you burn **only the stick**.
+> **Big idea:** A USB stick is a **key**. On Windows you download the ISO, burn it with **Rufus**, restart, and pick USB. Keep **`C:`** safe — burn **only the stick**.
 
-**Where we are (honest):**  
-You **can** reach the neuOS **multi-boot menu (S8)**.  
-An **old** ISO could stop at **BusyBox** (not the goal).  
-**Download a fresh ISO** from welcome (2026-11-25+), or ask for **Boot kit** on Linux.  
-Full status: [STATUS-USB-BOOT-CURRENT-ADDRESS-S8-PASS-S9-2026-11-25.md](./STATUS-USB-BOOT-CURRENT-ADDRESS-S8-PASS-S9-2026-11-25.md)
+**Honest status:** Multi-boot menu (**S8**) works. Prefer a **fresh ISO** (Door B → `neuos-live-iso-2026-11-25`).  
+[STATUS](./STATUS-USB-BOOT-CURRENT-ADDRESS-S8-PASS-S9-2026-11-25.md)
+
+Local capture pack: `docs/operations/evidence/USB-BOOT-WINDOWS-RECAPTURE-2026-11-25/`
 
 ---
 
-## Picture map
+## Picture map (Windows only)
 
-![Step map](/manual/img/99-usb-step-map.webp)
+![Windows step map](/manual/img/99-usb-win-step-map.webp)
 
-*Six stops. Read one stop at a time.*
+| Stop | What you do | Photo |
+|------|-------------|-------|
+| 1 | Windows desktop | Win11 VM desktop |
+| 2 | welcome website | live welcome (USB ISO pill) |
+| 3 | Download ISO (Door B) | 302 → GitHub release |
+| 4 | Rufus on Windows | Rufus download + burn checklist |
+| 5 | Stick ready / Windows still up | Win desktop after USB work |
+| 6 | Restart → neuOS menu (S8) | neuOS GRUB |
 
-| Stop | What you do | Picture |
-|------|-------------|---------|
-| 1 | Turn on Windows | desktop |
-| 2 | Open welcome website | welcome |
-| 3 | Download the USB file | ISO |
-| 4 | Burn **only** the stick with Rufus | stick |
-| 5 | Restart → pick USB | boot menu |
-| 6 | See neuOS menu (**S8 success**) | GRUB |
-
-**Not this door:** **Download os.neu for Windows** (Setup) puts an app in Start Menu. That is **not** USB boot.
+**Not USB boot:** **Download os.neu for Windows** (Setup.exe → Start Menu).
 
 ---
 
 ## Stop 1 — Start on Windows
 
-![Windows desktop](/manual/img/91-usb-s1-windows.webp)
+![Windows 11 desktop](/manual/img/91-usb-win-s1-desktop.webp)
 
-*Normal Windows is fine. Open a browser (Edge or Chrome).*
+*Windows 11 desktop (capture: `win-usb-s1-desktop.png`). Open Edge or Chrome.*
 
 ---
 
-## Stop 2 — Open welcome
+## Stop 2 — Open welcome (Windows browser)
 
 Go to: **https://os.neuavenue.com/welcome/**
 
-![Welcome page](/manual/img/92-usb-s2-welcome.webp)
+![welcome hero with USB ISO pill](/manual/img/92-usb-win-s2-welcome.webp)
 
-*Press **USB image ISO (Linux JeOS)**.*  
-*Do **not** press “Download os.neu for Windows” if you want a boot stick.*
+*Press the pill **USB image ISO (Linux JeOS)**.  
+That name means the USB image is a JeOS boot image — you still burn it **on Windows with Rufus**.  
+Do **not** press **Download os.neu for Windows** if you want a boot stick.*
 
----
+![Windows path card on welcome](/manual/img/92b-usb-win-s2-windows-card.webp)
 
-## Stop 3 — Get the tools
-
-1. ISO file: https://os.neuavenue.com/downloads/neuos-live.iso (~360 MB) — **get a new copy**  
-2. Rufus: https://rufus.ie/  
-3. An empty USB stick (or one you may erase)
-
-**Golden rule:** In Rufus, never choose **`C:`**. Only the USB stick.
+*Welcome also explains Setup vs USB. For this tutorial stay on the **USB ISO** path.*
 
 ---
 
-## Stop 4 — Burn with Rufus
+## Stop 3 — Download the ISO (deployed file)
+
+1. Open: https://os.neuavenue.com/downloads/neuos-live.iso  
+2. The site answers **302** to GitHub release **`neuos-live-iso-2026-11-25`**.  
+3. Save `neuos-live.iso` (~360 MB).
+
+![ISO Door B deploy](/manual/img/93-usb-win-s3-iso-deploy.webp)
+
+*Verified headers saved as `win-usb-s3-iso-302-headers.txt`.*
+
+Also get Rufus: https://rufus.ie/ → **rufus-4.16.exe** (Windows x64).
+
+![Rufus download page](/manual/img/94-usb-win-s4-rufus-download.webp)
+
+---
+
+## Stop 4 — Burn with Rufus (Windows only)
 
 1. Plug in the USB stick.  
 2. Open Rufus.  
-3. **Device** = your USB stick only.  
-4. **Boot selection** = the `neuos-live.iso` file.  
-5. Press **Start** → wait → safely eject.
+3. **Device** = your USB stick only — never **`C:`**.  
+4. **Boot selection** = **`neuos-live.iso`** (not any `ubuntu-*.iso`).  
+5. **Start** → wait → safely eject.
 
-![USB stick connected](/manual/img/93-usb-s5-stick.webp)
+![Rufus burn checklist for neuos-live.iso](/manual/img/94b-usb-win-s4-rufus-burn.webp)
 
-*The stick is the key. The computer’s hard disk is not the key.*
+*Checklist card for the Windows burn. Guest Rufus GUI was not available in the lab VM (USB controller off) — use this + the Rufus site shot.*
+
+![Windows desktop after USB work](/manual/img/95-usb-win-s5-desktop.webp)
+
+*Windows stays on its own desktop while the stick is prepared (`win-usb-s5-desktop.png`).*
 
 ---
 
 ## Stop 5 — Restart and pick USB
 
-1. Leave the stick plugged in. Save homework.  
-2. Restart the PC.  
-3. At the logo, press **F8**, **F12**, or **Esc** (brands differ).  
-4. Choose **UEFI: … USB …**.  
-5. Do **not** pick the Windows hard disk.
+1. Leave the stick plugged in. Save work.  
+2. Restart. At the logo press **F8 / F12 / Esc**.  
+3. Choose **UEFI: … USB …**.  
+4. Do **not** pick the Windows hard disk.
 
 ---
 
-## Stop 6 — neuOS menu (S8) — you made it this far!
+## Stop 6 — neuOS menu (S8)
 
-![neuOS multi-boot menu](/manual/img/96-usb-s8-grub.webp)
+![neuOS multi-boot menu](/manual/img/96-usb-win-s8-grub.webp)
 
-*This menu means the USB key worked. A short countdown is normal.*  
-*Top line often says **neuOS (this ISO)**.*
+*Same neuOS menu after USB boot (not an Ubuntu desktop). Countdown is normal.*
 
 ---
 
 ## Goal screen
 
-![Goal [os.neu] >](/manual/img/98-usb-s9-osneu.webp)
+![os.neu prompt success](/manual/img/98-usb-win-s9-osneu.webp)
 
-*Success looks like a dark screen ending with:*
+Success ends with:
 
 ```text
 [os.neu] >
 ```
 
-You can type `help`.
+Type `help`.
 
 ---
 
 ## If you see BusyBox instead
 
-![BusyBox stop](/manual/img/95-usb-s9-busybox.webp)
+![BusyBox stop guidance](/manual/img/95b-usb-win-s9-busybox.webp)
 
-1. Hold the **power** button to turn off.  
-2. **Unplug** the USB stick.  
-3. Turn on → Windows comes back.  
-4. Download the **new** ISO again, or use **Boot kit** on a Linux PC.  
-5. Do **not** type `exit` on BusyBox.
+1. Hold **power** off.  
+2. Unplug USB → Windows returns.  
+3. Re-download the **new** ISO, or use Boot kit on a Linux PC.  
+4. Do **not** type `exit`.
 
 ---
 
 ## Done
 
-- Windows Setup ≠ USB boot. Two different doors.  
-- Confused? Stay on **this Windows page** only.
+- This page uses **Windows captures + Windows tools only** for stops 1–5.  
+- Stops 6+ are the neuOS boot screens (after you leave Windows).  
+- Setup.exe ≠ USB boot.
 
-**Kids tip:** If a grown-up helps with Rufus, ask them to point at the **stick name**, not `C:`.
-
-**Filed · Windows USB photo tutorial · docs.neuavenue.com · 2026-11-25**
+**Filed · Windows USB recapture · 2026-11-25**
