@@ -4,6 +4,20 @@
 > **Release:** [os-neu-setup-1.0.21-2026-11-25](https://github.com/Nueavenue/os-neuavenue/releases/tag/os-neu-setup-1.0.21-2026-11-25)  
 > **Date:** 2026-11-25
 
+## Demo film (~20s)
+
+Host NeuSpeak Free Talk → **Start Live Call** (soccer / Manchester United 2026 practice lead). Compact **mp4** (~97 KB).
+
+![English Coach Live Call — soccer practice (~20s)](/manual/video/ec-live-call-soccer-20s.mp4 "EC Live Call soccer demo")
+
+![Before Live Call](/manual/img/ec-live-call-before.webp)
+
+![Live — coach listening](/manual/img/ec-live-call-soccer-poster.webp)
+
+![After ~20s on Live Call](/manual/img/ec-live-call-20s.webp)
+
+Readable page (this guide): [view.html?doc=ec-live-call-windows-guide.md](https://docs.neuavenue.com/view.html?doc=ec-live-call-windows-guide.md)
+
 ## What you get
 
 | Piece | Behaviour |
@@ -44,16 +58,12 @@ Then stop Live Call or End session.
 
 ## Evidence (lab 2026-11-25)
 
-Folder: `docs/operations/evidence/EC-LIVE-CALL-WIN-2026-11-25/`
-
-| Artifact | Notes |
+| Artifact | Where |
 |----------|--------|
-| `os.neu-Setup-1.0.21.exe.sha256` | Door B download verified (110 MB) |
-| `vm-desktop-01.png` / `vm-after-enter.png` | `fconline-win` lock → password for **billylee** |
-| `host-talk-*.png` + `ec-live-call-soccer-20s.webm` | Host NeuSpeak `/talk` → Start Live Call (~20s) |
-| `soccer-dialogue-script.txt` | Scripted lead lines |
-
-**Honest gap:** In-guest Windows UI for EC Live Call needs the **billylee** password (guestcontrol session not available). Unlock VM, install Setup 1.0.21, point `NEUOS_NEUSPEAK_URL` at the host, then re-run the soccer script on Windows for a full guest film.
+| Demo **mp4** | [/manual/video/ec-live-call-soccer-20s.mp4](/manual/video/ec-live-call-soccer-20s.mp4) (~97 KB) |
+| Stills | `/manual/img/ec-live-call-*.webp` |
+| Setup SHA | Control-tower evidence folder (Door B 110 MB exe) |
+| Guest Win film | **Blocked** — `fconline-win` password for **billylee** UNKNOWN |
 
 ## Related
 

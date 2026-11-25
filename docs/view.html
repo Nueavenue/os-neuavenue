@@ -118,6 +118,16 @@
         border: 1px solid rgba(244, 239, 230, 0.14);
         background: #12130f;
       }
+      .doc video.doc-video {
+        display: block;
+        width: 100%;
+        max-width: min(100%, 42rem);
+        height: auto;
+        margin: 12px 0 16px;
+        border-radius: 12px;
+        border: 1px solid rgba(244, 239, 230, 0.14);
+        background: #111;
+      }
       .doc em {
         color: rgba(244, 239, 230, 0.78);
         font-style: italic;
@@ -134,7 +144,7 @@
     <script>
       window.osneuDocs.applyDocsLocale()
       document.getElementById('back').textContent = '← Back'
-      const ALLOWED = new Set(['manual.md', 'manual.en.md', 'usb-console-guide.md', 'windows-install-guide.md', 'home-screen-guide.md', 'try-it-and-plant-guide.md', 'usb-first-customer-guide.md', 'usb-boot-windows-guide.md', 'usb-boot-linux-guide.md', 'STATUS-USB-BOOT-CURRENT-ADDRESS-S8-PASS-S9-2026-11-25.md'])
+      const ALLOWED = new Set(['manual.md', 'manual.en.md', 'usb-console-guide.md', 'windows-install-guide.md', 'home-screen-guide.md', 'try-it-and-plant-guide.md', 'usb-first-customer-guide.md', 'usb-boot-windows-guide.md', 'usb-boot-linux-guide.md', 'STATUS-USB-BOOT-CURRENT-ADDRESS-S8-PASS-S9-2026-11-25.md', 'ec-live-call-windows-guide.md'])
 
       function escapeHtml(text) {
         return text
@@ -146,6 +156,11 @@
 
       function inline(text) {
         return escapeHtml(text)
+          .replaceAll(
+            /!\[([^\]]*)\]\(([^)\s]+\.(?:mp4|webm|ogg))(?:\s+"([^"]*)")?\)/gi,
+            (_m, alt, src, title) =>
+              `<video class="doc-video" controls playsinline preload="metadata" src="${src}"${title ? ` title="${title}"` : ''} aria-label="${alt || 'Video'}"></video>`,
+          )
           .replaceAll(/!\[([^\]]*)\]\(([^)\s]+)\)/g, '<img src="$2" alt="$1" loading="lazy" />')
           .replaceAll(/`([^`]+)`/g, '<code>$1</code>')
           .replaceAll(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
