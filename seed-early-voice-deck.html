@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <title>Seed · Early Voice Slides</title>
+  <style>
+    body{font-family:system-ui,sans-serif;max-width:640px;margin:48px auto;padding:0 20px;line-height:1.5;color:#14181D;background:#F4EEE1;}
+    code{background:#ECE3D2;padding:2px 6px;}
+    .ok{color:#4D6B4A;font-weight:700;}
+  </style>
+</head>
+<body>
+  <h1>os.neu Slides seed</h1>
+  <p id="status">Seeding Early Voice deck…</p>
+  <script>
+    (function () {
+      const KEY = 'os.neu.slides.files'
+      const ACTIVE = 'os.neu.slides.activeId'
+      const id = 'dk-early-voice-' + Date.now().toString(36)
+      const deck = {
+        id,
+        name: 'Early Voice · PSST + IR',
+        title: 'Early Voice · PSST + IR',
+        updated: Date.now(),
+        payload: {
+          templateId: null,
+          slides: [
+            {
+              layout: 'title',
+              title: '초기 보이스 · 공개 피드백',
+              body: 'Early public feedback — not revenue · OBSERVED ₩0 · Trusted Agent Seat (not AI OS)',
+              bullets: [],
+              table: null,
+            },
+            {
+              layout: 'bullets',
+              title: 'PSST · What we hear',
+              body: "Name 'os' → people expect a full OS\nHonesty about what it is NOT builds trust\nModel name in settings ≠ connected capability\nDraft→review workflow is a fair first test\nD4 response: lead with Trusted Agent Seat / Agent Operating Layer",
+              bullets: [],
+              table: null,
+            },
+            {
+              layout: 'bullets',
+              title: 'Amine · Dev.to · 2026-11-16',
+              body: "Honesty about one response is refreshing.\nThe letters 'os' make most people expect a full operating system.\nIf the workspace idea is the core, a name that points to the workspace first might save that correction.\nTags: naming friction · category clarity",
+              bullets: [],
+              table: null,
+            },
+            {
+              layout: 'bullets',
+              title: 'OneLifeVibe · 2026-11-13',
+              body: 'Honesty about what os.neu is not stood out.\nKeeping the model list separate from actual connections is a useful guard.\nDocument workflow as draft→review shows whether the workspace saves time.\nTags: trust · model-list guard · draft→review',
+              bullets: [],
+              table: null,
+            },
+            {
+              layout: 'table',
+              title: 'IR · Category Signal (LOCK)',
+              body: 'Not traction ARR · Not USB product-complete · Not paid seats · Kakao n=3 PENDING',
+              bullets: [],
+              table: {
+                headers: ['Source', 'Signal', 'Our LOCK response'],
+                rows: [
+                  ['Amine', 'OS-name confusion', 'Lead with Trusted Agent Seat'],
+                  ['OneLifeVibe', 'Honesty / capability guard', 'Model list ≠ connection; draft→review'],
+                  ['Kakao n=3', 'WTP after trial', 'PENDING / hypothesis'],
+                ],
+              },
+            },
+            {
+              layout: 'bullets',
+              title: 'Pilot · CTA',
+              body: 'Pilot Kakao A/B/C — 후기 수집 중 (PENDING)\nWTP after free trial = hypothesis only · no live price\nRequest Access → https://os.neuavenue.com/\n공개 댓글은 매출·전환율로 해석하지 않음',
+              bullets: [],
+              table: null,
+            },
+          ],
+        },
+      }
+
+      let rows = []
+      try {
+        rows = JSON.parse(localStorage.getItem(KEY) || '[]')
+        if (!Array.isArray(rows)) rows = []
+      } catch (e) {
+        rows = []
+      }
+      // Drop prior seed with same name to avoid duplicates on re-run
+      rows = rows.filter((r) => !(r && (r.name === deck.name || String(r.id || '').startsWith('dk-early-voice-'))))
+      rows.unshift(deck)
+      localStorage.setItem(KEY, JSON.stringify(rows.slice(0, 60)))
+      localStorage.setItem(ACTIVE, id)
+
+      const el = document.getElementById('status')
+      el.innerHTML = '<span class="ok">Done.</span> Deck <code>' + deck.name + '</code> saved.<br/>Open <b>app.neu → Slides</b> (reload if already open). Active id: <code>' + id + '</code>'
+      // Soft redirect into the seat after a beat
+      setTimeout(function () {
+        location.replace('/')
+      }, 1600)
+    })()
+  </script>
+</body>
+</html>

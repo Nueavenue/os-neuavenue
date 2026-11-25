@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<title>Early Voice · PSST + IR · HTML Deck</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#ECE3D2;--paper-soft:#F4EEE1;--ink:#14181D;--ink-soft:#4A4D52;
+  --line:rgba(20,24,29,.16);--ember:#BC4F2B;--teal:#1F3D44;--moss:#4D6B4A;--gold:#C49B3D;
+  --shell:#1a1d22;--rail:#111418;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;height:100%;background:var(--shell);color:#eee;font-family:'Inter','Noto Sans KR',sans-serif;overflow:hidden;}
+.app{display:grid;grid-template-columns:220px 1fr;height:100%;}
+.rail{background:var(--rail);border-right:1px solid #2a2e35;display:flex;flex-direction:column;min-height:0;}
+.rail-h{padding:14px 12px 10px;font-size:12px;font-weight:700;letter-spacing:.08em;color:#E8A37E;}
+.rail-sub{padding:0 12px 12px;font-size:11px;color:#9aa0a8;line-height:1.4;}
+.thumbs{flex:1;overflow:auto;padding:8px 10px 20px;display:flex;flex-direction:column;gap:10px;}
+.thumb{
+  border:1px solid #333842;border-radius:4px;padding:0;cursor:pointer;background:#0d0f12;
+  text-align:left;color:inherit;width:100%;overflow:hidden;
+}
+.thumb.active{border-color:#E8A37E;box-shadow:0 0 0 1px #E8A37E;}
+.thumb-stage{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:var(--paper);}
+.thumb-stage .slide-scale{
+  position:absolute;left:0;top:0;width:1920px;height:1080px;
+  transform-origin:top left;pointer-events:none;
+}
+.thumb-label{padding:6px 8px;font-size:11px;color:#c5c9d0;background:#161a20;}
+.stage-wrap{display:flex;flex-direction:column;min-width:0;min-height:0;}
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:10px 16px;border-bottom:1px solid #2a2e35;background:#12151a;
+}
+.topbar h1{margin:0;font-size:15px;font-weight:700;}
+.topbar .meta{font-size:12px;color:#9aa0a8;}
+.navbtns{display:flex;gap:8px;}
+.navbtns button{
+  background:#232830;border:1px solid #3a404a;color:#eee;border-radius:4px;
+  padding:6px 12px;font-size:12px;cursor:pointer;
+}
+.navbtns button:hover{border-color:#E8A37E;}
+.stage{
+  flex:1;display:flex;align-items:center;justify-content:center;
+  padding:18px;min-height:0;background:#0b0d10;
+}
+.viewport{
+  position:relative;width:min(100%, calc((100vh - 100px) * 16 / 9));
+  aspect-ratio:16/9;background:#000;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.45);
+}
+.viewport .slide-scale{
+  position:absolute;left:0;top:0;width:1920px;height:1080px;
+  transform-origin:top left;
+}
+.slide{display:none;}
+.slide.on{display:block;}
+
+/* —— shared slide tokens (PSST pack) —— */
+.slide-container{position:relative;width:1920px;height:1080px;overflow:hidden;background:var(--paper);color:var(--ink);font-family:'Inter','Noto Sans KR',sans-serif;}
+.slide-container p{margin:0;}
+.eb{font-size:18px;font-weight:700;letter-spacing:.14em;color:var(--ember);}
+.chip{display:inline-block;padding:2px 10px;font-size:14px;font-weight:700;letter-spacing:.06em;border:1.5px solid currentColor;line-height:1.4;white-space:nowrap;vertical-align:middle;}
+.ok{background:var(--moss);color:#F4EEE1;border-color:var(--moss);}
+.pt{color:var(--ember);}
+.uk{color:var(--ink-soft);}
+.hold{color:var(--ink-soft);border-style:dashed;}
+.qh{font-size:16px;font-weight:700;letter-spacing:.08em;color:var(--ember);}
+.qq{margin-top:14px;font-size:22px;line-height:1.45;font-weight:500;}
+.qt{margin-top:16px;}
+.rh{font-size:22px;font-weight:800;color:var(--teal);}
+.rb{margin-top:10px;font-size:18px;line-height:1.45;color:var(--ink-soft);}
+table{border-collapse:collapse;width:100%;}
+th,td{text-align:left;padding:12px 14px;font-size:18px;line-height:1.35;border-bottom:1px solid var(--line);vertical-align:top;}
+th{font-size:15px;letter-spacing:.08em;color:var(--ember);font-weight:700;}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="rail">
+    <div class="rail-h">EARLY VOICE DECK</div>
+    <div class="rail-sub">HTML 뷰 · PSST 크림지 레이아웃<br>← 썸네일 = 실제 슬라이드 축소</div>
+    <div class="thumbs" id="thumbs"></div>
+  </aside>
+  <main class="stage-wrap">
+    <div class="topbar">
+      <div>
+        <h1>Early Voice · PSST + IR</h1>
+        <div class="meta" id="pageMeta">1 / 3</div>
+      </div>
+      <div class="navbtns">
+        <button type="button" id="prev">← 이전</button>
+        <button type="button" id="next">다음 →</button>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="viewport" id="viewport">
+
+        <!-- SLIDE 0: cover -->
+        <div class="slide on" data-title="01 표지 · Early Voice">
+          <div class="slide-scale">
+            <div class="slide-container">
+              <div style="position:absolute;left:1180px;top:0;width:740px;height:1080px;background:var(--ink);"></div>
+              <div style="position:absolute;left:96px;top:268px;width:120px;height:8px;background:var(--ember);"></div>
+              <div style="position:absolute;left:96px;top:100px;width:1000px;"><p class="eb">NeuAvenue · Early Voice · PSST + IR</p></div>
+              <div style="position:absolute;left:96px;top:282px;width:1040px;">
+                <p style="font-size:120px;font-weight:800;line-height:1;letter-spacing:-.03em;">os.neu</p>
+              </div>
+              <div style="position:absolute;left:96px;top:430px;width:1040px;">
+                <p style="font-size:40px;font-weight:700;line-height:1.25;">초기 보이스 · <span style="color:var(--ember);">공개 피드백</span></p>
+              </div>
+              <div style="position:absolute;left:96px;top:520px;width:1040px;">
+                <p style="font-size:24px;line-height:1.45;color:var(--ink-soft);font-weight:500;">Early public feedback — <b style="color:var(--ember);">not revenue</b>. OBSERVED ₩0 · Trusted Agent Seat (not “AI OS”).</p>
+              </div>
+              <div style="position:absolute;left:96px;top:640px;width:1040px;">
+                <p><span class="chip ok">OBSERVED · ₩0</span>&nbsp;<span class="chip pt">n(public)=2</span>&nbsp;<span class="chip hold">Kakao n=3 PENDING</span></p>
+              </div>
+              <div style="position:absolute;left:1240px;top:320px;width:620px;">
+                <p style="font-size:18px;font-weight:700;letter-spacing:.12em;color:#E8A37E;">CONTENTS</p>
+                <p style="margin-top:18px;font-size:26px;font-weight:800;color:var(--paper);line-height:1.5;">01 Cover<br>02 PSST · Early Voice<br>03 IR · Category Signal</p>
+                <p style="margin-top:28px;font-size:18px;line-height:1.45;color:#D6D2C4;">HTML deck viewer · same visual language as PSST business-plan pack.</p>
+              </div>
+              <div style="position:absolute;left:96px;top:1020px;width:1000px;">
+                <p style="font-size:15px;color:var(--ink-soft);">NeuAvenue Inc. · 2026-11-23 · not paid conversion</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 1: PSST early voice -->
+        <div class="slide" data-title="02 PSST · 초기 보이스">
+          <div class="slide-scale">
+            <div class="slide-container" data-screen-label="초기 보이스">
+              <div style="position:absolute;left:96px;top:52px;width:1200px;z-index:10;"><p class="eb">PSST · Early Voice · 공개 피드백</p></div>
+              <div style="position:absolute;left:1520px;top:52px;width:300px;z-index:10;text-align:right;"><p style="font-size:18px;font-weight:600;color:var(--ink-soft);">EV / PSST</p></div>
+              <div style="position:absolute;left:96px;top:90px;width:1728px;z-index:10;">
+                <h1 style="margin:0;font-size:46px;font-weight:800;line-height:1.18;">초기 보이스 · 공개 피드백</h1>
+              </div>
+              <div style="position:absolute;left:96px;top:158px;width:1728px;z-index:10;">
+                <p style="font-size:22px;line-height:1.4;color:var(--ink-soft);font-weight:500;">Early public feedback — <b style="color:var(--ember);">not revenue</b>. OBSERVED 매출 ₩0 · 유료 전환으로 읽지 않음.</p>
+              </div>
+              <div style="position:absolute;left:96px;top:210px;width:1728px;z-index:10;">
+                <p style="font-size:15px;line-height:1.6;">
+                  <span class="chip ok">OBSERVED · ₩0</span>&nbsp;
+                  <span class="chip pt">Early voice · n(public)=2</span>&nbsp;
+                  <span class="chip hold">Pilot Kakao · n=3 PENDING</span>&nbsp;
+                  <span class="chip uk">NOT paid conversion</span>&nbsp;
+                  <span class="chip" style="color:var(--teal);border-color:var(--teal);">Trusted Agent Seat · not “AI OS”</span>
+                </p>
+              </div>
+              <div style="position:absolute;left:96px;top:268px;width:1000px;height:280px;background:var(--paper-soft);border-top:6px solid var(--ember);z-index:1;"></div>
+              <div style="position:absolute;left:128px;top:292px;width:936px;z-index:10;">
+                <p class="qh">AMINE · Public comment · Dev.to · 2026-11-16</p>
+                <p class="qq">“Honesty about one response is refreshing. The letters ‘os’ make most people expect a full operating system, so you spend opening paragraphs explaining what it is not. If the workspace idea is the core, a name that points to the workspace first might save that correction.”</p>
+                <p class="qt"><span class="chip pt">naming friction</span>&nbsp;<span class="chip pt">category clarity</span></p>
+              </div>
+              <div style="position:absolute;left:96px;top:568px;width:1000px;height:280px;background:var(--paper-soft);border-top:6px solid var(--teal);z-index:1;"></div>
+              <div style="position:absolute;left:128px;top:592px;width:936px;z-index:10;">
+                <p class="qh" style="color:var(--teal);">ONELIFEVIBE · Public comment · 2026-11-13</p>
+                <p class="qq">“Honesty about what os.neu is not stood out. Keeping the model list separate from actual connections is a useful guard. Document workflow as draft→review shows whether the workspace saves time without hiding the work.”</p>
+                <p class="qt"><span class="chip" style="color:var(--teal);border-color:var(--teal);">trust</span>&nbsp;<span class="chip" style="color:var(--teal);border-color:var(--teal);">model-list guard</span>&nbsp;<span class="chip" style="color:var(--teal);border-color:var(--teal);">draft→review</span></p>
+              </div>
+              <div style="position:absolute;left:1136px;top:268px;width:688px;height:360px;background:var(--paper-soft);border:1px solid var(--line);z-index:1;"></div>
+              <div style="position:absolute;left:1168px;top:292px;width:624px;z-index:10;">
+                <p class="rh">What we hear</p>
+                <p class="rb">1. Name ‘os’ → people expect a full OS</p>
+                <p class="rb">2. Honesty about what it is NOT builds trust</p>
+                <p class="rb">3. Model name in settings ≠ connected capability</p>
+                <p class="rb">4. Draft→review workflow is a fair first test</p>
+              </div>
+              <div style="position:absolute;left:1136px;top:648px;width:688px;height:200px;background:var(--ink);z-index:1;"></div>
+              <div style="position:absolute;left:1168px;top:672px;width:624px;z-index:10;">
+                <p style="font-size:16px;font-weight:700;letter-spacing:.1em;color:#E8A37E;">HOW WE RESPOND · D4</p>
+                <p style="margin-top:12px;font-size:22px;font-weight:800;line-height:1.35;color:var(--paper);">Lead with Trusted Agent Seat / Agent Operating Layer.</p>
+                <p style="margin-top:10px;font-size:18px;line-height:1.4;color:#D6D2C4;">We do not lead with “AI Operating System.”</p>
+              </div>
+              <div style="position:absolute;left:96px;top:868px;width:1728px;height:72px;background:var(--paper-soft);z-index:1;"></div>
+              <div style="position:absolute;left:128px;top:886px;width:1680px;z-index:10;">
+                <p style="font-size:18px;line-height:1.4;color:var(--ink-soft);"><b style="color:var(--ember);">Pilot Kakao n=3</b> — Pilot A / B / C · 후기 수집 중 (PENDING). WTP after free trial = hypothesis only · no live price. CTA: Request Access → https://os.neuavenue.com/</p>
+              </div>
+              <div style="position:absolute;left:96px;top:1004px;width:1728px;height:1px;background:var(--line);z-index:1;"></div>
+              <div style="position:absolute;left:96px;top:1020px;width:1200px;z-index:10;"><p style="font-size:14px;color:var(--ink-soft);">공개 댓글은 동의된 마케팅 인용 시 출처 표기. 매출·전환율로 해석하지 않음.</p></div>
+              <div style="position:absolute;left:1324px;top:1024px;width:500px;z-index:10;text-align:right;"><p style="font-size:15px;color:var(--ink-soft);">NeuAvenue Inc. · os.neu · 2026-11-23</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 2: IR -->
+        <div class="slide" data-title="03 IR · Category Signal">
+          <div class="slide-scale">
+            <div class="slide-container" data-screen-label="IR Early Voice">
+              <div style="position:absolute;left:96px;top:52px;width:1200px;z-index:10;"><p class="eb">IR · Early Voice · Category Signal</p></div>
+              <div style="position:absolute;left:1520px;top:52px;width:300px;z-index:10;text-align:right;"><p style="font-size:18px;font-weight:600;color:var(--ink-soft);">EV / IR</p></div>
+              <div style="position:absolute;left:96px;top:90px;width:1728px;z-index:10;">
+                <h1 style="margin:0;font-size:48px;font-weight:800;line-height:1.15;">Early Voice · Category Signal</h1>
+              </div>
+              <div style="position:absolute;left:96px;top:160px;width:1728px;z-index:10;">
+                <p style="font-size:24px;line-height:1.4;color:var(--ink-soft);font-weight:500;">초기 보이스 · 카테고리 신호 — <b style="color:var(--ember);">not traction ARR</b></p>
+              </div>
+              <div style="position:absolute;left:96px;top:214px;width:1728px;z-index:10;">
+                <p style="font-size:15px;line-height:1.6;">
+                  <span class="chip ok">OBSERVED · Revenue ₩0</span>&nbsp;
+                  <span class="chip uk">× Not paid seats</span>&nbsp;
+                  <span class="chip uk">× Not USB product-complete</span>&nbsp;
+                  <span class="chip hold">Kakao n=3 PENDING</span>&nbsp;
+                  <span class="chip" style="color:var(--teal);border-color:var(--teal);">Trusted Agent Seat LOCK</span>
+                </p>
+              </div>
+              <div style="position:absolute;left:96px;top:270px;width:840px;height:220px;background:var(--paper-soft);border-top:6px solid var(--ember);z-index:1;"></div>
+              <div style="position:absolute;left:128px;top:294px;width:776px;z-index:10;">
+                <p style="font-size:15px;font-weight:700;letter-spacing:.08em;color:var(--ember);">AMINE · 2026-11-16</p>
+                <p style="margin-top:12px;font-size:22px;line-height:1.4;font-weight:500;">‘os’ makes people expect a full operating system — you spend opening paragraphs explaining what it is not.</p>
+              </div>
+              <div style="position:absolute;left:984px;top:270px;width:840px;height:220px;background:var(--paper-soft);border-top:6px solid var(--teal);z-index:1;"></div>
+              <div style="position:absolute;left:1016px;top:294px;width:776px;z-index:10;">
+                <p style="font-size:15px;font-weight:700;letter-spacing:.08em;color:var(--teal);">ONELIFEVIBE · 2026-11-13</p>
+                <p style="margin-top:12px;font-size:22px;line-height:1.4;font-weight:500;">Honesty about what os.neu is not; model list ≠ connection; draft→review is a fair first test.</p>
+              </div>
+              <div style="position:absolute;left:96px;top:520px;width:1728px;height:140px;background:var(--ink);z-index:1;"></div>
+              <div style="position:absolute;left:128px;top:544px;width:1664px;z-index:10;">
+                <p style="font-size:16px;font-weight:700;letter-spacing:.1em;color:#E8A37E;">INVESTOR INSIGHT</p>
+                <p style="margin-top:12px;font-size:26px;font-weight:700;line-height:1.35;color:var(--paper);">Naming and category risk is real: ‘os’ pulls us into OS expectations. Our LOCK response is Seat / Agent Operating Layer — not a kernel OS claim.</p>
+              </div>
+              <div style="position:absolute;left:96px;top:688px;width:1728px;height:260px;background:var(--paper-soft);z-index:1;"></div>
+              <div style="position:absolute;left:128px;top:708px;width:1664px;z-index:10;">
+                <table>
+                  <thead>
+                    <tr><th style="width:22%;">Source</th><th style="width:36%;">Signal</th><th>Our LOCK response</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><b>Amine</b></td><td>OS-name confusion</td><td>Lead with Trusted Agent Seat</td></tr>
+                    <tr><td><b>OneLifeVibe</b></td><td>Honesty / capability guard</td><td>Model list ≠ connection; draft→review</td></tr>
+                    <tr><td><b>Kakao n=3</b></td><td>WTP after trial</td><td><span class="chip hold">PENDING / hypothesis</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div style="position:absolute;left:96px;top:1004px;width:1728px;height:1px;background:var(--line);z-index:1;"></div>
+              <div style="position:absolute;left:96px;top:1020px;width:1200px;z-index:10;"><p style="font-size:14px;color:var(--ink-soft);">Insert after Problem or Solution; before Market / BM numbers.</p></div>
+              <div style="position:absolute;left:1324px;top:1024px;width:500px;z-index:10;text-align:right;"><p style="font-size:15px;color:var(--ink-soft);">NeuAvenue Inc. · IR · 2026-11-23</p></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</div>
+<script>
+(function () {
+  const slides = Array.from(document.querySelectorAll('#viewport > .slide'));
+  const thumbs = document.getElementById('thumbs');
+  const meta = document.getElementById('pageMeta');
+  const viewport = document.getElementById('viewport');
+  let i = 0;
+
+  function fit() {
+    const w = viewport.clientWidth;
+    const s = w / 1920;
+    document.querySelectorAll('#viewport .slide-scale').forEach((el) => {
+      el.style.transform = 'scale(' + s + ')';
+    });
+    document.querySelectorAll('.thumb-stage .slide-scale').forEach((el) => {
+      const tw = el.parentElement.clientWidth;
+      el.style.transform = 'scale(' + (tw / 1920) + ')';
+    });
+  }
+
+  function show(n) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((el, idx) => el.classList.toggle('on', idx === i));
+    Array.from(thumbs.children).forEach((btn, idx) => btn.classList.toggle('active', idx === i));
+    meta.textContent = (i + 1) + ' / ' + slides.length + ' · ' + (slides[i].dataset.title || '');
+    fit();
+  }
+
+  slides.forEach((slide, idx) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'thumb' + (idx === 0 ? ' active' : '');
+    btn.innerHTML =
+      '<div class="thumb-stage"></div><div class="thumb-label">' +
+      (slide.dataset.title || ('Slide ' + (idx + 1))) +
+      '</div>';
+    const clone = slide.querySelector('.slide-scale').cloneNode(true);
+    btn.querySelector('.thumb-stage').appendChild(clone);
+    btn.addEventListener('click', () => show(idx));
+    thumbs.appendChild(btn);
+  });
+
+  document.getElementById('prev').onclick = () => show(i - 1);
+  document.getElementById('next').onclick = () => show(i + 1);
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); show(i + 1); }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); show(i - 1); }
+  });
+  window.addEventListener('resize', fit);
+  show(0);
+  requestAnimationFrame(fit);
+})();
+</script>
+</body>
+</html>

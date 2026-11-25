@@ -1872,9 +1872,88 @@
     document.title = (document.title || 'HTML Deck') + ' (embed)'
   }
 
+  /**
+   * Home prompt → Studio template pick seeds sessionStorage.
+   * Auto-write every slide (full HTML rewrite) and Apply without waiting for clicks.
+   */
+  async function runSeedPromptAutomation() {
+    let seed = ''
+    try {
+      seed = String(sessionStorage.getItem('os.neu.html-deck.seedPrompt') || '').trim()
+      if (seed) sessionStorage.removeItem('os.neu.html-deck.seedPrompt')
+    } catch (_) {}
+    if (!seed || !slides.length) return
+
+    const instruction =
+      '전체 재작성. Rewrite this entire slide as 1920×1080 HTML for the user request. ' +
+      'Keep the pack visual language (colors, typography, layout density). ' +
+      'Use the language of the request. Do not invent market sizes, percentages, revenue, or fake citations. ' +
+      'Return ```html ...``` only.\n\nUser request:\n' +
+      seed
+
+    if (promptEl) promptEl.value = seed
+    setLog('시드 프롬프트 · 전 슬라이드 자동 작성 시작 (' + slides.length + '장)…', true)
+    const limit = Math.min(slides.length, 12)
+    let okCount = 0
+    let failCount = 0
+    for (let idx = 0; idx < limit; idx++) {
+      const slide = slides[idx]
+      if (!slide) continue
+      i = idx
+      show(idx)
+      setRoute('thinking')
+      setLog('자동 작성 ' + (idx + 1) + '/' + limit + ' · ' + (slide.label || slide.id), true)
+      let beforeHtml = ''
+      try {
+        const ov = overrides()[slide.id]
+        if (ov && ov.html) beforeHtml = ov.html
+        else beforeHtml = await (await fetch(new URL('slides/' + slide.file, base))).text()
+      } catch (err) {
+        failCount += 1
+        setLog('로드 실패 · ' + slide.id + ': ' + err, false)
+        continue
+      }
+      setRoute('planning')
+      const result = await seatRewrite(slide, instruction, beforeHtml)
+      if (!result.ok || !result.html) {
+        failCount += 1
+        setLog('작성 실패 · ' + slide.id + ' · ' + (result.reason || 'unknown'), false)
+        continue
+      }
+      pendingCs = {
+        id: 'cs-seed-' + Date.now().toString(36) + '-' + idx,
+        scope: 'slide',
+        slideId: slide.id,
+        file: slide.file,
+        action: result.action || 'REWRITE_CONTENT',
+        beforeHtml,
+        afterHtml: result.html,
+        reason: 'Seed auto-write: ' + seed.slice(0, 120),
+        source: result.source || 'seed-auto',
+        status: 'proposed',
+        at: Date.now(),
+      }
+      setStagePreviewHtml(result.html)
+      setRoute('waiting_approval')
+      setCsUi()
+      applyChange()
+      okCount += 1
+    }
+    i = 0
+    show(0)
+    setRoute(okCount ? 'completed' : 'completed', !okCount)
+    setLog(
+      '시드 자동 작성 완료 · 성공 ' + okCount + ' · 실패 ' + failCount +
+        (limit < slides.length ? ' · (앞 ' + limit + '장만)' : ''),
+      okCount > 0,
+    )
+    setRoute('idle')
+  }
+
   try {
     await loadManifest()
     setRoute('idle')
+    await runSeedPromptAutomation()
   } catch (err) {
     setLog('manifest 로드 실패: ' + err, false)
   }
