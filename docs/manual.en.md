@@ -21,7 +21,9 @@ There is no macOS installer yet. This page still opens in any browser.
 
 - [Home screen guide](./home-screen-guide.md) — first-screen tour (Try it and planted).
 - [Try it vs plant (safe)](./try-it-and-plant-guide.md) — browser Next does **not** copy to disk; real plant = download + install.sh / Setup.exe (no wipe).
-- [USB from start to finish (photos)](./usb-first-customer-guide.md) — plug stick → burn → boot menu → what success looks like (and BusyBox).
+- [USB boot · Windows (photos)](./usb-boot-windows-guide.md) — Rufus path only.
+- [USB boot · Linux (photos)](./usb-boot-linux-guide.md) — Etcher / make-usb path only.
+- [USB chooser](./usb-first-customer-guide.md) — pick Windows or Linux first.
 
 In the OS.neu Manual icon: **Tour of the home screen** · **Try it in the browser** · **Plant for real (no disk wipe)**.
 
@@ -57,7 +59,7 @@ The three paths meet on the same screen. Use the top icons to switch at any time
 The USB first screen is **not** folders and **not** the pretty website graphic.  
 It is a **dark text console**. **Burning the stick is Linux only** (use the boot kit / `make-usb`).
 
-Photo walk for students: [usb-first-customer-guide.md](./usb-first-customer-guide.md).
+Photo guides: [Windows USB](./usb-boot-windows-guide.md) · [Linux USB](./usb-boot-linux-guide.md).
 
 Plug the stick into a **rear motherboard USB** port, then list disks.
 
