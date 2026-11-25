@@ -1,101 +1,130 @@
-# Windows USB boot — with photos
+# USB boot on Windows — easy photo walk (kids OK)
 
 This page is **only for Windows**.  
-If you use Ubuntu / Linux, open the Linux guide instead: [usb-boot-linux-guide.md](./usb-boot-linux-guide.md)
+Linux friends: use [usb-boot-linux-guide.md](./usb-boot-linux-guide.md) instead.
 
-> **Current address (2026-11-25):** Multi-boot (GRUB) **works (S8 PASS)**. The **old** Door B ISO could stop at **BusyBox** before `[os.neu] >` (**S9 FAIL** — published on purpose). Prefer a **fresh ISO download** after 2026-11-25, or ask a Linux friend for **Boot kit / make-usb** (official SoT). Setup.exe is **not** USB boot.
+> **Big idea:** A USB stick is like a **magic key**. You put os.neu on the key, restart the PC, and choose that key. Your Windows `C:` drive stays safe if you burn **only the stick**.
 
-You will: turn on Windows → open welcome → download the USB file → burn with **Rufus** → restart → pick USB.
-
-Your Windows disk (`C:`) is **not** wiped when you burn a USB stick — as long as you pick **only the stick** in Rufus.
-
-Full manual: [manual.en.md](./manual.en.md) · Plant as a Windows app (not USB): [windows-install-guide.md](./windows-install-guide.md)
-
----
-
-## Remember this one rule
-
-| For USB boot on Windows | Not USB |
-|-------------------------|---------|
-| **USB image ISO (Linux JeOS)** | **Download os.neu for Windows** (= Setup app on Start Menu) |
-| Burn with **Rufus** (or Etcher) | That Setup path does not make a boot stick |
-
-The ISO is a **Linux JeOS** image. Windows only helps you **burn** it. After reboot from USB you see a Linux-style console first.  
-If BusyBox appears: hold power, unplug USB, return to Windows, re-download ISO or use Boot kit path.
+**Where we are (honest):**  
+You **can** reach the neuOS **multi-boot menu (S8)**.  
+An **old** ISO could stop at **BusyBox** (not the goal).  
+**Download a fresh ISO** from welcome (2026-11-25+), or ask for **Boot kit** on Linux.  
+Full status: [STATUS-USB-BOOT-CURRENT-ADDRESS-S8-PASS-S9-2026-11-25.md](./STATUS-USB-BOOT-CURRENT-ADDRESS-S8-PASS-S9-2026-11-25.md)
 
 ---
 
-## Step 1 — Start on Windows
+## Picture map
 
-![Windows 11 desktop](/manual/img/91-usb-s1-windows.webp)
+![Step map](/manual/img/99-usb-step-map.webp)
 
-*Normal Windows desktop is fine. Open a browser from here.*
+*Six stops. Read one stop at a time.*
+
+| Stop | What you do | Picture |
+|------|-------------|---------|
+| 1 | Turn on Windows | desktop |
+| 2 | Open welcome website | welcome |
+| 3 | Download the USB file | ISO |
+| 4 | Burn **only** the stick with Rufus | stick |
+| 5 | Restart → pick USB | boot menu |
+| 6 | See neuOS menu (**S8 success**) | GRUB |
+
+**Not this door:** **Download os.neu for Windows** (Setup) puts an app in Start Menu. That is **not** USB boot.
 
 ---
 
-## Step 2 — Open welcome
+## Stop 1 — Start on Windows
+
+![Windows desktop](/manual/img/91-usb-s1-windows.webp)
+
+*Normal Windows is fine. Open a browser (Edge or Chrome).*
+
+---
+
+## Stop 2 — Open welcome
 
 Go to: **https://os.neuavenue.com/welcome/**
 
 ![Welcome page](/manual/img/92-usb-s2-welcome.webp)
 
-*Press **USB image ISO (Linux JeOS)**. Do not press “Download os.neu for Windows” if you want USB boot.*
+*Press **USB image ISO (Linux JeOS)**.*  
+*Do **not** press “Download os.neu for Windows” if you want a boot stick.*
 
 ---
 
-## Step 3 — Get the tools
+## Stop 3 — Get the tools
 
-1. ISO: https://os.neuavenue.com/downloads/neuos-live.iso (~360 MB)  
+1. ISO file: https://os.neuavenue.com/downloads/neuos-live.iso (~360 MB) — **get a new copy**  
 2. Rufus: https://rufus.ie/  
-3. Empty USB stick (or one you may erase). Never choose `C:`.
+3. An empty USB stick (or one you may erase)
+
+**Golden rule:** In Rufus, never choose **`C:`**. Only the USB stick.
 
 ---
 
-## Step 4 — Burn with Rufus
+## Stop 4 — Burn with Rufus
 
 1. Plug in the USB stick.  
-2. Open Rufus → Device = **your stick only**.  
-3. Boot selection = the `neuos-live.iso` file.  
-4. Start → wait → safely eject.
+2. Open Rufus.  
+3. **Device** = your USB stick only.  
+4. **Boot selection** = the `neuos-live.iso` file.  
+5. Press **Start** → wait → safely eject.
 
-*(If you already planted Setup, the in-app USB icon only opens this guide — it does not write the disk for you.)*
+![USB stick connected](/manual/img/93-usb-s5-stick.webp)
 
----
-
-## Step 5 — Restart and pick USB
-
-1. Leave the stick plugged in. Save work.  
-2. Restart. At the PC logo press **F8 / F12 / Esc** (brand differs).  
-3. Choose **UEFI: … USB …**. Do not pick the Windows hard disk.
-
-![Boot menu phase](/manual/img/94-usb-s8-menu.webp)
-
-*A short countdown on the neuOS menu is normal.*
+*The stick is the key. The computer’s hard disk is not the key.*
 
 ---
 
-## Step 6 — Success or BusyBox
+## Stop 5 — Restart and pick USB
 
-**Success:** dark text ending with:
+1. Leave the stick plugged in. Save homework.  
+2. Restart the PC.  
+3. At the logo, press **F8**, **F12**, or **Esc** (brands differ).  
+4. Choose **UEFI: … USB …**.  
+5. Do **not** pick the Windows hard disk.
+
+---
+
+## Stop 6 — neuOS menu (S8) — you made it this far!
+
+![neuOS multi-boot menu](/manual/img/96-usb-s8-grub.webp)
+
+*This menu means the USB key worked. A short countdown is normal.*  
+*Top line often says **neuOS (this ISO)**.*
+
+---
+
+## Goal screen
+
+![Goal [os.neu] >](/manual/img/98-usb-s9-osneu.webp)
+
+*Success looks like a dark screen ending with:*
 
 ```text
 [os.neu] >
 ```
 
-**If you see BusyBox / “payload not found”:**
+You can type `help`.
 
-![payload not found](/manual/img/95-usb-s9-busybox.webp)
+---
 
-1. Hold power to turn off.  
-2. Unplug USB → turn on → Windows returns.  
-3. Ask for the **Boot kit** path on a Linux PC, or an updated ISO.  
-4. Do **not** type `exit` on that screen.
+## If you see BusyBox instead
+
+![BusyBox stop](/manual/img/95-usb-s9-busybox.webp)
+
+1. Hold the **power** button to turn off.  
+2. **Unplug** the USB stick.  
+3. Turn on → Windows comes back.  
+4. Download the **new** ISO again, or use **Boot kit** on a Linux PC.  
+5. Do **not** type `exit` on BusyBox.
 
 ---
 
 ## Done
 
-- Windows Setup (Start Menu) ≠ USB boot. Two different doors.  
-- Confused? Use this Windows page only — skip the Linux page.
+- Windows Setup ≠ USB boot. Two different doors.  
+- Confused? Stay on **this Windows page** only.
 
-**Filed · Windows USB boot · docs.neuavenue.com · 2026-11-25**
+**Kids tip:** If a grown-up helps with Rufus, ask them to point at the **stick name**, not `C:`.
+
+**Filed · Windows USB photo tutorial · docs.neuavenue.com · 2026-11-25**

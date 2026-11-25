@@ -21,9 +21,10 @@ There is no macOS installer yet. This page still opens in any browser.
 
 - [Home screen guide](./home-screen-guide.md) — first-screen tour (Try it and planted).
 - [Try it vs plant (safe)](./try-it-and-plant-guide.md) — browser Next does **not** copy to disk; real plant = download + install.sh / Setup.exe (no wipe).
-- [USB boot · Windows (photos)](./usb-boot-windows-guide.md) — Rufus path only.
-- [USB boot · Linux (photos)](./usb-boot-linux-guide.md) — Etcher / make-usb path only.
+- [USB boot · Windows (kids photo walk)](./usb-boot-windows-guide.md) — six stops · Rufus only · S8 menu photos.
+- [USB boot · Linux (kids photo walk)](./usb-boot-linux-guide.md) — six stops · Etcher / Boot kit · S8 menu photos.
 - [USB chooser](./usb-first-customer-guide.md) — pick Windows or Linux first.
+- [USB status (S8/S9 honest)](./STATUS-USB-BOOT-CURRENT-ADDRESS-S8-PASS-S9-2026-11-25.md) — what works today.
 
 In the OS.neu Manual icon: **Tour of the home screen** · **Try it in the browser** · **Plant for real (no disk wipe)**.
 

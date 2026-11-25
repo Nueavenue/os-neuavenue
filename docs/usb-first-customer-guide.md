@@ -1,6 +1,9 @@
-# USB boot — pick your computer first
+# USB boot — pick your computer first (kids OK)
 
-> **Where we are (2026-11-25):** GRUB multi-boot = **reached (S8)**. Old ISO alone could end in **BusyBox (S9 FAIL)** — that fact is public. Official first-customer path = **Boot kit / make-usb**. See [STATUS](./STATUS-USB-BOOT-CURRENT-ADDRESS-S8-PASS-S9-2026-11-25.md) on docs after sync.
+> **Where we are (2026-11-25):** GRUB multi-boot = **reached (S8)**. Old ISO alone could end in **BusyBox (S9 FAIL)** — that fact is public. Official path = **Boot kit / make-usb**. Fresh Door B ISO = `neuos-live-iso-2026-11-25`.  
+> Status: [STATUS-USB-BOOT-CURRENT-ADDRESS-S8-PASS-S9-2026-11-25.md](./STATUS-USB-BOOT-CURRENT-ADDRESS-S8-PASS-S9-2026-11-25.md)
+
+![Step map](/manual/img/99-usb-step-map.webp)
 
 Users get mixed up when Windows and Linux steps sit on one page.  
 **Choose one guide below.** Do not follow both at the same time.
@@ -20,13 +23,14 @@ Users get mixed up when Windows and Linux steps sit on one page.
 
 Never burn Windows `C:` or Linux `/`.
 
+**S8 success** = you see the **neuOS multi-boot menu**.  
+**Goal** = `[os.neu] >`.
+
 ---
 
 ## Related
 
 - Full manual: [manual.en.md](./manual.en.md)  
-- Home tour: [home-screen-guide.md](./home-screen-guide.md)  
-- Try it vs plant: [try-it-and-plant-guide.md](./try-it-and-plant-guide.md)  
-- Linux console detail: [usb-console-guide.md](./usb-console-guide.md)
+- In-app Manual: **USB boot — pick Windows or Linux** → Windows page · Linux page  
 
 **Filed · USB chooser · 2026-11-25**
