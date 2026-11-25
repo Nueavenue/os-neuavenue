@@ -46,7 +46,8 @@ On **browser Try it**, you can tap the icons to explore. Trial limits stay as de
 
 1. Tap **Docs**, **Sheets**, or **Slides** so the answer can land in that app.  
 2. Tap **daf.neu** for the built-in browser and web sources.  
-3. Answers show in the **console under the prompt**. Use Link URL / Link file / Find in app.neu to keep sources with the same work.
+3. Answers show in the **console under the prompt**. Use Link URL / Link file / Find in app.neu to keep sources with the same work.  
+4. From **v1.0.27**, Enter on a Docs/Sheets/Slides chip also opens the right-hand **Agent Think** rail (same Cursor-style routine on all three). Walk: [Agent Think guide](./agent-think-docs-sheets-slides-guide.md).
 
 ---
 

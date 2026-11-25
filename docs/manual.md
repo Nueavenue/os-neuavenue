@@ -7,6 +7,8 @@ Open the [os.neu manual (Linux / Windows)](https://docs.neuavenue.com/manual.en.
 Short tutorials:
 
 - [Home screen guide](https://docs.neuavenue.com/home-screen-guide.md)
+- [Agent Think · Docs/Sheets/Slides](https://docs.neuavenue.com/agent-think-docs-sheets-slides-guide.md)
+- [Agent Think · 세 앱 같은 루틴](https://docs.neuavenue.com/agent-think-docs-sheets-slides-guide.ko.md)
 - [Try it vs plant (safe)](https://docs.neuavenue.com/try-it-and-plant-guide.md)
 - [USB boot · Windows (어린이 사진 따라하기)](https://docs.neuavenue.com/view.html?doc=usb-boot-windows-guide.md)
 - [USB boot · Linux (어린이 사진 따라하기)](https://docs.neuavenue.com/view.html?doc=usb-boot-linux-guide.md)
