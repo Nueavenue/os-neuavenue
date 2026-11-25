@@ -1,8 +1,9 @@
 # os.neu manual
 
-Power-on is not folders or a Start menu. It is a talk face on the PC you already have. The disk is not wiped.
+When you open os.neu, you do **not** start from folders or a Start menu.  
+You get a **talk screen** on the PC you already have. Your disk is **not** wiped.
 
-This manual is **English**. Use **Linux** or **Windows** below. The Back button is **Back**.
+This manual is **English**. Pick **Linux** or **Windows** below. The Back button says **Back**.
 
 Public home: [https://os.neuavenue.com](https://os.neuavenue.com)  
 Docs home: [https://docs.neuavenue.com](https://docs.neuavenue.com)  
@@ -20,16 +21,17 @@ There is no macOS installer yet. This page still opens in any browser.
 
 - [Home screen guide](./home-screen-guide.md) — first-screen tour (Try it and planted).
 - [Try it vs plant (safe)](./try-it-and-plant-guide.md) — browser Next does **not** copy to disk; real plant = download + install.sh / Setup.exe (no wipe).
+- [USB from start to finish (photos)](./usb-first-customer-guide.md) — plug stick → burn → boot menu → what success looks like (and BusyBox).
 
 In the OS.neu Manual icon: **Tour of the home screen** · **Try it in the browser** · **Plant for real (no disk wipe)**.
 
 ## Try it on the website (safe)
 
-1. Open `https://os.neuavenue.com` in a browser.
-2. Use the prompt, Docs / Sheets / Slides, and icons as a **trial**. The address bar still shows the website.
-3. If you press **Plant on this device** and see **Could not read the profile**, that means the cloud preview has no device bridge — **your PC was not planted**.
-4. **Next** only continues to the body check. It does **not** wipe disks, write `~/os.neu`, or burn USB.
-5. To plant for real, download the Linux tar or Windows Setup (links above), then follow **Linux** / **Windows** below.
+1. Open `https://os.neuavenue.com` in a browser.  
+2. Try the prompt, Docs / Sheets / Slides, and icons. If the address bar still shows the website, you are only **trying**.  
+3. If you press **Plant on this device** and see **Could not read the profile**, the website could not reach your PC — **nothing was installed**.  
+4. **Next** only goes to the body check. It does **not** wipe disks, write `~/os.neu`, or burn USB.  
+5. To install for real, download the Linux tar or Windows Setup (links above), then follow **Linux** / **Windows** below.  
 
 Full step list: [try-it-and-plant-guide.md](./try-it-and-plant-guide.md).
 
@@ -52,7 +54,10 @@ The three paths meet on the same screen. Use the top icons to switch at any time
 
 ### 3. USB console — pick the disk
 
-The USB first screen is not folders and not the `:5173` graphic. It is a dark text console. **Burning the stick is Linux only.**
+The USB first screen is **not** folders and **not** the pretty website graphic.  
+It is a **dark text console**. **Burning the stick is Linux only** (use the boot kit / `make-usb`).
+
+Photo walk for students: [usb-first-customer-guide.md](./usb-first-customer-guide.md).
 
 Plug the stick into a **rear motherboard USB** port, then list disks.
 
@@ -138,10 +143,10 @@ The graphical talk screen opens from USB after `install os.neu` in that same ses
 
 ### 7. If you see something else
 
-- **Usual Ubuntu / Windows** — pick USB in F8 again
-- **`grub>`** — not os.neu yet. Type `search --label NEUOS-ROOT --set=root` then `configfile /boot/grub/grub.cfg`
-- **BusyBox `#` / payload not found** — power off, boot Ubuntu, run `--update` again
-- **Graphic `:5173` screen** — not the USB first screen. The console is correct
+- **Usual Ubuntu / Windows** — you did not pick USB. Use F8 again.  
+- **`grub>`** — not os.neu yet. Type `search --label NEUOS-ROOT --set=root` then `configfile /boot/grub/grub.cfg`  
+- **BusyBox `#` / payload not found** — power off, boot Ubuntu, run `--update` again (or use the Boot kit). Do not type `exit`.  
+- **Graphic website-looking screen** — that is not the USB first screen. The dark console is the right first face.  
 
 If `grub>` still fails:
 
