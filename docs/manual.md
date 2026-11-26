@@ -6,6 +6,7 @@ Open the [os.neu manual (Linux / Windows)](https://docs.neuavenue.com/manual.en.
 
 Short tutorials:
 
+- [버전 히스토리 · v1.0 → 1.0.29 (공개)](https://docs.neuavenue.com/view.html?doc=blog-osneu-version-history-1.0-to-1.0.29.md)
 - [Home screen guide](https://docs.neuavenue.com/home-screen-guide.md)
 - [Agent Think · Docs/Sheets/Slides](https://docs.neuavenue.com/agent-think-docs-sheets-slides-guide.md)
 - [Agent Think · 세 앱 같은 루틴](https://docs.neuavenue.com/agent-think-docs-sheets-slides-guide.ko.md)
