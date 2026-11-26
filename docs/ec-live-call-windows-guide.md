@@ -1,6 +1,6 @@
 # English Coach — Live Call on Windows (os.neu Setup)
 
-> **Ship:** Windows Setup **1.0.31+** · Door B [os.neu-Setup.exe](https://os.neuavenue.com/downloads/os.neu-Setup.exe)  
+> **Ship:** Windows Setup **1.0.32+** · Door B [os.neu-Setup.exe](https://os.neuavenue.com/downloads/os.neu-Setup.exe)  
 > **EC host (product):** **https://speak.neuavenue.com**  
 > **Updated:** 2026-11-26 (GRANT — speak.neuavenue.com fixed)
 
@@ -19,7 +19,7 @@
    (or https://os.neuavenue.com/downloads/os.neu-Setup.exe).
 2. SmartScreen: **More info → Run anyway**.
 3. Install → Start Menu → **os.neu**.
-4. Title should show **v1.0.31** (or newer).
+4. Title should show **v1.0.32** (or newer).
 5. Open **EC** — no local NeuSpeak install required when **speak.neuavenue.com** is live.
 
 ## English Coach + speak.neuavenue.com
