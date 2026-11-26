@@ -20,7 +20,7 @@ There is no macOS installer yet. This page still opens in any browser.
 ### Short tutorials (start here)
 
 - [Home screen guide](./home-screen-guide.md) — first-screen tour (Try it and planted).
-- [Agent Think — Docs, Sheets, Slides](./agent-think-docs-sheets-slides-guide.md) — Cursor-style right rail; same routine on all three apps (v1.0.27).
+- [Agent Think — Docs, Sheets, Slides](./agent-think-docs-sheets-slides-guide.md) — Cursor-style right rail + shared composer (▶ Run); Writer kinds (v1.0.28).
 - [Try it vs plant (safe)](./try-it-and-plant-guide.md) — browser Next does **not** copy to disk; real plant = download + install.sh / Setup.exe (no wipe).
 - [USB boot · Windows (kids photo walk)](./usb-boot-windows-guide.md) — six stops · Rufus only · S8 menu photos.
 - [USB boot · Linux (kids photo walk)](./usb-boot-linux-guide.md) — six stops · Etcher / Boot kit · S8 menu photos.
