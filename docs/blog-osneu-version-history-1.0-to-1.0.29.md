@@ -16,7 +16,7 @@
 | 지금 쓰는 문 | 오늘(2026-11-26) 기대 버전 | 비고 |
 |--------------|----------------------------|------|
 | https://os.neuavenue.com (Try it) | **1.0.29** | 웹 SPA |
-| Start Menu **os.neu** (Setup.exe) | **1.0.23** (Door B) | Setup 재배포 전엔 1.0.29 기능 없음 |
+| Start Menu **os.neu** (Setup.exe) | **1.0.29** (Door B) | 다운로드: `os-neu-setup-1.0.29-win-2026-11-26` · 예전 설치본은 재설치 |
 | Linux `~/os.neu` plant | **1.0.29** (소스/plant 동기화) | 설치 시점에 따름 |
 
 ---
@@ -62,8 +62,8 @@
 | 변경 내용 | 홈에서 문서 Enter 시 **Docs를 먼저** 연다. Agent Think를 Cursor식 **아코디언**(한 단계만 크게)으로. Markdown/Preview/Word/Docs 전환 시 본문 깨짐 방지. Docs↔Sheets↔Slides 이동 버튼. Usage 팝업(오늘 횟수·호출 목록). |
 | 수정 사유 | 1.0.28 스크린샷 피드백: 홈 아래 깜빡임 · Think 글자/정적 루틴 · 탭 전환 시 본문 변형 · Usage 불명확 · 「오늘 회의록」 Think 비어 보임 |
 | 관련 오류/이슈 | Think 비어 보임 · 탭 전환 본문 손실 · Usage 불명확 → **완화** |
-| 배포 면 | Try it **1.0.29** · Linux plant · Setup Door B는 아직 **1.0.23** |
-| 출처 | neuOS `af29202` · REPORT-GRANT-THINK-ACCORDION-… · Agent 프롬프트(1.0.28 피드백) |
+| 배포 면 | Try it **1.0.29** · Linux plant · Setup Door B **1.0.29** (당일 재배포) |
+| 출처 | neuOS `af29202` · REPORT-GRANT-THINK-ACCORDION-… · Agent 프롬프트(1.0.28 피드백) · Setup `os-neu-setup-1.0.29-win-2026-11-26` |
 
 ### 2026-11-26 · 1.0.28
 
@@ -116,9 +116,9 @@
 | 구분 | 수정 · 배포 |
 | 변경 내용 | EC는 NeuSpeak iframe. CRM을 본문 레이어로. Electron에서 Plant/Burn/Try 비활성 · 웹 Try it만 활성. **Windows Setup Door B = 1.0.23** |
 | 수정 사유 | EC 흰 화면 · CRM 가림 · 설치본에서 plant 다시 누르는 혼동 |
-| 관련 오류/이슈 | EC 흰 화면 = NeuSpeak `:5180` 없음 → 안내/연결 경로 정리. Setup은 이후 SPA만 올라가고 **1.0.23에 머문 상태(오늘 기준)** |
+| 관련 오류/이슈 | EC 흰 화면 = NeuSpeak `:5180` 없음 → 안내/연결 경로 정리. Setup Door B는 당시 **1.0.23** 고정 후, **2026-11-26**에 **1.0.29**로 재배포 |
 | 배포 면 | Setup · Try it · plant |
-| 출처 | REPORT-EC-UP-WIN11-UNIFY-1.0.23 · REPORT-EC-WHITE-CRM-… · GitHub `os-neu-setup-1.0.23-…` |
+| 출처 | REPORT-EC-UP-WIN11-UNIFY-1.0.23 · REPORT-EC-WHITE-CRM-… · GitHub `os-neu-setup-1.0.23-…` → 이후 `os-neu-setup-1.0.29-win-…` |
 
 ### 2026-11-25 · 1.0.22
 
@@ -256,7 +256,7 @@
 
 | ID | 이슈 | 영향 | 상태 |
 |----|------|------|------|
-| K1 | Windows Setup Door B = **1.0.23** | Start Menu os.neu에 1.0.24–1.0.29 기능 없음 | **열림** · Try it으로 1.0.29 확인 |
+| K1 | 예전 Setup(≤1.0.23)이 남아 있는 PC | Start Menu 숫자가 1.0.29가 아님 | **완화** · Door B를 **1.0.29**로 재설치 |
 | K2 | EC Live Call은 NeuSpeak 서버 필요 | 서버 없으면 흰/빈 칸처럼 보일 수 있음 | 문서화됨 · 연결 후 재시도 |
 | K3 | Setup unsigned | SmartScreen 경고 | 운영상 유지 (서명 GRANT 별도) |
 | K4 | USB ISO-only | BusyBox / payload not found 가능 | Boot kit / make-usb 권장 |
