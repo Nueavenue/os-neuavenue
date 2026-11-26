@@ -162,7 +162,7 @@ export default {
     // Same-origin URL 302 → GitHub Release (Slice 1 packaged v1.0).
     if (url.pathname === '/downloads/os.neu-Setup.exe') {
       return Response.redirect(
-        'https://github.com/Nueavenue/os-neuavenue/releases/download/os-neu-setup-1.0.30-win-2026-11-26/os.neu-Setup.exe',
+        'https://github.com/Nueavenue/os-neuavenue/releases/download/os-neu-setup-1.0.31-win-2026-11-26/os.neu-Setup.exe',
         302,
       )
     }
