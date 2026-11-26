@@ -1,14 +1,14 @@
 # Agent Think — 문서 · 시트 · 슬라이드 (같은 루틴)
 
-os.neu **v1.0.28**. 공개 좌석: [os.neuavenue.com](https://os.neuavenue.com)
+os.neu **v1.0.29**. 공개 좌석: [os.neuavenue.com](https://os.neuavenue.com)
 
-한 줄: 홈에서 **Enter** 하면 Cursor처럼 오른쪽에 **Agent Think**가 열립니다. **가운데 파일이 결과**입니다. 세 앱이 같은 작성창(**▶ 실행**)을 씁니다. Writer 양식은 문서 종류를 따릅니다.
+한 줄: 홈에서 **Enter** 하면 프롬프트 아래 카드 없이 **바로 Docs**(또는 시트/슬라이드)로 갑니다. Think는 **한 단계씩** 깜빡이고 끝나면 한 줄 요약입니다. 세 앱이 같은 작성창(**▶ 실행**)을 씁니다.
 
 영문 짧은 판: [agent-think-docs-sheets-slides-guide.md](./agent-think-docs-sheets-slides-guide.md)
 
 ## 빌드
 
-상단이 **OS.neu v1.0.28** 인지 봅니다. v1.0.27이면 Ctrl+Shift+R 또는 이 PC에 심은 os.neu 앱을 엽니다. **AI 고르기**가 켜져 있어야 합니다.
+상단이 **OS.neu v1.0.29** 인지 봅니다. v1.0.28이면 Ctrl+Shift+R 또는 이 PC에 심은 os.neu 앱을 엽니다. **AI 고르기**가 켜져 있어야 합니다.
 
 ## 작성창
 

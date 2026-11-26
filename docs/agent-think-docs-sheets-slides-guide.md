@@ -1,9 +1,9 @@
 # Agent Think — Docs, Sheets, Slides (same routine)
 
-os.neu **v1.0.28**. Public seat: [os.neuavenue.com](https://os.neuavenue.com)  
+os.neu **v1.0.29**. Public seat: [os.neuavenue.com](https://os.neuavenue.com)  
 In-app: ☰ Manual → Intro to App.neu → **Agent Think — same routine on Docs, Sheets, Slides**
 
-One line: **Enter** opens a Cursor-style **Agent Think** rail on the right. The **file in the middle** is the result. Docs, Sheets and Slides share one composer (**▶ Run**). Writer shape follows the kind of document you asked for.
+One line: **Enter** opens Docs (or Sheets/Slides) **immediately** — no under-prompt card. The **file in the middle** is the result. Agent Think shows **one live step at a time** (Cursor-style). Docs, Sheets and Slides share one composer (**▶ Run**).
 
 ---
 
@@ -11,10 +11,10 @@ One line: **Enter** opens a Cursor-style **Agent Think** rail on the right. The 
 
 | | This guide | Previous |
 |--|------------|----------|
-| Top bar | **OS.neu v1.0.28** | v1.0.27 |
-| Right of Docs / Sheets / Slides | **Agent Think** + tall composer (glyph › usage attach ▶) | Think + separate Go / Ask AI |
+| Top bar | **OS.neu v1.0.29** | v1.0.28 |
+| Right of Docs / Sheets / Slides | Accordion Think + composer | Static 10-step checklist |
 
-Hard-refresh with Ctrl+Shift+R. If the logo still says v1.0.27, wait for the site deploy or open the **planted** os.neu app on this PC. Turn an AI model on (**Pick AI / Connect AI**). The network pill should be **Online**.
+Hard-refresh with Ctrl+Shift+R. If the logo still says v1.0.28, wait for the site deploy or open the **planted** os.neu app on this PC. Turn an AI model on (**Pick AI / Connect AI**). The network pill should be **Online**.
 
 ---
 
